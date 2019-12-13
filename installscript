@@ -61,6 +61,7 @@ ln -s $HOME/.dotfiles/functions $HOME/.functions
 # Symlink bin
 rm -rf $HOME/.bin
 ln -s $HOME/.dotfiles/bin/ $HOME/.bin/
+chmod +x $HOME/.bin/*
 
 # Symlink vim prefs
 #rm $HOME/.vimrc
