@@ -1,0 +1,44 @@
+# Navigation
+alias cd..="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Shortcuts
+alias fuck="sudo !!"
+alias finder="open ."
+alias hostfile="sudo vi /etc/hosts"
+alias sshconfig="vi ~/.ssh/config"
+alias copykey='command cat ~/.ssh/id_rsa.public | pbcopy'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Flush Directory Service cache
+alias flushdns="dscacheutil -flushcache && echo \"DNS cache cleared\""
+
+# Lock the screen
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+#PHP-Stuff
+alias php70="phpv php@7.0"
+alias php71="phpv php@7.1"
+alias php72="phpv php@7.2"
+alias php73="phpv php@7.3"
+alias php74="phpv php@7.4"
+
+alias cu="composer update"
+alias cr="composer require"
+alias ci="composer install"
+alias cda="composer dump-autoload -o"
+
+alias art=artisan

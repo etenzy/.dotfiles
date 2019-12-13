@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Get dns records for a host
+dig +nocmd $1 A +multiline +noall +answer;
+dig +nocmd $1 AAAA +multiline +noall +answer;
+dig +nocmd $1 NS +multiline +noall +answer;
+dig +nocmd $1 SOA +multiline +noall +answer;
+dig +nocmd $1 MX +multiline +noall +answer;
+dig +nocmd $1 TXT +multiline +noall +answer;
+dig +nocmd $1 DNSKEY +multiline +noall +answer;
+dig +nocmd $1 CAA +multiline +noall +answer;
