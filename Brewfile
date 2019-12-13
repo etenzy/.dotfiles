@@ -1,9 +1,3 @@
-# Make sure we’re using the latest Homebrew
-update
-
-# Upgrade any already-installed formula
-upgrade
-
 # Taps
 tap 'homebrew/cask-fonts'
 
@@ -35,13 +29,12 @@ brew 'screen'
 brew 'sqlite'
 brew 'the_silver_searcher'
 brew 'wget'
-Brew 'vim'
+brew 'vim'
 brew 'youtube-dl'
 
 # Applications
 cask 'alfred'
 cask 'bartender'
-cask 'betterzipql'
 cask 'cakebrew'
 cask 'docker'
 cask 'firefox'
@@ -64,12 +57,11 @@ cask 'virtualbox-extension-pack'
 cask 'vagrant'
 cask 'viscosity'
 cask 'vlc'
-cask 'webp-quicklook'
-
+cask 'WebPQuickLook'
 
 # Fonts
 cask 'font-inconsolata'
-cask 'font-inconsolata-dz'
+cask 'font-inconsolata-dz-for-powerline'
 cask 'font-lato'
 cask 'font-open-sans'
 cask 'font-open-sans-condensed'
@@ -81,18 +73,14 @@ cask 'font-roboto-condensed'
 cask 'font-roboto-mono'
 cask 'font-comfortaa'
 cask 'font-hack'
-cask 'font-nexa'
 cask 'font-montserrat'
 cask 'font-victor-mono'
 cask 'font-3270-nerd-font-mono'
 
 # App store
-mas 425424353 # Unarchiver
-mas 803453959 # Slack
-mas 409203825 # Numbers
-mas 409201541 # Pages
-mas 409183694 # Keynote
-mas 1020812363 # Copyclip
-
-# Remove outdated versions from the cellar
-cleanup
+mas "The Unarchiver", id: 425424353
+mas "Slack", id: 803453959
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Keynote", id: 409183694
+mas "Copyclip", id: 1020812363

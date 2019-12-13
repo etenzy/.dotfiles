@@ -6,7 +6,7 @@ touch $HOME/.hushlogin
 echo 'Install homebrew'
 echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew update
 
@@ -28,6 +28,8 @@ brew install zsh-autosuggestions
 echo 'Install zsh-completions'
 echo '-----------------------'
 brew install zsh-completions
+chmod go-w '$(brew --prefix)/share'
+rm -f ~/.zcompdump; compinit
 
 echo 'Install zsh-syntax-highlighting'
 echo '-------------------------------'
@@ -133,8 +135,11 @@ echo 'Install ubersicht'
 echo '-------------------'
 brew cask install ubersicht
 rm -rf $HOME/Library/Application Support/Übersicht/widgets
-git clone git@github.com:etenzy/uebersicht-widgets.git $HOME/Library/Application Support/Übersicht/widgets
+git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 
 echo 'Install Software from Brewfile'
 echo '------------------------------'
+brew update
+brew upgrade
 brew bundle
+brew cleanup
