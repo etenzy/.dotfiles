@@ -2,7 +2,7 @@ autoload -U promptinit; promptinit
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export fpath=($(brew --prefix)/share/zsh-completions $fpath)
+#export fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -127,7 +127,7 @@ SPACESHIP_RPROMPT_ORDER=(
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-completions git golang docker kubectl sudo laravel4 laravel5 composer osx vagrant)
+plugins=(git golang docker kubectl sudo laravel4 laravel5 composer osx vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
