@@ -64,7 +64,7 @@ ln -s $HOME/.dotfiles/shell/functions $HOME/.functions
 
 # Symlink bin
 rm -rf $HOME/.bin
-ln -s $HOME/.dotfiles/bin/ $HOME/.bin/
+ln -s $HOME/.dotfiles/bin $HOME/.bin
 chmod +x $HOME/.bin/*
 
 # Symlink vim prefs
@@ -145,3 +145,16 @@ brew update
 brew upgrade
 brew bundle
 brew cleanup
+
+echo '++++++++++++++++++++++++++++++'
+echo '++++++++++++++++++++++++++++++'
+echo 'All done!'
+
+echo '++++++++++++++++++++++++++++++'
+echo 'Some optional tidbits'
+
+echo '2. Set some sensible os x defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
+echo '3. Make a .dotfiles-custom/shell/.aliases for your personal commands'
+
+echo '++++++++++++++++++++++++++++++'
+echo '++++++++++++++++++++++++++++++'

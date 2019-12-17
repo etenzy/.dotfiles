@@ -49,7 +49,6 @@ cask 'quicklook-json'
 cask 'qlprettypatch'
 cask 'quicklook-csv'
 cask 'sequel-pro'
-cask 'spectacle'
 cask 'spotify'
 cask 'suspicious-package'
 cask 'virtualbox'
@@ -78,6 +77,7 @@ cask 'font-victor-mono'
 cask 'font-3270-nerd-font-mono'
 
 # App store
+mas "BetterSnapTool", id: 417375580
 mas "The Unarchiver", id: 425424353
 mas "Slack", id: 803453959
 mas "Numbers", id: 409203825

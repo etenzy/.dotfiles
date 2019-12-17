@@ -131,9 +131,16 @@ plugins=(git golang docker kubectl sudo laravel4 laravel5 composer osx vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.aliases
-source $HOME/.exports
-source $HOME/.functions
+# Load the shell dotfiles, and then some:
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.dotfiles/shell/{exports,functions,aliases}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
+for file in ~/.dotfiles-custom/shell/{exports,functions,aliases,zshrc}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+unset file
 
 # User configuration
 
