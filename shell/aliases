@@ -11,6 +11,7 @@ alias sudo='sudo '
 # Shortcuts
 alias fuck="sudo !!"
 alias finder="open ."
+alias dotfiles="open ~/.dotfiles"
 alias hostfile="sudo vi /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
 alias copykey='command cat ~/.ssh/id_rsa.public | pbcopy'

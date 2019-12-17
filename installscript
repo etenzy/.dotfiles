@@ -46,19 +46,19 @@ git config --global core.excludesfile $HOME/.global-gitignore
 
 # Symlink zsh prefs
 rm $HOME/.zshrc
-ln -s $HOME/.dotfiles/zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/shell/zshrc $HOME/.zshrc
 
 rm $HOME/.zprofile
-ln -s $HOME/.dotfiles/zprofile $HOME/.zprofile
+ln -s $HOME/.dotfiles/shell/zprofile $HOME/.zprofile
 
 rm $HOME/.aliases
-ln -s $HOME/.dotfiles/aliases $HOME/.aliases
+ln -s $HOME/.dotfiles/shell/aliases $HOME/.aliases
 
 rm $HOME/.exports
-ln -s $HOME/.dotfiles/exports $HOME/.exports
+ln -s $HOME/.dotfiles/shell/exports $HOME/.exports
 
 rm $HOME/.functions
-ln -s $HOME/.dotfiles/functions $HOME/.functions
+ln -s $HOME/.dotfiles/shell/functions $HOME/.functions
 
 # Symlink bin
 rm -rf $HOME/.bin
@@ -134,7 +134,7 @@ brew cask install visual-studio-code
 echo 'Install ubersicht'
 echo '-------------------'
 brew cask install ubersicht
-rm -rf $HOME/Library/Application Support/Übersicht/widgets
+rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
 git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 
 echo 'Install Software from Brewfile'
