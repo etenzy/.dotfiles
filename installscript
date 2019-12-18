@@ -140,8 +140,8 @@ brew cask install visual-studio-code
 echo 'Install ubersicht'
 echo '-------------------'
 brew cask install ubersicht
-rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
-git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
+rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
+git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 
 echo 'Install Software from Brewfile'
 echo '------------------------------'
@@ -159,6 +159,7 @@ echo '++++++++++++++++++++++++++++++'
 echo 'Some optional tidbits'
 
 chmod +x $HOME/.dotfiles/macos/set-defaults.sh
+chmod +x $HOME/.dotfiles/macos/unset-defaults.sh
 echo '2. Set some sensible os x defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
 echo '3. Make a .dotfiles-custom/shell/.aliases for your personal commands'
 
