@@ -160,6 +160,9 @@ defaults write com.apple.dock no-bouncing -bool true
 # Set the icon size of Dock items to 32 pixels
 defaults write com.apple.dock tilesize -int 32
 
+# Enable magnification
+defaults write com.apple.dock magnification -bool true
+
 # Set the icon hover-size of Dock items to 48 pixels
 defaults write com.apple.dock largesize -int 48
 
