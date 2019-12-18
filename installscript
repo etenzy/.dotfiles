@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change dir to HOME
+cd $HOME
+
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
@@ -15,6 +18,8 @@ echo 'Install oh-my-zsh'
 echo '-----------------'
 brew install zsh
 rm -rf $HOME/.oh-my-zsh
+rm $HOME/.zprofile
+rm $HOME/.zshrc
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 echo 'Install zplug'
@@ -37,12 +42,13 @@ brew install zsh-syntax-highlighting
 
 echo 'Install spaceship-prompt'
 echo '------------------------'
-rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
+rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 git clone https://github.com/etenzy/spaceship-prompt.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 ln -s ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
 # Add global gitignore
+rm $HOME/.global-gitignore
 ln -s $HOME/.dotfiles/global-gitignore $HOME/.global-gitignore
 git config --global core.excludesfile $HOME/.global-gitignore
 
@@ -79,8 +85,6 @@ chmod +x $HOME/.bin/*
 
 echo 'Install php'
 echo '-----------'
-brew install php@7.0
-brew install php@7.1
 brew install php@7.2
 brew install php@7.4
 
@@ -141,6 +145,7 @@ git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Applicatio
 
 echo 'Install Software from Brewfile'
 echo '------------------------------'
+cd $HOME/.dotfiles
 brew update
 brew upgrade
 brew bundle
@@ -153,6 +158,7 @@ echo 'All done!'
 echo '++++++++++++++++++++++++++++++'
 echo 'Some optional tidbits'
 
+chmod +x $HOME/.dotfiles/macos/set-defaults.sh
 echo '2. Set some sensible os x defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
 echo '3. Make a .dotfiles-custom/shell/.aliases for your personal commands'
 

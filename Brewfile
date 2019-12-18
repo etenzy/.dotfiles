@@ -83,4 +83,4 @@ mas "Slack", id: 803453959
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Keynote", id: 409183694
-mas "Copyclip", id: 1020812363
+mas "CopyClip", id: 595191960
