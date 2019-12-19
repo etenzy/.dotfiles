@@ -171,6 +171,9 @@ defaults write com.apple.dock largesize -int 48
 # the Dock to launch apps.
 defaults write com.apple.dock persistent-apps -array '{}'
 
+# Hide recent Apps in Dock
+defaults write com.apple.dock show-recents -bool false
+
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
