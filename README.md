@@ -1,5 +1,11 @@
 # My personal dotfiles for OSX
 
+Add first start open console and execute
+
+```
+xcode-select --install
+```
+
 You can install them by cloning the repository as `.dotfiles` in your home directory and running the bootstrap script.
 
 ```
