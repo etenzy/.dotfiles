@@ -89,3 +89,4 @@ mas "Pages", id: 409201541
 mas "Keynote", id: 409183694
 mas "CopyClip", id: 595191960
 mas "WireGuard", id: 1451685025
+mas "Xcode", id: 497799835
