@@ -74,10 +74,10 @@ ln -s $HOME/.dotfiles/bin $HOME/.bin
 chmod +x $HOME/.bin/*
 
 # Symlink vim prefs
-#rm $HOME/.vimrc
-#ln -s $HOME/.dotfiles/shell/.vimrc $HOME/.vimrc
+rm $HOME/.vimrc
+ln -s $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
 #rm $HOME/.vim
-#ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
+#ln -s $HOME/.dotfiles/shell/vim $HOME/.vim
 
 # Symlink yarn prefs
 #rm $HOME/.yarnrc

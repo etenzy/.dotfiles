@@ -1,0 +1,3 @@
+syntax enable
+set mouse-=a
+set bs=2
