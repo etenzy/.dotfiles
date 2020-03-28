@@ -127,7 +127,7 @@ brew cask install phpstorm
 
 echo 'Install node'
 echo '------------'
-brew install node@8
+brew install node@10
 
 echo 'Install yarn'
 echo '------------'
