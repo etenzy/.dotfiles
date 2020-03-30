@@ -133,6 +133,10 @@ echo 'Install yarn'
 echo '------------'
 brew install yarn
 
+echo 'Install mklicense'
+echo '-----------------'
+npm install -g mklicense
+
 echo 'Install visual-studio-code'
 echo '--------------------------'
 brew cask install visual-studio-code
