@@ -45,43 +45,43 @@ echo '------------------------'
 rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 git clone https://github.com/etenzy/spaceship-prompt.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
-ln -s ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
+ln -rnfs ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
 # Add global gitignore
 rm $HOME/.global-gitignore
-ln -s $HOME/.dotfiles/global-gitignore $HOME/.global-gitignore
+ln -rnfs $HOME/.dotfiles/global-gitignore $HOME/.global-gitignore
 git config --global core.excludesfile $HOME/.global-gitignore
 
 # Symlink zsh prefs
 rm $HOME/.zshrc
-ln -s $HOME/.dotfiles/shell/zshrc $HOME/.zshrc
+ln -rnfs $HOME/.dotfiles/shell/zshrc $HOME/.zshrc
 
 rm $HOME/.zprofile
-ln -s $HOME/.dotfiles/shell/zprofile $HOME/.zprofile
+ln -rnfs $HOME/.dotfiles/shell/zprofile $HOME/.zprofile
 
 rm $HOME/.aliases
-ln -s $HOME/.dotfiles/shell/aliases $HOME/.aliases
+ln -rnfs $HOME/.dotfiles/shell/aliases $HOME/.aliases
 
 rm $HOME/.exports
-ln -s $HOME/.dotfiles/shell/exports $HOME/.exports
+ln -rnfs $HOME/.dotfiles/shell/exports $HOME/.exports
 
 rm $HOME/.functions
-ln -s $HOME/.dotfiles/shell/functions $HOME/.functions
+ln -rnfs $HOME/.dotfiles/shell/functions $HOME/.functions
 
 # Symlink bin
 rm -rf $HOME/.bin
-ln -s $HOME/.dotfiles/bin $HOME/.bin
+ln -rnfs $HOME/.dotfiles/bin $HOME/.bin
 chmod +x $HOME/.bin/*
 
 # Symlink vim prefs
 rm $HOME/.vimrc
-ln -s $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
+ln -rnfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
 #rm $HOME/.vim
-#ln -s $HOME/.dotfiles/shell/vim $HOME/.vim
+#ln -rnfs $HOME/.dotfiles/shell/vim $HOME/.vim
 
 # Symlink yarn prefs
 #rm $HOME/.yarnrc
-#ln -s $HOME/.dotfiles/shell/.yarnrc $HOME/.yarnrc
+#ln -rnfs $HOME/.dotfiles/shell/.yarnrc $HOME/.yarnrc
 
 echo 'Install php'
 echo '-----------'
