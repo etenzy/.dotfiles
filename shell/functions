@@ -16,3 +16,8 @@ function removehost() {
 function artisan() {
     php artisan "$@"
 }
+
+# Print the full command before running kubectl
+function kubectl() { 
+    echo "+ kubectl $@">&2; command kubectl $@;
+}

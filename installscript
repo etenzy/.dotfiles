@@ -79,6 +79,9 @@ ln -nfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
 #rm $HOME/.vim
 #ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
 
+#Download https://github.com/ahmetb/kubectl-aliases/
+curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
+
 # Symlink yarn prefs
 #rm $HOME/.yarnrc
 #ln -nfs $HOME/.dotfiles/shell/.yarnrc $HOME/.yarnrc

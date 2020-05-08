@@ -142,6 +142,10 @@ for file in ~/.dotfiles-custom/shell/{exports,functions,aliases,zshrc}; do
 done
 unset file
 
+[ -r "~/.extra" ] && [ -f "~/.extra" ] && source "~/.extra"
+
+[ -r "~/.kubectl_aliases" ] && [ -f "~/.kubectl_aliases" ] && source "~/.kubectl_aliases"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
