@@ -4,6 +4,7 @@ tap 'homebrew/cask-fonts'
 # Install tools
 brew 'ack'
 brew 'ansible'
+brew 'asciinema'
 brew 'brew-cask-completion'
 brew 'cocoapods'
 brew 'cowsay'
