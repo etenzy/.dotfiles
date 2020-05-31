@@ -26,6 +26,8 @@ SPACESHIP_CHAR_SYMBOL_SECONDARY="➜"
 SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_CHAR_COLOR_SUCCESS="white"
 
+SPACESHIP_KUBECTL_SHOW="true"
+
 SPACESHIP_TIME_SHOW="true"
 
 SPACESHIP_PROMPT_ORDER=(
@@ -184,3 +186,4 @@ export PATH="$HOME/.bin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(gh completion -s zsh)"
