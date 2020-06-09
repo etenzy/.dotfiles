@@ -129,7 +129,7 @@ SPACESHIP_RPROMPT_ORDER=(
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git golang docker minikube sudo laravel4 laravel5 composer osx vagrant)
+plugins=(osx sudo git vagrant docker minikube golang composer laravel)
 
 source $ZSH/oh-my-zsh.sh
 
