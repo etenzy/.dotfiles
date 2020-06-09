@@ -18,6 +18,6 @@ function artisan() {
 }
 
 # Print the full command before running kubectl
-function kubectl() { 
-    echo "+ kubectl $@">&2; command kubectl $@;
-}
+# function kubectl() { 
+#     echo "+ kubectl $@">&2; command kubectl $@;
+# }
