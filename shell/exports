@@ -29,3 +29,6 @@ export COMPOSER_MEMORY_LIMIT=-1
 
 # AWS
 AWS_REGION=eu-central-1
+
+# kubectx
+export KUBECONFIG="$(find $HOME/.kube/config.d -type f -exec printf '%s:' '{}' +)$HOME/.kube/config"
