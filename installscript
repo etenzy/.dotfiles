@@ -47,6 +47,12 @@ rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 git clone https://github.com/etenzy/spaceship-prompt.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 ln -nfs ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
+echo 'Install tmux'
+echo '------------'
+brew install tmux
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+ 
+
 # Add global gitignore
 rm $HOME/.global-gitignore
 ln -nfs $HOME/.dotfiles/global-gitignore $HOME/.global-gitignore
@@ -78,6 +84,9 @@ rm $HOME/.vimrc
 ln -nfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
 #rm $HOME/.vim
 #ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
+
+# Symlink the Mackup config
+ln -s $HOME/.dotfiles/macos/mackup.cfg $HOME/.mackup.cfg
 
 #Download https://github.com/ahmetb/kubectl-aliases/
 curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
@@ -167,8 +176,9 @@ echo 'Some optional tidbits'
 
 chmod +x $HOME/.dotfiles/macos/set-defaults.sh
 chmod +x $HOME/.dotfiles/macos/unset-defaults.sh
-echo '2. Set some sensible os x defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
-echo '3. Make a .dotfiles-custom/shell/.aliases for your personal commands'
+echo '1. Set some sensible macos defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
+echo '2. Make a .dotfiles-custom/shell/.aliases for your personal commands'
+echo '3. Download themes from nordtheme.com for matching styling
 
 echo '++++++++++++++++++++++++++++++'
 echo '++++++++++++++++++++++++++++++'
