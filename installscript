@@ -9,7 +9,7 @@ touch $HOME/.hushlogin
 echo 'Install homebrew'
 echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 brew update
 
@@ -86,6 +86,7 @@ ln -nfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
 #ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
 
 # Symlink the Mackup config
+rm $HOME/.mackup.cfg
 ln -s $HOME/.dotfiles/macos/mackup.cfg $HOME/.mackup.cfg
 
 #Download https://github.com/ahmetb/kubectl-aliases/
@@ -178,7 +179,7 @@ chmod +x $HOME/.dotfiles/macos/set-defaults.sh
 chmod +x $HOME/.dotfiles/macos/unset-defaults.sh
 echo '1. Set some sensible macos defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
 echo '2. Make a .dotfiles-custom/shell/.aliases for your personal commands'
-echo '3. Download themes from nordtheme.com for matching styling
+echo '3. Download themes from nordtheme.com for matching styling'
 
 echo '++++++++++++++++++++++++++++++'
 echo '++++++++++++++++++++++++++++++'
