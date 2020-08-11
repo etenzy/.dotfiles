@@ -96,6 +96,10 @@ curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_al
 #rm $HOME/.yarnrc
 #ln -nfs $HOME/.dotfiles/shell/.yarnrc $HOME/.yarnrc
 
+echo 'Install go'
+echo '----------'
+brew install go
+
 echo 'Install php'
 echo '-----------'
 brew install php@7.2
