@@ -8,6 +8,9 @@ alias .....="cd ../../../.."
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# Overwrite system defaults
+alias ll="colorls -lA --sd"
+
 # Shortcuts
 alias fuck="sudo !!"
 alias finder="open ."
