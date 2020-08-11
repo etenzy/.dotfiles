@@ -27,6 +27,7 @@ export GREP_OPTIONS="--color=auto"
 export COMPOSER_HOME="$HOME/.composer"
 export COMPOSER_MEMORY_LIMIT=-1
 export JAVA_HOME="/usr/local/opt/openjdk/"
+export GEM_HOME="$HOME/.gem"
 
 # AWS
 AWS_REGION=eu-central-1
