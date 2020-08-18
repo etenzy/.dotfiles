@@ -17,6 +17,10 @@ function artisan() {
     php artisan "$@"
 }
 
+fuction fixQL() {
+    xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
+}
+
 # Print the full command before running kubectl
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
