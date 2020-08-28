@@ -47,6 +47,12 @@ rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 git clone https://github.com/etenzy/spaceship-prompt.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
 ln -nfs ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
 
+echo 'Install Nord dircolors theme'
+echo '----------------------------'
+rm -rf $HOME/.dir_colors
+git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/.dotfiles/shell/dircolors
+ln -nfs $HOME/.dotfiles/shell/dircolors/src/dir_colors $HOME/.dir_colors
+
 echo 'Install colorls'
 echo '---------------'
 gem install colorls
