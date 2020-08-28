@@ -9,6 +9,7 @@ alias .....="cd ../../../.."
 alias sudo='sudo '
 
 # Overwrite system defaults
+alias ls='gls --color=auto'
 alias ll="colorls -lA --sd"
 
 # Shortcuts
