@@ -193,4 +193,6 @@ export PATH="$HOME/.bin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 eval "$(gh completion -s zsh)"
