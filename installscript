@@ -175,7 +175,7 @@ echo 'Install ubersicht'
 echo '-------------------'
 brew cask install ubersicht
 rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
-git clone git@github.com:etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
+git clone https://github.com/etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 
 echo 'Install Software from Brewfile'
 echo '------------------------------'
