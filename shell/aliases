@@ -18,7 +18,7 @@ alias finder="open ."
 alias dotfiles="open ~/.dotfiles"
 alias hostfile="sudo vi /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
-alias copykey='command cat ~/.ssh/id_rsa.public | pbcopy'
+alias copykey='cat ~/.ssh/id_rsa.pub | pbcopy'
 
 # Flush Directory Service cache
 alias flushdns="dscacheutil -flushcache && echo \"DNS cache cleared\""
@@ -34,10 +34,5 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias php72="phpv php@7.2"
 alias php73="phpv php@7.3"
 alias php74="phpv php@7.4"
-
-alias cu="composer update"
-alias cr="composer require"
-alias ci="composer install"
-alias cda="composer dump-autoload -o"
 
 alias art=artisan
