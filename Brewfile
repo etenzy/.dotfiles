@@ -51,6 +51,7 @@ brew 'the_silver_searcher'
 brew 'watch'
 brew 'wget'
 brew 'vim'
+brew 'yh'
 brew 'youtube-dl'
 
 # Applications
