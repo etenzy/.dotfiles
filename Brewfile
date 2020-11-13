@@ -97,14 +97,13 @@ cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
 cask 'font-roboto'
-cask 'font-roboto-condensed'
 cask 'font-roboto-mono'
 cask 'font-comfortaa'
 cask 'font-hack'
 cask 'font-hack-nerd-font'
 cask 'font-montserrat'
 cask 'font-victor-mono'
-cask 'font-3270-nerd-font-mono'
+cask 'font-3270-nerd-font'
 
 # App store
 mas "BetterSnapTool", id: 417375580
