@@ -11,6 +11,8 @@ echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+brew tap buo/cask-upgrade
+
 brew update
 
 # Install zsh
