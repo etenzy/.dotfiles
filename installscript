@@ -63,6 +63,12 @@ echo 'Install tmux'
 echo '------------'
 brew install tmux
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
+echo 'Install figlet'
+echo '--------------'
+brew install figlet
+mv $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts.bak
+git clone https://github.com/xero/figlet-fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
  
 
 # Add global gitignore
