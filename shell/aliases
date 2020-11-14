@@ -6,11 +6,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Enable aliases to be sudo’ed
-alias sudo='sudo '
+alias sudo="sudo "
 
 # Overwrite system defaults
-alias ls='gls --color=auto'
+alias ls="gls --color=auto"
 alias ll="colorls -lA --sd"
+alias figlet="figlet -w $(tput cols)"
+alias figwho="figlet -f 3d $(whoami) | lolcat"
 
 # Shortcuts
 alias fuck="sudo !!"
@@ -18,7 +20,7 @@ alias finder="open ."
 alias dotfiles="open ~/.dotfiles"
 alias hostfile="sudo vi /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
-alias copykey='cat ~/.ssh/id_rsa.pub | pbcopy'
+alias copykey="cat ~/.ssh/id_rsa.pub | pbcopy"
 
 # Flush Directory Service cache
 alias flushdns="dscacheutil -flushcache && echo \"DNS cache cleared\""
