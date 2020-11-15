@@ -158,6 +158,10 @@ helm plugin install https://github.com/instrumenta/helm-kubeval
 helm plugin install https://github.com/zendesk/helm-secrets 
 helm plugin install https://github.com/bacongobbler/helm-whatup
 
+echo 'Install KubeOne'
+echo '---------------'
+curl -sfL get.kubeone.io | sh
+
 echo 'Install php'
 echo '-----------'
 brew install php@7.2
