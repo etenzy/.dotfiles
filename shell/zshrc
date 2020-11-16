@@ -199,9 +199,10 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-eval "$(hcloud completion zsh)"
-eval "$(gh completion -s zsh)"
-eval "$(kubeone completion zsh)"
-eval "$(flux completion zsh)"
 
-autoload -Uz compinit; compinit
+fpath+=(~/.config/flux/completion/zsh)
+fpath+=(~/.config/gh/completion/zsh)
+fpath+=(~/.config/hcloud/completion/zsh)
+fpath+=(~/.config/kubeone/completion/zsh)
+
+autoload -Uz compinit; compinit -u
