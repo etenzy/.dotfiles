@@ -205,4 +205,4 @@ fpath+=(~/.config/gh/completion/zsh)
 fpath+=(~/.config/hcloud/completion/zsh)
 fpath+=(~/.config/kubeone/completion/zsh)
 
-autoload -Uz compinit; compinit -u
+autoload -Uz compinit; compinit

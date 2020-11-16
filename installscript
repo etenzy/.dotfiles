@@ -119,6 +119,10 @@ echo 'Install go'
 echo '----------'
 brew install go
 
+echo 'Install Terraform'
+echo '-----------------'
+brew install terraform
+
 echo 'Install kubectl'
 echo '---------------'
 brew install kubernetes-cli
