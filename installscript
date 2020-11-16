@@ -159,7 +159,7 @@ helm repo add stable https://charts.helm.sh/stable
 helm repo update
 helm plugin install https://github.com/databus23/helm-diff
 helm plugin install https://github.com/instrumenta/helm-kubeval
-helm plugin install https://github.com/zendesk/helm-secrets 
+helm plugin install https://github.com/jkroepke/helm-secrets 
 helm plugin install https://github.com/bacongobbler/helm-whatup
 
 echo 'Install KubeOne'
