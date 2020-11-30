@@ -168,7 +168,7 @@ curl -sfL get.kubeone.io | sh
 
 echo 'Install php'
 echo '-----------'
-brew install php@7.2
+brew install php@8.0
 brew install php@7.4
 
 echo 'Install composer'
