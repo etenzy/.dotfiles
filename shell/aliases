@@ -33,8 +33,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
 #PHP-Stuff
-alias php72="phpv php@7.2"
-alias php73="phpv php@7.3"
 alias php74="phpv php@7.4"
+alias php80="phpv php@8.0"
 
 alias art=artisan

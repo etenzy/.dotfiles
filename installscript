@@ -70,7 +70,6 @@ brew install figlet
 mv $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts.bak
 git clone https://github.com/xero/figlet-fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
  
-
 # Add global gitignore
 rm $HOME/.global-gitignore
 ln -nfs $HOME/.dotfiles/global-gitignore $HOME/.global-gitignore
@@ -104,8 +103,12 @@ chmod +x $HOME/.bin/*
 # Symlink vim prefs
 rm $HOME/.vimrc
 ln -nfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
-#rm $HOME/.vim
-#ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
+rm $HOME/.vim
+ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
+
+echo 'Install vim-plug'
+echo '----------------'
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Symlink the Mackup config
 rm $HOME/.mackup.cfg
@@ -168,8 +171,8 @@ curl -sfL get.kubeone.io | sh
 
 echo 'Install php'
 echo '-----------'
-brew install php@8.0
 brew install php@7.4
+brew install php@8.0
 
 echo 'Install composer'
 echo '----------------'
@@ -181,28 +184,31 @@ brew install imagemagick
 
 echo 'Install imagick'
 echo '---------------'
-pecl install imagick
+printf "\n" | pecl install imagick
 
 echo 'Install memcached'
 echo '-----------------'
-pecl install memcached
+printf "\n" | pecl install memcached
 
 echo 'Install xdebug'
 echo '--------------'
-pecl install xdebug
+printf "\n" | pecl install xdebug
 
 echo 'Install php-redis'
 echo '-------------'
-pecl install redis
+printf "\n" | pecl install redis
+
+echo 'Install laravel installer'
+echo '-------------------------'
+composer global require laravel/installer
 
 echo 'Install laravel envoy'
 echo '---------------------'
-composer global require "laravel/envoy=~1.0"
+composer global require laravel/envoy
 
-echo 'Install laravel valet'
-echo '---------------------'
-composer global require laravel/valet
-valet install
+echo 'Install beyondcode/expose'
+echo '-------------------------'
+composer global require beyondcode/expose
 
 echo 'Install PhpStorm'
 echo '----------------'
