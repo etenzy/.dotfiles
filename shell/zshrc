@@ -197,6 +197,7 @@ export PATH="$HOME/.bin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
@@ -204,5 +205,7 @@ fpath+=(~/.config/flux/completion/zsh)
 fpath+=(~/.config/gh/completion/zsh)
 fpath+=(~/.config/hcloud/completion/zsh)
 fpath+=(~/.config/kubeone/completion/zsh)
+
+eval "$(direnv hook zsh)"
 
 autoload -Uz compinit; compinit
