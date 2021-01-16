@@ -24,6 +24,10 @@ rm $HOME/.zprofile
 rm $HOME/.zshrc
 curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
+echo 'Install direnv'
+echo '--------------'
+brew install direnv
+
 echo 'Install zplug'
 echo '-------------'
 brew install zplug
@@ -124,7 +128,7 @@ brew install go
 
 echo 'Install Terraform'
 echo '-----------------'
-brew install terraform
+brew install hashicorp/tap/terraform
 
 echo 'Install kubectl'
 echo '---------------'
@@ -149,16 +153,15 @@ echo '------------'
 brew install helm
 helm repo add yugabytedb https://charts.yugabyte.com
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
 helm repo add presslabs https://presslabs.github.io/charts
 helm repo add jetstack https://charts.jetstack.io
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo add hashicorp https://helm.releases.hashicorp.com
 helm repo add fluent https://fluent.github.io/helm-charts
 helm repo add fluxcd https://charts.fluxcd.io
-helm repo add loki https://grafana.github.io/loki/charts
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add grafana https://grafana.github.io/helm-charts
-helm repo add stable https://charts.helm.sh/stable
 helm repo update
 helm plugin install https://github.com/databus23/helm-diff
 helm plugin install https://github.com/instrumenta/helm-kubeval
