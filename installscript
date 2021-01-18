@@ -219,6 +219,7 @@ brew cask install phpstorm
 
 echo 'Install node'
 echo '------------'
+brew install node
 brew install node@10
 
 echo 'Install yarn'
