@@ -112,6 +112,7 @@ cask 'font-3270-nerd-font'
 
 # App store
 mas "BetterSnapTool", id: 417375580
+mas "Dropover", id: 1355679052
 mas "The Unarchiver", id: 425424353
 mas "Slack", id: 803453959
 mas "Trello", id: 1278508951
