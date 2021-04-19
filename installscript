@@ -136,6 +136,10 @@ brew install kubernetes-cli
 #Download https://github.com/ahmetb/kubectl-aliases/
 curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
 
+echo 'Install Kubeval'
+echo '---------------'
+brew install instrumenta/instrumenta/kubeval
+
 echo 'Install kubectx'
 echo '---------------'
 brew install kubectx
@@ -166,7 +170,6 @@ helm repo update
 helm plugin install https://github.com/databus23/helm-diff
 helm plugin install https://github.com/instrumenta/helm-kubeval
 helm plugin install https://github.com/jkroepke/helm-secrets 
-helm plugin install https://github.com/bacongobbler/helm-whatup
 
 echo 'Install KubeOne'
 echo '---------------'
