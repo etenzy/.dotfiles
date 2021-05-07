@@ -176,6 +176,14 @@ echo 'Install KubeOne'
 echo '---------------'
 curl -sfL get.kubeone.io | sh
 
+echo 'Install gnupg'
+echo '---------------'
+brew install gnupg
+
+echo 'Install sops'
+echo '---------------'
+brew install sops
+
 echo 'Install php'
 echo '-----------'
 brew install php@7.4
