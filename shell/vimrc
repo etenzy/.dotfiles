@@ -36,8 +36,9 @@ call plug#end()
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
-nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let mapleader = ','
+nnoremap <Leader>m :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeFind<CR>
 
 nnoremap <C-S-n> :bnext<CR>
 nnoremap <C-S-b> :bprev<CR>
