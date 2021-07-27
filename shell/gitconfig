@@ -1,0 +1,23 @@
+[core]
+	excludesfile = /Users/roedel/.global-gitignore
+[user]
+	email = michael.roedel@hfo-technology.de
+	name = Michael Rödel
+[pull]
+	rebase = true
+[diff "sopsdiffer"]
+	textconv = sops -d
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	new = !git init && git symbolic-ref HEAD refs/heads/main
+
+[includeIf "gitdir:~/Workspaces/github.com/"]
+	path = .gitconfig-github
+
+[includeIf "gitdir:~/Workspaces/bitbucket.org/"]
+	path = .gitconfig-bitbucket
+
