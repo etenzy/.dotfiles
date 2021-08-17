@@ -1,0 +1,11 @@
+[aws.region_aliases]
+eu-central-1 = "fra"
+
+[kubernetes]
+disabled = false
+
+[battery.display]
+threshold = 100
+
+[time]
+disabled = false

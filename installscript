@@ -6,284 +6,117 @@ cd $HOME
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
+echo ''
 echo 'Install homebrew'
 echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-brew tap buo/cask-upgrade
-
 brew update
 
-# Install zsh
-echo 'Install oh-my-zsh'
-echo '-----------------'
-brew install zsh
-rm -rf $HOME/.oh-my-zsh
-rm $HOME/.zprofile
-rm $HOME/.zshrc
-curl -L https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+if [[ ! "$DISABLE_CLI" == "true" ]]; then
+    source install/cli.sh
+fi
 
-echo 'Install direnv'
-echo '--------------'
-brew install direnv
+if [[ ! "$DISABLE_GIT" == "true" ]]; then
+    source install/git.sh
+fi
 
-echo 'Install zplug'
-echo '-------------'
-brew install zplug
+if [[ ! "$DISABLE_SHELL" == "true" ]]; then
+    source install/shell.sh
+fi
 
-echo 'Install zsh-autosuggestions'
-echo '---------------------------'
-brew install zsh-autosuggestions
+if [[ ! "$DISABLE_VIM" == "true" ]]; then
+    source install/vim.sh
+fi
 
-echo 'Install zsh-completions'
-echo '-----------------------'
-brew install zsh-completions
-chmod go-w '$(brew --prefix)/share'
-rm -f ~/.zcompdump; compinit
+if [[ ! "$DISABLE_CLOUD" == "true" ]]; then
+    source install/cloud.sh
+fi
 
-echo 'Install zsh-syntax-highlighting'
-echo '-------------------------------'
-brew install zsh-syntax-highlighting
+if [[ ! "$DISABLE_KUBERNETES" == "true" ]]; then
+    source install/kube.sh
+fi
 
-echo 'Install spaceship-prompt'
-echo '------------------------'
-rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
-rm -rf ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
-git clone https://github.com/etenzy/spaceship-prompt.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt
-ln -nfs ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship-prompt/spaceship.zsh-theme ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/spaceship.zsh-theme
+if [[ ! "$DISABLE_DOCKER" == "true" ]]; then
+    source install/docker.sh
+fi
 
-echo 'Install Nord dircolors theme'
-echo '----------------------------'
-rm -rf $HOME/.dir_colors
-git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/.dotfiles/shell/dircolors
-ln -nfs $HOME/.dotfiles/shell/dircolors/src/dir_colors $HOME/.dir_colors
+if [[ ! "$DISABLE_PHP" == "true" ]]; then
+    source install/php.sh
+fi
 
-echo 'Install colorls'
-echo '---------------'
-gem install colorls
+if [[ ! "$DISABLE_NODE" == "true" ]]; then
+    source install/node.sh
+fi
 
-echo 'Install tmux'
-echo '------------'
-brew install tmux
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+if [[ ! "$DISABLE_VIRTUALISATION" == "true" ]]; then
+    source install/gui.sh
+fi
 
-echo 'Install figlet'
-echo '--------------'
-brew install figlet
-mv $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts.bak
-git clone https://github.com/xero/figlet-fonts $(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
- 
-echo 'Configure Git'
-echo '-------------'
-rm $HOME/.gitconfig
-ln -nfs $HOME/.dotfiles/shell/gitconfig $HOME/.gitconfig
-rm $HOME/.global-gitignore
-ln -nfs $HOME/.dotfiles/shell/global-gitignore $HOME/.global-gitignore
-git config --global core.excludesfile $HOME/.global-gitignore
+if [[ ! "$DISABLE_GUI" == "true" ]]; then
+    source install/gui.sh
+fi
 
-# Global git config
-git config --global alias.new '!git init && git symbolic-ref HEAD refs/heads/main'
-git config --global pull.rebase true
+if [[ ! "$DISABLE_DATABASE" == "true" ]]; then
+    source install/database.sh
+fi
 
-# Symlink zsh prefs
-rm $HOME/.zshrc
-ln -nfs $HOME/.dotfiles/shell/zshrc $HOME/.zshrc
+if [[ ! "$DISABLE_MEDIA" == "true" ]]; then
+    source install/media.sh
+fi
 
-rm $HOME/.zprofile
-ln -nfs $HOME/.dotfiles/shell/zprofile $HOME/.zprofile
+if [[ ! "$DISABLE_BROWSER" == "true" ]]; then
+    source install/browser.sh
+fi
 
-rm $HOME/.aliases
-ln -nfs $HOME/.dotfiles/shell/aliases $HOME/.aliases
+if [[ ! "$DISABLE_MESSENGER" == "true" ]]; then
+    source install/messenger.sh
+fi
 
-rm $HOME/.exports
-ln -nfs $HOME/.dotfiles/shell/exports $HOME/.exports
+if [[ ! "$DISABLE_EDITOR" == "true" ]]; then
+    source install/editor.sh
+fi
 
-rm $HOME/.functions
-ln -nfs $HOME/.dotfiles/shell/functions $HOME/.functions
+if [[ ! "$DISABLE_MAS" == "true" ]]; then
+    source install/mas.sh
+fi
 
-# Symlink bin
-rm -rf $HOME/.bin
-ln -nfs $HOME/.dotfiles/bin $HOME/.bin
-chmod +x $HOME/.bin/*
+if [[ ! "$DISABLE_QUICKLOOk" == "true" ]]; then
+    source install/quicklook.sh
+fi
 
-# Symlink vim prefs
-rm $HOME/.vimrc
-ln -nfs $HOME/.dotfiles/shell/vimrc $HOME/.vimrc
-rm $HOME/.vim
-ln -nfs $HOME/.dotfiles/shell/vim $HOME/.vim
+if [[ ! "$DISABLE_FONT" == "true" ]]; then
+    source install/font.sh
+fi
 
-echo 'Install vim-plug'
-echo '----------------'
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [[ ! "$DISABLE_MACKUP" == "true" ]]; then
+    echo ''
+    echo 'Install Mackup'
+    echo '--------------'
+    brew install mackup
+    rm $HOME/.mackup.cfg
+    ln -s $HOME/.dotfiles/macos/mackup.cfg $HOME/.mackup.cfg
 
-# Symlink the Mackup config
-rm $HOME/.mackup.cfg
-ln -s $HOME/.dotfiles/macos/mackup.cfg $HOME/.mackup.cfg
+    if [ -d "$HOME/Dropbox/Mackup/" ]; then
+        mackup restore --force
+    fi
+fi
 
-# Symlink yarn prefs
-#rm $HOME/.yarnrc
-#ln -nfs $HOME/.dotfiles/shell/.yarnrc $HOME/.yarnrc
-
-echo 'Install go'
-echo '----------'
-brew install go
-
-echo 'Install Terraform'
-echo '-----------------'
-brew install hashicorp/tap/terraform
-
-echo 'Install kubectl'
-echo '---------------'
-brew install kubernetes-cli
-#Download https://github.com/ahmetb/kubectl-aliases/
-curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
-
-echo 'Install kubecolor'
-echo '-----------------'
-brew install dty1er/tap/kubecolor
-
-echo 'Install Flux CLI'
-echo '----------------'
-brew install fluxcd/tap/flux
-
-echo 'Install Kubeval'
-echo '---------------'
-brew install instrumenta/instrumenta/kubeval
-
-echo 'Install kubectx'
-echo '---------------'
-brew install kubectx
-
-echo 'Install kubelogin'
-echo '-----------------'
-brew install int128/kubelogin/kubelogin
-
-echo 'Install kubeseal'
-echo '----------------'
-brew install kubeseal
-
-echo 'Install helm'
-echo '------------'
-brew install helm
-helm repo add yugabytedb https://charts.yugabyte.com
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo add sealed-secrets https://bitnami-labs.github.io/sealed-secrets
-helm repo add presslabs https://presslabs.github.io/charts
-helm repo add jetstack https://charts.jetstack.io
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo add hashicorp https://helm.releases.hashicorp.com
-helm repo add fluent https://fluent.github.io/helm-charts
-helm repo add fluxcd https://charts.fluxcd.io
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo add traefik https://helm.traefik.io/traefik
-helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
-helm repo update
-helm plugin install https://github.com/databus23/helm-diff
-helm plugin install https://github.com/instrumenta/helm-kubeval
-helm plugin install https://github.com/jkroepke/helm-secrets 
-
-echo 'Install KubeOne'
-echo '---------------'
-curl -sfL get.kubeone.io | sh
-
-echo 'Install gnupg'
-echo '---------------'
-brew install gnupg
-
-echo 'Install sops'
-echo '---------------'
-brew install sops
-
-echo 'Install php'
-echo '-----------'
-brew install php@7.4
-brew install php@8.0
-
-echo 'Install composer'
-echo '----------------'
-brew install composer
-
-echo 'Install imagemagick'
-echo '-------------------'
-brew install imagemagick
-
-echo 'Install imagick'
-echo '---------------'
-printf "\n" | pecl install imagick
-
-echo 'Install memcached'
-echo '-----------------'
-printf "\n" | pecl install memcached
-
-echo 'Install xdebug'
-echo '--------------'
-printf "\n" | pecl install xdebug
-
-echo 'Install php-redis'
-echo '-------------'
-printf "\n" | pecl install redis
-
-echo 'Install laravel installer'
-echo '-------------------------'
-composer global require laravel/installer
-
-echo 'Install laravel envoy'
-echo '---------------------'
-composer global require laravel/envoy
-
-echo 'Install beyondcode/expose'
-echo '-------------------------'
-composer global require beyondcode/expose
-
-echo 'Install PhpStorm'
-echo '----------------'
-brew cask install phpstorm
-
-echo 'Install node'
-echo '------------'
-brew install node
-brew install node@10
-
-echo 'Install yarn'
-echo '------------'
-brew install yarn
-
-echo 'Install mklicense'
-echo '-----------------'
-npm install -g mklicense
-
-echo 'Install visual-studio-code'
-echo '--------------------------'
-brew cask install visual-studio-code
-
-echo 'Install ubersicht'
-echo '-------------------'
-brew cask install ubersicht
-rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
-git clone https://github.com/etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
-
-echo 'Install Software from Brewfile'
-echo '------------------------------'
-cd $HOME/.dotfiles
-brew update
-brew upgrade
-brew bundle
-brew cleanup
-
-echo '++++++++++++++++++++++++++++++'
-echo '++++++++++++++++++++++++++++++'
-echo 'All done!'
-
-echo '++++++++++++++++++++++++++++++'
+echo ''
+echo ''
+echo '+++++++++++++++++++++++++++++++'
+echo '+          All done!          +'
+echo '+++++++++++++++++++++++++++++++'
+echo ''
+echo ''
 echo 'Some optional tidbits'
 
 chmod +x $HOME/.dotfiles/macos/set-defaults.sh
 chmod +x $HOME/.dotfiles/macos/unset-defaults.sh
 echo '1. Set some sensible macos defaults by running: $HOME/.dotfiles/macos/set-defaults.sh'
-echo '2. Make a .dotfiles-custom/shell/.aliases for your personal commands'
+echo '2. Make a .dotfiles-custom/shell/.aliases for your custom commands'
 echo '3. Download themes from nordtheme.com for matching styling'
 
-echo '++++++++++++++++++++++++++++++'
-echo '++++++++++++++++++++++++++++++'
+echo '+++++++++++++++++++++++++++++++'
+echo '+++++++++++++++++++++++++++++++'
