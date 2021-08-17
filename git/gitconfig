@@ -1,8 +1,8 @@
 [core]
-	excludesfile = /Users/roedel/.global-gitignore
+	excludesfile = ~/.global-gitignore
 [user]
-	email = michael.roedel@hfo-technology.de
-	name = Michael Rödel
+	email = hello@mroedel.de
+	name = etenzy
 [pull]
 	rebase = true
 [diff "sopsdiffer"]

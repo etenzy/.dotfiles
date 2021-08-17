@@ -21,3 +21,14 @@ The bootstrap script can be run by cd-ing into the `.dotfiles` directory and per
 ```
 
 Feel free to create an issue on this repo if you have any questions about them.
+
+Template:
+
+```bash
+if [[ ! "$DISABLE_XXX" == "true" ]]; then
+    echo ''
+    echo 'Install XXX'
+    echo '-----------'
+    brew install xxx
+fi
+```

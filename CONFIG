@@ -1,0 +1,172 @@
+#!/bin/bash
+
+# export DISABLE_CLI=true
+# export DISABLE_COREUTILS=true
+# export DISABLE_ACK=true
+# export DISABLE_ASCIINEMA=true
+# export DISABLE_COWSAY=true
+# export DISABLE_CURL
+# export DISABLE_FORTUNE=true
+# export DISABLE_GNUPG=true
+# export DISABLE_GPGSUITE=true
+# export DISABLE_GREP=true
+# export DISABLE_HTTPIE=true
+# export DISABLE_HTOP=true
+# export DISABLE_IPROUTE=true
+# export DISABLE_ITERM=true
+# export DISABLE_JQ=true
+# export DISABLE_JSONPP=true
+# export DISABLE_LESS=true
+# export DISABLE_PRETTYPING=true
+# export DISABLE_PIPEVIEWER=true
+# export DISABLE_SCREEN=true
+# export DISABLE_SOPS=true
+# export DISABLE_SPEEDTESTCLI=true
+# export DISABLE_TELNET=true
+# export DISABLE_THESILVERSEARCHER=true
+# export DISABLE_ULTIMATEPLUMBER=true
+# export DISABLE_WATCH=true
+# export DISABLE_WGET=true
+
+# export DISABLE_GIT=true
+# export DISABLE_GIT_LATEST=true
+# export DISABLE_GITLFS=true
+# export DISABLE_GITSIZER=true
+# export DISABLE_GITHUB=true
+# export DISABLE_GITLAB=true
+# export DISABLE_BFG=true
+
+# export DISABLE_SHELL=true
+# export DISABLE_DIRENV=true
+# export DISABLE_NEOFETCH=true
+# export DISABLE_OHMYZSH=true
+# export DISABLE_STARSHIP=true
+# export DISABLE_TMUX=true
+# export DISABLE_COLORLS=true
+# export DISABLE_DIRCOLORS=true
+# export DISABLE_FIGLET=true
+# export DISABLE_MKLICENSE=true
+
+# export DISABLE_VIM=true
+# export DISABLE_VIM_LATEST=true
+# export DISABLE_VIMPLUG=true
+
+# export DISABLE_CLOUD=true
+# export DISABLE_TERRAFORM=true
+# export DISABLE_ANSIBLE=true
+# export DISABLE_OPENSTACK=true
+# export DISABLE_AWS=true
+# export DISABLE_GCP=true
+# export DISABLE_AZURE=true
+# export DISABLE_HETZNER=true
+
+# export DISABLE_KUBERNETES=true
+# export DISABLE_GO=true
+# export DISABLE_KUBECTL=true
+# export DISABLE_KUBECOLOR=true
+# export DISABLE_KUBECTX=true
+# export DISABLE_KUBELOGIN=true
+# export DISABLE_KUBEONE=true
+# export DISABLE_FLUX=true
+# export DISABLE_KUBEVAL=true
+# export DISABLE_KUBESEAL=true
+# export DISABLE_HELM=true
+# export DISABLE_YAMLHIGHLIGHTER=true
+# export DISABLE_MINIKUBE=true
+# export DISABLE_LENS=true
+
+# export DISABLE_DOCKER=true
+# export DISABLE_DOCKER_DESKTOP=true
+# export DISABLE_CTOP=true
+# export DISABLE_DOCKERCLEAN=true
+
+# export DISABLE_PHP=true
+# export DISABLE_PHP_LATEST=true
+# export DISABLE_PHP_SEVEN=true
+# export DISABLE_PHP_COMPOSER=true
+# export DISABLE_PHP_IMAGEMAGICK=true
+# export DISABLE_PHP_MEMCACHED=true
+# export DISABLE_PHP_XDEBUG=true
+# export DISABLE_PHP_REDIS=true
+# export DISABLE_PHP_LARAVEL=true
+# export DISABLE_PHP_ENVOY=true
+# export DISABLE_PHP_EXPOSE=true
+
+# export DISABLE_NODE=true
+# export DISABLE_NODE_LATEST=true
+# export DISABLE_NODE_TEN=true
+# export DISABLE_YARN=true
+
+# export DISABLE_VIRTUALISATION=true
+# export DISABLE_VIRTUALBOXEXT=true
+# export DISABLE_MYCLI=true
+
+# export DISABLE_GUI=true
+# export DISABLE_ALFRED=true
+# export DISABLE_BARTENDER=true
+# export DISABLE_BETTERTOUCHTOOL=true
+# export DISABLE_BITWARDEN=true
+# export DISABLE_CHEATSHEET=true
+# export DISABLE_EVERNOTE=true
+# export DISABLE_HOT=true
+# export DISABLE_INSOMNIA=true
+# export DISABLE_UBERSICHT=true
+# export DISABLE_VERACRYPT=true
+# export DISABLE_VISCOSITY=true
+
+# export DISABLE_DATABASE=true
+# export DISABLE_MYCLI=true
+# export DISABLE_SEQUELPRO=true
+# export DISABLE_SQLITE=true
+# export DISABLE_TABLEPLUS=true
+
+# export DISABLE_MEDIA=true
+# export DISABLE_MPV=true
+# export DISABLE_NOMORESECRETS=true
+# export DISABLE_SPOTIFY=true
+# export DISABLE_VLC=true
+# export DISABLE_YOUTUBEDL=true
+
+# export DISABLE_BROWSER=true
+# export DISABLE_FIREFOX=true
+# export DISABLE_CHROME=true
+
+# export DISABLE_MESSENGER=true
+# export DISABLE_MICROSOFTTEAMS=true
+# export DISABLE_SKYPE=true
+# export DISABLE_ZOOM=true
+
+# export DISABLE_EDITOR=true
+# export DISABLE_PHPSTORM=true
+# export DISABLE_TEXSTUDIO=true
+# export DISABLE_VSCODE=true
+
+# export DISABLE_MAS=true
+# export DISABLE_BETTERSNAPTOOL=true
+# export DISABLE_COPYCLIP=true
+# export DISABLE_DROPOVER=true
+# export DISABLE_UNARCHIVER=true
+# export DISABLE_TRELLO=true
+# export DISABLE_WIREGUARD=true
+# export DISABLE_XCODE=true
+
+# export DISABLE_QUICKLOOk=true
+# export DISABLE_SUSPICIOUSPACKAGE=true
+# export DISABLE_WEBPQUICKLOOK=true
+# export DISABLE_QLCOLORCODE=true
+# export DISABLE_QLMARKDOWN=true
+# export DISABLE_QLPRETTYPATCH=true
+# export DISABLE_QLSTEPHEN=true
+# export DISABLE_QUICKNFO=true
+# export DISABLE_QUICKLOOKCSV=true
+# export DISABLE_QUICKLOOKJSON=true
+
+# export DISABLE_FONT=true
+# export DISABLE_FONT_FIRA=true
+# export DISABLE_FONT_HACK=true
+# export DISABLE_FONT_INCONSOLALTA=true
+# export DISABLE_FONT_ROBOTO=true
+# export DISABLE_FONT_SOURCECODEPRO=true
+# export DISABLE_FONT_VICTORMONO=true
+
+# export DISABLE_MACKUP=true

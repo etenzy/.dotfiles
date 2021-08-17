@@ -21,27 +21,28 @@ fuction fixQL() {
     xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
 }
 
+function helm_completion() {
+    helm completion zsh > $ZSH/completions/_helm
+}
+
 function flux_completion() {
-    mkdir -p ~/.config/flux/completion/zsh
-    flux completion zsh > ~/.config/flux/completion/zsh/_flux
+    flux completion zsh > $ZSH/completions/_flux
 }
 
 function gh_completion() {
-    mkdir -p ~/.config/gh/completion/zsh
-    gh completion -s zsh > ~/.config/gh/completion/zsh/_gh
+    gh completion -s zsh > $ZSH/completions/_gh
 }
 
 function hcloud_completion() {
-    mkdir -p ~/.config/hcloud/completion/zsh
-    hcloud completion zsh > ~/.config/hcloud/completion/zsh/_hcloud
+    hcloud completion zsh > $ZSH/completions/_hcloud
 }
 
 function kubeone_completion() {
-    mkdir -p ~/.config/kubeone/completion/zsh
-    kubeone completion zsh > ~/.config/kubeone/completion/zsh/_kubeone
+    kubeone completion zsh > $ZSH/completions/_kubeone
 }
 
 function update_completions() {
+    helm_completion
     flux_completion
     gh_completion
     hcloud_completion
