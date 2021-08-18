@@ -12,13 +12,6 @@ if [[ ! "$DISABLE_BETTERSNAPTOOL" == "true" ]]; then
     mas install 417375580
 fi
 
-if [[ ! "$DISABLE_COPYCLIP" == "true" ]]; then
-    echo ''
-    echo 'Install CopyClip'
-    echo '----------------'
-    mas install 595191960
-fi
-
 if [[ ! "$DISABLE_DROPOVER" == "true" ]]; then
     echo ''
     echo 'Install Dropover'
