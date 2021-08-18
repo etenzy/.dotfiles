@@ -143,7 +143,6 @@
 
 # export DISABLE_MAS=true
 # export DISABLE_BETTERSNAPTOOL=true
-# export DISABLE_COPYCLIP=true
 # export DISABLE_DROPOVER=true
 # export DISABLE_UNARCHIVER=true
 # export DISABLE_TRELLO=true
