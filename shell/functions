@@ -42,6 +42,7 @@ function kubeone_completion() {
 }
 
 function update_completions() {
+    mkdir -p $ZSH/completions
     helm_completion
     flux_completion
     gh_completion
