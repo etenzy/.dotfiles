@@ -99,7 +99,7 @@
 
 # export DISABLE_VIRTUALISATION=true
 # export DISABLE_VIRTUALBOXEXT=true
-# export DISABLE_MYCLI=true
+# export DISABLE_VAGRANT=true
 
 # export DISABLE_GUI=true
 # export DISABLE_ALFRED=true

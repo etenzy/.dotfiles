@@ -14,9 +14,9 @@ if [[ ! "$DISABLE_VIRTUALBOXEXT" == "true" ]]; then
     brew install virtualbox-extension-pack
 fi
 
-if [[ ! "$DISABLE_MYCLI" == "true" ]]; then
+if [[ ! "$DISABLE_VAGRANT" == "true" ]]; then
     echo ''
-    echo 'Install mycli'
+    echo 'Install vagrant'
     echo '-------------'
-    brew install mycli
+    brew install vagrant
 fi
