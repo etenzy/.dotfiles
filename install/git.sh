@@ -20,7 +20,7 @@ if [[ ! "$DISABLE_GITLFS" == "true" ]]; then
     echo 'Install git-lfs'
     echo '-------------'
     brew install git-lfs
-if
+fi
 
 if [[ ! "$DISABLE_GITSIZER" == "true" ]]; then
     echo ''
