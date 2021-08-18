@@ -14,6 +14,7 @@ if [[ ! "$DISABLE_KUBECTL" == "true" ]]; then
     brew install kubernetes-cli
     #Download https://github.com/ahmetb/kubectl-aliases/
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
+    mkdir -p $HOME/.kube/config.d
 fi
 
 if [[ ! "$DISABLE_KUBECOLOR" == "true" ]]; then
