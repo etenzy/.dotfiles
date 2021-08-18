@@ -15,79 +15,79 @@ sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 brew update
 
 if [[ ! "$DISABLE_CLI" == "true" ]]; then
-    source install/cli.sh
+    source $HOME/.dotfiles/install/cli.sh
 fi
 
 if [[ ! "$DISABLE_GIT" == "true" ]]; then
-    source install/git.sh
+    source $HOME/.dotfiles/install/git.sh
 fi
 
 if [[ ! "$DISABLE_SHELL" == "true" ]]; then
-    source install/shell.sh
+    source $HOME/.dotfiles/install/shell.sh
 fi
 
 if [[ ! "$DISABLE_VIM" == "true" ]]; then
-    source install/vim.sh
+    source $HOME/.dotfiles/install/vim.sh
 fi
 
 if [[ ! "$DISABLE_CLOUD" == "true" ]]; then
-    source install/cloud.sh
+    source $HOME/.dotfiles/install/cloud.sh
 fi
 
 if [[ ! "$DISABLE_KUBERNETES" == "true" ]]; then
-    source install/kube.sh
+    source $HOME/.dotfiles/install/kube.sh
 fi
 
 if [[ ! "$DISABLE_DOCKER" == "true" ]]; then
-    source install/docker.sh
+    source $HOME/.dotfiles/install/docker.sh
 fi
 
 if [[ ! "$DISABLE_PHP" == "true" ]]; then
-    source install/php.sh
+    source $HOME/.dotfiles/install/php.sh
 fi
 
 if [[ ! "$DISABLE_NODE" == "true" ]]; then
-    source install/node.sh
+    source $HOME/.dotfiles/install/node.sh
 fi
 
 if [[ ! "$DISABLE_VIRTUALISATION" == "true" ]]; then
-    source install/gui.sh
+    source $HOME/.dotfiles/install/gui.sh
 fi
 
 if [[ ! "$DISABLE_GUI" == "true" ]]; then
-    source install/gui.sh
+    source $HOME/.dotfiles/install/gui.sh
 fi
 
 if [[ ! "$DISABLE_DATABASE" == "true" ]]; then
-    source install/database.sh
+    source $HOME/.dotfiles/install/database.sh
 fi
 
 if [[ ! "$DISABLE_MEDIA" == "true" ]]; then
-    source install/media.sh
+    source $HOME/.dotfiles/install/media.sh
 fi
 
 if [[ ! "$DISABLE_BROWSER" == "true" ]]; then
-    source install/browser.sh
+    source $HOME/.dotfiles/install/browser.sh
 fi
 
 if [[ ! "$DISABLE_MESSENGER" == "true" ]]; then
-    source install/messenger.sh
+    source $HOME/.dotfiles/install/messenger.sh
 fi
 
 if [[ ! "$DISABLE_EDITOR" == "true" ]]; then
-    source install/editor.sh
+    source $HOME/.dotfiles/install/editor.sh
 fi
 
 if [[ ! "$DISABLE_MAS" == "true" ]]; then
-    source install/mas.sh
+    source $HOME/.dotfiles/install/mas.sh
 fi
 
 if [[ ! "$DISABLE_QUICKLOOk" == "true" ]]; then
-    source install/quicklook.sh
+    source $HOME/.dotfiles/install/quicklook.sh
 fi
 
 if [[ ! "$DISABLE_FONT" == "true" ]]; then
-    source install/font.sh
+    source $HOME/.dotfiles/install/font.sh
 fi
 
 if [[ ! "$DISABLE_MACKUP" == "true" ]]; then
