@@ -107,6 +107,7 @@
 # export DISABLE_BETTERTOUCHTOOL=true
 # export DISABLE_BITWARDEN=true
 # export DISABLE_CHEATSHEET=true
+# export DISABLE_DROPBOX=true
 # export DISABLE_EVERNOTE=true
 # export DISABLE_HOT=true
 # export DISABLE_INSOMNIA=true
