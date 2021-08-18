@@ -87,7 +87,7 @@ if [[ ! "$DISABLE_COLORLS" == "true" ]]; then
     echo ''
     echo 'Install colorls'
     echo '---------------'
-    gem install colorls
+    sudo gem install colorls
 fi
 
 if [[ ! "$DISABLE_DIRCOLORS" == "true" ]]; then
