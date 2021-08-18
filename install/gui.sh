@@ -35,6 +35,13 @@ if [[ ! "$DISABLE_CHEATSHEET" == "true" ]]; then
     brew install cheatsheet
 fi
 
+if [[ ! "$DISABLE_DROPBOX" == "true" ]]; then
+    echo ''
+    echo 'Install Dropbox'
+    echo '---------------'
+    brew install dropbox
+fi
+
 if [[ ! "$DISABLE_EVERNOTE" == "true" ]]; then
     echo ''
     echo 'Install evernote'
