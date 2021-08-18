@@ -14,6 +14,13 @@ if [[ ! "$DISABLE_COREUTILS" == "true" ]]; then
     brew install coreutils
 fi
 
+if [[ ! "$DISABLE_BREWGEM" == "true" ]]; then
+    echo ''
+    echo 'Install brew-gem'
+    echo '-----------------'
+    brew install brew-gem
+fi
+
 if [[ ! "$DISABLE_ACK" == "true" ]]; then
     echo ''
     echo 'Install ack'
