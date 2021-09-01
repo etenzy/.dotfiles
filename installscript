@@ -22,6 +22,10 @@ if [[ ! "$DISABLE_GIT" == "true" ]]; then
     source $HOME/.dotfiles/install/git.sh
 fi
 
+if [[ ! "$DISABLE_SVN" == "true" ]]; then
+    source $HOME/.dotfiles/install/svn.sh
+fi
+
 if [[ ! "$DISABLE_SHELL" == "true" ]]; then
     source $HOME/.dotfiles/install/shell.sh
 fi
@@ -51,7 +55,7 @@ if [[ ! "$DISABLE_NODE" == "true" ]]; then
 fi
 
 if [[ ! "$DISABLE_VIRTUALISATION" == "true" ]]; then
-    source $HOME/.dotfiles/install/virtualisation.sh
+    source $HOME/.dotfiles/install/gui.sh
 fi
 
 if [[ ! "$DISABLE_GUI" == "true" ]]; then
