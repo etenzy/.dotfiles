@@ -36,6 +36,9 @@
 # export DISABLE_GITLAB=true
 # export DISABLE_BFG=true
 
+# export DISABLE_SVN=true
+# export DISABLE_SVN_LATEST=true
+
 # export DISABLE_SHELL=true
 # export DISABLE_DIRENV=true
 # export DISABLE_NEOFETCH=true
