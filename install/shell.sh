@@ -71,7 +71,7 @@ if [[ ! "$DISABLE_STARSHIP" == "true" ]]; then
     echo '-----------------------'
     brew install starship
     rm -rf $HOME/.config/starship.toml
-    ln -nfs $HOME/.dotfiles/shell/starship.toml $HOME/.config/starship.toml
+    ln -nfs $HOME/.dotfiles/shell/config/starship.toml $HOME/.config/starship.toml
 fi
 
 if [[ ! "$DISABLE_TMUX" == "true" ]]; then
@@ -88,6 +88,9 @@ if [[ ! "$DISABLE_COLORLS" == "true" ]]; then
     echo 'Install colorls'
     echo '---------------'
     brew gem install colorls
+    mkdir -p $HOME/.config/colorls
+    rm -rf $HOME/.config/colorls/dark_colors.yaml
+    ln -nfs $HOME/.dotfiles/shell/config/colorls/dark_colors.yaml $HOME/.config/colorls/dark_colors.yaml
 fi
 
 if [[ ! "$DISABLE_DIRCOLORS" == "true" ]]; then
