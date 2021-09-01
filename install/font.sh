@@ -32,7 +32,7 @@ fi
 
 if [[ ! "$DISABLE_FONT_ROBOTO" == "true" ]]; then
     echo ''
-    echo 'Install YAML Highlighter'
+    echo 'Install Font Roboto'
     echo '------------------------'
     brew install font-roboto
     brew install font-roboto-mono
