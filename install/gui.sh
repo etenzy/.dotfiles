@@ -14,13 +14,6 @@ if [[ ! "$DISABLE_BARTENDER" == "true" ]]; then
     brew install bartender
 fi
 
-if [[ ! "$DISABLE_BETTERTOUCHTOOL" == "true" ]]; then
-    echo ''
-    echo 'Install bettertouchtool'
-    echo '-----------------------'
-    brew install bettertouchtool
-fi
-
 if [[ ! "$DISABLE_BITWARDEN" == "true" ]]; then
     echo ''
     echo 'Install Bitwarden'
@@ -61,6 +54,13 @@ if [[ ! "$DISABLE_INSOMNIA" == "true" ]]; then
     echo 'Install insomnia'
     echo '----------------'
     brew install insomnia
+fi
+
+if [[ ! "$DISABLE_RECTANGLE" == "true" ]]; then
+    echo ''
+    echo 'Install rectangle'
+    echo '-----------------'
+    brew install rectangle
 fi
 
 if [[ ! "$DISABLE_UBERSICHT" == "true" ]]; then
