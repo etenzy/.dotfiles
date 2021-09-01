@@ -111,6 +111,7 @@
 # export DISABLE_EVERNOTE=true
 # export DISABLE_HOT=true
 # export DISABLE_INSOMNIA=true
+# export DISABLE_RECTANGLE=true
 # export DISABLE_UBERSICHT=true
 # export DISABLE_VERACRYPT=true
 # export DISABLE_VISCOSITY=true
