@@ -51,7 +51,7 @@ if [[ ! "$DISABLE_NODE" == "true" ]]; then
 fi
 
 if [[ ! "$DISABLE_VIRTUALISATION" == "true" ]]; then
-    source $HOME/.dotfiles/install/gui.sh
+    source $HOME/.dotfiles/install/virtualisation.sh
 fi
 
 if [[ ! "$DISABLE_GUI" == "true" ]]; then
