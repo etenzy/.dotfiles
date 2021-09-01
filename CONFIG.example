@@ -17,6 +17,7 @@
 # export DISABLE_JQ=true
 # export DISABLE_JSONPP=true
 # export DISABLE_LESS=true
+# export DISABLE_LOLCAT=true
 # export DISABLE_PRETTYPING=true
 # export DISABLE_PIPEVIEWER=true
 # export DISABLE_SCREEN=true

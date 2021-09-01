@@ -126,6 +126,13 @@ if [[ ! "$DISABLE_LESS" == "true" ]]; then
     brew install less
 fi
 
+if [[ ! "$DISABLE_LOLCAT" == "true" ]]; then
+    echo ''
+    echo 'Install lolcat'
+    echo '--------------'
+    brew install lolcat
+fi
+
 if [[ ! "$DISABLE_PRETTYPING" == "true" ]]; then
     echo ''
     echo 'Install prettyping'
