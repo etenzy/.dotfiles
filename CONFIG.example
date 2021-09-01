@@ -98,6 +98,7 @@
 # export DISABLE_YARN=true
 
 # export DISABLE_VIRTUALISATION=true
+# export DISABLE_VIRTUALBOX=true
 # export DISABLE_VIRTUALBOXEXT=true
 # export DISABLE_VAGRANT=true
 
