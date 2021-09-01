@@ -105,7 +105,6 @@
 # export DISABLE_GUI=true
 # export DISABLE_ALFRED=true
 # export DISABLE_BARTENDER=true
-# export DISABLE_BETTERTOUCHTOOL=true
 # export DISABLE_BITWARDEN=true
 # export DISABLE_CHEATSHEET=true
 # export DISABLE_DROPBOX=true
