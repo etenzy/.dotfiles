@@ -109,3 +109,11 @@ if [[ ! "$DISABLE_LENS" == "true" ]]; then
     echo '------------'
     brew install lens
 fi
+
+
+if [[ ! "$DISABLE_KNINES" == "true" ]]; then
+    echo ''
+    echo 'Install k9s'
+    echo '-----------'
+    brew install k9s
+fi
