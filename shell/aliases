@@ -10,7 +10,7 @@ alias sudo="sudo "
 
 # Overwrite system defaults
 alias ls="gls --color=auto"
-alias ll="colorls -lA --sd"
+alias ll="colorls -lA"
 alias figlet="figlet -w $(tput cols)"
 alias figwho="figlet -f 3d $(whoami) | lolcat"
 
