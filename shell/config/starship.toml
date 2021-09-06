@@ -8,4 +8,4 @@ disabled = false
 threshold = 100
 
 [time]
-disabled = false
+disabled = true
