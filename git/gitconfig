@@ -14,10 +14,6 @@
 	required = true
 [alias]
 	new = !git init && git symbolic-ref HEAD refs/heads/main
-
-[includeIf "gitdir:~/Workspaces/github.com/"]
-	path = .gitconfig-github
-
-[includeIf "gitdir:~/Workspaces/bitbucket.org/"]
-	path = .gitconfig-bitbucket
+[include]
+	path = ~/.gitconfig-include
 

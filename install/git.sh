@@ -13,6 +13,10 @@ if [[ ! "$DISABLE_GIT_LATEST" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
     rm $HOME/.global-gitignore
     ln -nfs $HOME/.dotfiles/git/global-gitignore $HOME/.global-gitignore
+
+    if [ ! -f "$HOME/.gitconfig-include" ]; then
+		cp "$HOME/.dotfiles/git/gitconfig-include.example" "$HOME/.gitconfig-include"
+	fi
 fi
 
 if [[ ! "$DISABLE_GITLFS" == "true" ]]; then
