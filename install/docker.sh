@@ -4,7 +4,7 @@ if [[ ! "$DISABLE_DOCKER_DESKTOP" == "true" ]]; then
     echo ''
     echo 'Install docker Desktop'
     echo '-----------'
-    brew install docker
+    brew install homebrew/cask/docker
 fi
 
 if [[ ! "$DISABLE_CTOP" == "true" ]]; then
