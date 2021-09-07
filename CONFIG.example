@@ -79,6 +79,7 @@
 # export DISABLE_MINIKUBE=true
 # export DISABLE_LENS=true
 # export DISABLE_KNINES=true
+# export DISABLE_POPEYE=true
 
 # export DISABLE_DOCKER=true
 # export DISABLE_DOCKER_DESKTOP=true
