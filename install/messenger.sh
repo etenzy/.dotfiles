@@ -14,6 +14,13 @@ if [[ ! "$DISABLE_SKYPE" == "true" ]]; then
     brew install skype
 fi
 
+if [[ ! "$DISABLE_SLACK" == "true" ]]; then
+    echo ''
+    echo 'Install Slack'
+    echo '-------------'
+    brew install slack
+fi
+
 if [[ ! "$DISABLE_ZOOM" == "true" ]]; then
     echo ''
     echo 'Install Zoom'

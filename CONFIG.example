@@ -141,6 +141,7 @@
 # export DISABLE_MESSENGER=true
 # export DISABLE_MICROSOFTTEAMS=true
 # export DISABLE_SKYPE=true
+# export DISABLE_SLACK=true
 # export DISABLE_ZOOM=true
 
 # export DISABLE_EDITOR=true
