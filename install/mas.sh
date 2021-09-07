@@ -5,13 +5,6 @@ echo 'Install mas'
 echo '-----------'
 brew install mas
 
-if [[ ! "$DISABLE_BETTERSNAPTOOL" == "true" ]]; then
-    echo ''
-    echo 'Install BetterSnapTool'
-    echo '----------------------'
-    mas install 417375580
-fi
-
 if [[ ! "$DISABLE_DROPOVER" == "true" ]]; then
     echo ''
     echo 'Install Dropover'
