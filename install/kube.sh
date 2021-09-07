@@ -116,3 +116,10 @@ if [[ ! "$DISABLE_KNINES" == "true" ]]; then
     echo '-----------'
     brew install k9s
 fi
+
+if [[ ! "$DISABLE_POPEYE" == "true" ]]; then
+    echo ''
+    echo 'Install Popeye'
+    echo '-----------'
+    brew install derailed/popeye/popeye
+fi
