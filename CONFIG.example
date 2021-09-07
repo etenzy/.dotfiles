@@ -66,6 +66,7 @@
 
 # export DISABLE_KUBERNETES=true
 # export DISABLE_GO=true
+# export DISABLE_KIND=true
 # export DISABLE_KUBECTL=true
 # export DISABLE_KUBECOLOR=true
 # export DISABLE_KUBECTX=true
