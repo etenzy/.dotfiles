@@ -69,6 +69,7 @@
 # export DISABLE_KIND=true
 # export DISABLE_KUBECTL=true
 # export DISABLE_KUBECOLOR=true
+# export DISABLE_CLUSTERCTL=true
 # export DISABLE_KUBECTX=true
 # export DISABLE_KUBELOGIN=true
 # export DISABLE_KUBEONE=true
