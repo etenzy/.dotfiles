@@ -7,6 +7,13 @@ if [[ ! "$DISABLE_GO" == "true" ]]; then
     brew install go
 fi
 
+if [[ ! "$DISABLE_KIND" == "true" ]]; then
+    echo ''
+    echo 'Install kind'
+    echo '----------'
+    brew install kind
+fi
+
 if [[ ! "$DISABLE_KUBECTL" == "true" ]]; then
     echo ''
     echo 'Install kubectl'
