@@ -31,6 +31,13 @@ if [[ ! "$DISABLE_KUBECOLOR" == "true" ]]; then
     brew install dty1er/tap/kubecolor
 fi
 
+if [[ ! "$DISABLE_CLUSTERCTL" == "true" ]]; then
+    echo ''
+    echo 'Install clusterctl'
+    echo '-----------------'
+    brew install clusterctl
+fi
+
 if [[ ! "$DISABLE_KUBECTX" == "true" ]]; then
     echo ''
     echo 'Install kubectx'
