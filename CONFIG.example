@@ -19,6 +19,7 @@
 # export DISABLE_LESS=true
 # export DISABLE_LOLCAT=true
 # export DISABLE_PRETTYPING=true
+# export DISABLE_PROGRESS=true
 # export DISABLE_PIPEVIEWER=true
 # export DISABLE_SCREEN=true
 # export DISABLE_SOPS=true

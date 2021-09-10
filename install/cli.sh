@@ -140,6 +140,13 @@ if [[ ! "$DISABLE_PRETTYPING" == "true" ]]; then
     brew install prettyping
 fi
 
+if [[ ! "$DISABLE_PROGRESS" == "true" ]]; then
+    echo ''
+    echo 'Install progress'
+    echo '----------------'
+    brew install progress
+fi
+
 if [[ ! "$DISABLE_PIPEVIEWER" == "true" ]]; then
     echo ''
     echo 'Install Pipe Viewer'
