@@ -4,7 +4,8 @@ if [[ ! "$DISABLE_MPV" == "true" ]]; then
     echo ''
     echo 'Install mpv'
     echo '-----------'
-    brew install mpv
+    brew install homebrew/cask/mpv
+    curl https://raw.githubusercontent.com/Ashyni/mpv-scripts/master/dynamic-crop.lua -s -o  ~/.config/mpv/scripts/dynamic-crop.lua
 fi
 
 if [[ ! "$DISABLE_NOMORESECRETS" == "true" ]]; then
