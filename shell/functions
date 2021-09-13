@@ -50,10 +50,6 @@ function update_completions() {
     kubeone_completion
 }
 
-function watch-kube() {
-    watch -c kubecolor --force-colors "$@"
-}
-
 # Print the full command before running kubectl
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
