@@ -42,3 +42,6 @@ alias php80="phpv php@8.0"
 
 alias art=artisan
 alias sail='bash vendor/bin/sail'
+
+alias kctx="kubectx"
+alias kns="kubens"
