@@ -30,7 +30,7 @@ alias copyrsa="cat ~/.ssh/id_rsa.pub | pbcopy"
 alias flushdns="dscacheutil -flushcache && echo \"DNS cache cleared\""
 
 # Lock the screen
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="pmset displaysleepnow"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
