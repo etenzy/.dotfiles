@@ -12,6 +12,11 @@ echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+# homebrew-cask-upgrade
+# brew cu shows all cask with their status
+# brew cu --all Force upgrade outdated apps
+brew tap buo/cask-upgrade
+
 brew update
 
 if [[ ! "$DISABLE_CLI" == "true" ]]; then
