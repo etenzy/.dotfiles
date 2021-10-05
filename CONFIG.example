@@ -26,6 +26,7 @@
 # export DISABLE_SPEEDTESTCLI=true
 # export DISABLE_TELNET=true
 # export DISABLE_THESILVERSEARCHER=true
+# export DISABLE_TRIVY=true
 # export DISABLE_ULTIMATEPLUMBER=true
 # export DISABLE_WATCH=true
 # export DISABLE_WGET=true

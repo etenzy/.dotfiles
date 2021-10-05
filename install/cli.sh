@@ -189,6 +189,13 @@ if [[ ! "$DISABLE_THESILVERSEARCHER" == "true" ]]; then
     brew install the_silver_searcher
 fi
 
+if [[ ! "$DISABLE_TRIVY" == "true" ]]; then
+    echo ''
+    echo 'Install trivy'
+    echo '-------------'
+    brew install aquasecurity/trivy/trivy
+fi
+
 if [[ ! "$DISABLE_ULTIMATEPLUMBER" == "true" ]]; then
     echo ''
     echo 'Install Ultimate Plumber'
