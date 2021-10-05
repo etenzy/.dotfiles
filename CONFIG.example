@@ -48,6 +48,7 @@
 # export DISABLE_OHMYZSH=true
 # export DISABLE_STARSHIP=true
 # export DISABLE_TMUX=true
+# export DISABLE_OPENSSH=true
 # export DISABLE_COLORLS=true
 # export DISABLE_DIRCOLORS=true
 # export DISABLE_FIGLET=true
