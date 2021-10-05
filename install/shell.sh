@@ -83,6 +83,13 @@ if [[ ! "$DISABLE_TMUX" == "true" ]]; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
+if [[ ! "$DISABLE_OPENSSH" == "true" ]]; then
+    echo ''
+    echo 'Install openssh'
+    echo '---------------'
+    brew install openssh
+fi
+
 if [[ ! "$DISABLE_COLORLS" == "true" ]]; then
     echo ''
     echo 'Install colorls'
