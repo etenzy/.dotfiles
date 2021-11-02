@@ -11,6 +11,7 @@ if [[ ! "$DISABLE_TEXSTUDIO" == "true" ]]; then
     echo ''
     echo 'Install TexStudio'
     echo '-----------------'
+    brew install --cask mactex
     brew install texstudio
 fi
 
