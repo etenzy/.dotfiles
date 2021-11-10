@@ -50,7 +50,7 @@ Feel free to create an issue on this repo if you have any questions about them.
 Template:
 
 ```bash
-if [[ ! "$DISABLE_XXX" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_XXX" == "true" ]]; then
     echo ''
     echo 'Install XXX'
     echo '-----------'

@@ -19,87 +19,87 @@ brew tap buo/cask-upgrade
 
 brew update
 
-if [[ ! "$DISABLE_CLI" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_CLI" == "true" ]]; then
     source $HOME/.dotfiles/install/cli.sh
 fi
 
-if [[ ! "$DISABLE_GIT" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_GIT" == "true" ]]; then
     source $HOME/.dotfiles/install/git.sh
 fi
 
-if [[ ! "$DISABLE_SVN" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_SVN" == "true" ]]; then
     source $HOME/.dotfiles/install/svn.sh
 fi
 
-if [[ ! "$DISABLE_SHELL" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_SHELL" == "true" ]]; then
     source $HOME/.dotfiles/install/shell.sh
 fi
 
-if [[ ! "$DISABLE_VIM" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_VIM" == "true" ]]; then
     source $HOME/.dotfiles/install/vim.sh
 fi
 
-if [[ ! "$DISABLE_CLOUD" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_CLOUD" == "true" ]]; then
     source $HOME/.dotfiles/install/cloud.sh
 fi
 
-if [[ ! "$DISABLE_KUBERNETES" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
     source $HOME/.dotfiles/install/kube.sh
 fi
 
-if [[ ! "$DISABLE_DOCKER" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_DOCKER" == "true" ]]; then
     source $HOME/.dotfiles/install/docker.sh
 fi
 
-if [[ ! "$DISABLE_PHP" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_PHP" == "true" ]]; then
     source $HOME/.dotfiles/install/php.sh
 fi
 
-if [[ ! "$DISABLE_NODE" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_NODE" == "true" ]]; then
     source $HOME/.dotfiles/install/node.sh
 fi
 
-if [[ ! "$DISABLE_VIRTUALISATION" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_VIRTUALISATION" == "true" ]]; then
     source $HOME/.dotfiles/install/gui.sh
 fi
 
-if [[ ! "$DISABLE_GUI" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_GUI" == "true" ]]; then
     source $HOME/.dotfiles/install/gui.sh
 fi
 
-if [[ ! "$DISABLE_DATABASE" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_DATABASE" == "true" ]]; then
     source $HOME/.dotfiles/install/database.sh
 fi
 
-if [[ ! "$DISABLE_MEDIA" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_MEDIA" == "true" ]]; then
     source $HOME/.dotfiles/install/media.sh
 fi
 
-if [[ ! "$DISABLE_BROWSER" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_BROWSER" == "true" ]]; then
     source $HOME/.dotfiles/install/browser.sh
 fi
 
-if [[ ! "$DISABLE_MESSENGER" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_MESSENGER" == "true" ]]; then
     source $HOME/.dotfiles/install/messenger.sh
 fi
 
-if [[ ! "$DISABLE_EDITOR" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_EDITOR" == "true" ]]; then
     source $HOME/.dotfiles/install/editor.sh
 fi
 
-if [[ ! "$DISABLE_MAS" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_MAS" == "true" ]]; then
     source $HOME/.dotfiles/install/mas.sh
 fi
 
-if [[ ! "$DISABLE_QUICKLOOk" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_QUICKLOOk" == "true" ]]; then
     source $HOME/.dotfiles/install/quicklook.sh
 fi
 
-if [[ ! "$DISABLE_FONT" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_FONT" == "true" ]]; then
     source $HOME/.dotfiles/install/font.sh
 fi
 
-if [[ ! "$DISABLE_MACKUP" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_MACKUP" == "true" ]]; then
     echo ''
     echo 'Install Mackup'
     echo '--------------'
