@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if [[ ! "$DISABLE_GO" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_GO" == "true" ]]; then
     echo ''
     echo 'Install go'
     echo '----------'
     brew install go
 fi
 
-if [[ ! "$DISABLE_KIND" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KIND" == "true" ]]; then
     echo ''
     echo 'Install kind'
     echo '----------'
     brew install kind
 fi
 
-if [[ ! "$DISABLE_KUBECTL" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     echo ''
     echo 'Install kubectl'
     echo '---------------'
@@ -35,63 +35,63 @@ if [[ ! "$DISABLE_KUBECTL" == "true" ]]; then
     mkdir -p $HOME/.kube/config.d
 fi
 
-if [[ ! "$DISABLE_KUBECOLOR" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBECOLOR" == "true" ]]; then
     echo ''
     echo 'Install kubecolor'
     echo '-----------------'
     brew install dty1er/tap/kubecolor
 fi
 
-if [[ ! "$DISABLE_CLUSTERCTL" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_CLUSTERCTL" == "true" ]]; then
     echo ''
     echo 'Install clusterctl'
     echo '-----------------'
     brew install clusterctl
 fi
 
-if [[ ! "$DISABLE_KUBECTX" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBECTX" == "true" ]]; then
     echo ''
     echo 'Install kubectx'
     echo '---------------'
     brew install kubectx
 fi
 
-if [[ ! "$DISABLE_KUBELOGIN" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBELOGIN" == "true" ]]; then
     echo ''
     echo 'Install kubelogin'
     echo '-----------------'
     brew install int128/kubelogin/kubelogin
 fi
 
-if [[ ! "$DISABLE_KUBEONE" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBEONE" == "true" ]]; then
     echo ''
     echo 'Install KubeOne'
     echo '---------------'
     curl -sfL get.kubeone.io | sh
 fi
 
-if [[ ! "$DISABLE_FLUX" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_FLUX" == "true" ]]; then
     echo ''
     echo 'Install Flux CLI'
     echo '----------------'
     brew install fluxcd/tap/flux
 fi
 
-if [[ ! "$DISABLE_KUBEVAL" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBEVAL" == "true" ]]; then
     echo ''
     echo 'Install Kubeval'
     echo '---------------'
     brew install instrumenta/instrumenta/kubeval
 fi
 
-if [[ ! "$DISABLE_KUBESEAL" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KUBESEAL" == "true" ]]; then
     echo ''
     echo 'Install kubeseal'
     echo '----------------'
     brew install kubeseal
 fi
 
-if [[ ! "$DISABLE_HELM" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_HELM" == "true" ]]; then
     echo ''
     echo 'Install helm'
     echo '------------'
@@ -114,35 +114,35 @@ if [[ ! "$DISABLE_HELM" == "true" ]]; then
     helm repo update
 fi
 
-if [[ ! "$DISABLE_YAMLHIGHLIGHTER" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_YAMLHIGHLIGHTER" == "true" ]]; then
     echo ''
     echo 'Install YAML Highlighter'
     echo '------------------------'
     brew install yh
 fi
 
-if [[ ! "$DISABLE_MINIKUBE" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_MINIKUBE" == "true" ]]; then
     echo ''
     echo 'Install minikube'
     echo '----------------'
     brew install minikube
 fi
 
-if [[ ! "$DISABLE_LENS" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_LENS" == "true" ]]; then
     echo ''
     echo 'Install lens'
     echo '------------'
     brew install lens
 fi
 
-if [[ ! "$DISABLE_KNINES" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_KNINES" == "true" ]]; then
     echo ''
     echo 'Install k9s'
     echo '-----------'
     brew install k9s
 fi
 
-if [[ ! "$DISABLE_POPEYE" == "true" ]]; then
+if [[ ! "$ENABLE_INSTALL_POPEYE" == "true" ]]; then
     echo ''
     echo 'Install Popeye'
     echo '-----------'
