@@ -19,8 +19,19 @@ if [[ ! "$DISABLE_KUBECTL" == "true" ]]; then
     echo 'Install kubectl'
     echo '---------------'
     brew install kubernetes-cli
+    
     #Download https://github.com/ahmetb/kubectl-aliases/
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
+    
+    # Install kubectl convert
+    if [ "$(uname -m)" = "arm64" ]; then
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/arm64/kubectl-convert"
+    else
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl-convert"
+    fi
+    chmod +x ./kubectl-convert
+    sudo mv ./kubectl-convert /usr/local/bin/kubectl-convert
+
     mkdir -p $HOME/.kube/config.d
 fi
 
