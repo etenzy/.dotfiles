@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if [[ ! "$ENABLE_INSTALL_DIRENV" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_DIRENV" == "true" ]]; then
     echo ''
     echo 'Install direnv'
     echo '--------------'
     brew install direnv
 fi
 
-if [[ ! "$ENABLE_INSTALL_NEOFETCH" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_NEOFETCH" == "true" ]]; then
     echo ''
     echo 'Install neofetch'
     echo '--------------'
     brew install neofetch
 fi
 
-if [[ ! "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     echo ''
     echo 'Install oh-my-zsh'
     echo '-----------------'
@@ -65,7 +65,7 @@ if [[ ! "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/shell/functions $HOME/.functions
 fi
 
-if [[ ! "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
     echo ''
     echo 'Install starship-prompt'
     echo '-----------------------'
@@ -74,7 +74,7 @@ if [[ ! "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/shell/config/starship.toml $HOME/.config/starship.toml
 fi
 
-if [[ ! "$ENABLE_INSTALL_TMUX" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     echo ''
     echo 'Install tmux'
     echo '------------'
@@ -83,14 +83,14 @@ if [[ ! "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
-if [[ ! "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
     echo ''
     echo 'Install openssh'
     echo '---------------'
     brew install openssh
 fi
 
-if [[ ! "$ENABLE_INSTALL_COLORLS" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_COLORLS" == "true" ]]; then
     echo ''
     echo 'Install colorls'
     echo '---------------'
@@ -100,7 +100,7 @@ if [[ ! "$ENABLE_INSTALL_COLORLS" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/shell/config/colorls/dark_colors.yaml $HOME/.config/colorls/dark_colors.yaml
 fi
 
-if [[ ! "$ENABLE_INSTALL_DIRCOLORS" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_DIRCOLORS" == "true" ]]; then
     echo ''
     echo 'Install Nord dircolors theme'
     echo '----------------------------'
@@ -110,7 +110,7 @@ if [[ ! "$ENABLE_INSTALL_DIRCOLORS" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/shell/dircolors/src/dir_colors $HOME/.dir_colors
 fi
 
-if [[ ! "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
     echo ''
     echo 'Install figlet'
     echo '--------------'
@@ -127,7 +127,7 @@ if [[ ! "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
     git clone https://github.com/xero/figlet-fonts $fontsDir
 fi
 
-if [[ ! "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
     if command -v npm &> /dev/null
     then
         echo ''

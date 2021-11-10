@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! "$ENABLE_INSTALL_SVN_LATEST" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_SVN_LATEST" == "true" ]]; then
     echo ''
     echo 'Install svn'
     echo '-----------'

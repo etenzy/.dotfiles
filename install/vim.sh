@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! "$ENABLE_INSTALL_VIM_LATEST" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_VIM_LATEST" == "true" ]]; then
     echo ''
     echo 'Install vim'
     echo '-----------'
@@ -13,7 +13,7 @@ if [[ ! "$ENABLE_INSTALL_VIM_LATEST" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
 fi
 
-if [[ ! "$ENABLE_INSTALL_VIMPLUG" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_VIMPLUG" == "true" ]]; then
     echo ''
     echo 'Install vim-plug'
     echo '----------------'
