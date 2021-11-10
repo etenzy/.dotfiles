@@ -1,13 +1,13 @@
 #!/bin/bash
 
-if [[ ! "$ENABLE_INSTALL_PHPSTORM" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_PHPSTORM" == "true" ]]; then
     echo ''
     echo 'Install PhpStorm'
     echo '----------------'
     brew install phpstorm
 fi
 
-if [[ ! "$ENABLE_INSTALL_TEXSTUDIO" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_TEXSTUDIO" == "true" ]]; then
     echo ''
     echo 'Install TexStudio'
     echo '-----------------'
@@ -15,7 +15,7 @@ if [[ ! "$ENABLE_INSTALL_TEXSTUDIO" == "true" ]]; then
     brew install texstudio
 fi
 
-if [[ ! "$ENABLE_INSTALL_VSCODE" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_VSCODE" == "true" ]]; then
     echo ''
     echo 'Install visual-studio-code'
     echo '--------------------------'

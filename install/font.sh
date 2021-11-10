@@ -2,7 +2,7 @@
 
 brew tap homebrew/cask-fonts
 
-if [[ ! "$ENABLE_INSTALL_FONT_FIRA" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_FIRA" == "true" ]]; then
     echo ''
     echo 'Install Font Fira'
     echo '-----------------'
@@ -13,7 +13,7 @@ if [[ ! "$ENABLE_INSTALL_FONT_FIRA" == "true" ]]; then
     brew install font-fira-mono-nerd-font
 fi
 
-if [[ ! "$ENABLE_INSTALL_FONT_HACK" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_HACK" == "true" ]]; then
     echo ''
     echo 'Install Font Hack'
     echo '-----------------'
@@ -21,7 +21,7 @@ if [[ ! "$ENABLE_INSTALL_FONT_HACK" == "true" ]]; then
     brew install font-hack-nerd-font
 fi
 
-if [[ ! "$ENABLE_INSTALL_FONT_INCONSOLALTA" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_INCONSOLALTA" == "true" ]]; then
     echo ''
     echo 'Install Font Inconsolata'
     echo '------------------------'
@@ -30,7 +30,7 @@ if [[ ! "$ENABLE_INSTALL_FONT_INCONSOLALTA" == "true" ]]; then
     brew install font-inconsolata-nerd-font
 fi
 
-if [[ ! "$ENABLE_INSTALL_FONT_ROBOTO" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_ROBOTO" == "true" ]]; then
     echo ''
     echo 'Install Font Roboto'
     echo '------------------------'
@@ -40,7 +40,7 @@ if [[ ! "$ENABLE_INSTALL_FONT_ROBOTO" == "true" ]]; then
     brew install font-roboto-mono-nerd-font
 fi
 
-if [[ ! "$ENABLE_INSTALL_FONT_SOURCECODEPRO" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_SOURCECODEPRO" == "true" ]]; then
     echo ''
     echo 'Install Font Source Code Pro'
     echo '----------------------------'
@@ -49,7 +49,7 @@ if [[ ! "$ENABLE_INSTALL_FONT_SOURCECODEPRO" == "true" ]]; then
     brew install font-sauce-code-pro-nerd-font
 fi
 
-if [[ ! "$ENABLE_INSTALL_FONT_VICTORMONO" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FONT_VICTORMONO" == "true" ]]; then
     echo ''
     echo 'Install Font Victor Mono'
     echo '------------------------'

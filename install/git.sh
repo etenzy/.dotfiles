@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     echo ''
     echo 'Install git'
     echo '-----------'
@@ -19,35 +19,35 @@ if [[ ! "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
 	fi
 fi
 
-if [[ ! "$ENABLE_INSTALL_GITLFS" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GITLFS" == "true" ]]; then
     echo ''
     echo 'Install git-lfs'
     echo '-------------'
     brew install git-lfs
 fi
 
-if [[ ! "$ENABLE_INSTALL_GITSIZER" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GITSIZER" == "true" ]]; then
     echo ''
     echo 'Install git-sizer'
     echo '-----------------'
     brew install git-sizer
 fi
 
-if [[ ! "$ENABLE_INSTALL_GITHUB" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GITHUB" == "true" ]]; then
     echo ''
     echo 'Install GitHub cli'
     echo '------------------'
     brew install gh
 fi
 
-if [[ ! "$ENABLE_INSTALL_GITLAB" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GITLAB" == "true" ]]; then
     echo ''
     echo 'Install GitLab cli'
     echo '------------------'
     brew install profclems/tap/glab
 fi
 
-if [[ ! "$ENABLE_INSTALL_BFG" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_BFG" == "true" ]]; then
     echo ''
     echo 'Install BFG Repo-Cleaner'
     echo '------------------------'
