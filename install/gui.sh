@@ -4,7 +4,7 @@ if [[ "$ENABLE_INSTALL_ALFRED" == "true" ]]; then
     echo ''
     echo 'Install alfred'
     echo '--------------'
-    brew install alfred
+    brew install --cask alfred
 fi
 
 if [[ "$ENABLE_INSTALL_BARTENDER" == "true" ]]; then
