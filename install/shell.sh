@@ -116,7 +116,7 @@ if [[ "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
     echo '--------------'
     brew install figlet
 
-    fontsDir=$(find /usr/local/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
+    fontsDir=$(find $(brew --prefix)/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
 
     if [ -d "$fontsDir/.git/" ]; then
         rm -rf $fontsDir
