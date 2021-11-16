@@ -120,7 +120,7 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$(brew --prefix)/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
