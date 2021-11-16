@@ -25,7 +25,7 @@ if [[ "$ENABLE_INSTALL_CHEATSHEET" == "true" ]]; then
     echo ''
     echo 'Install cheatsheet'
     echo '------------------'
-    brew install cheatsheet
+    brew install --cask cheatsheet
 fi
 
 if [[ "$ENABLE_INSTALL_DROPBOX" == "true" ]]; then
