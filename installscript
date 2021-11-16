@@ -6,6 +6,14 @@ cd $HOME
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
+if [ "$(uname -m)" = "arm64" ]; then
+    echo ''
+    echo 'Install rosetta'
+    echo '----------------'
+    /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    sudo mkdir /usr/local/bin
+fi
+
 echo ''
 echo 'Install homebrew'
 echo '----------------'
