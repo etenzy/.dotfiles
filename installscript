@@ -51,12 +51,12 @@ if [[ "$ENABLE_INSTALL_CLOUD" == "true" ]]; then
     source $HOME/.dotfiles/install/cloud.sh
 fi
 
-if [[ "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
-    source $HOME/.dotfiles/install/kubernetes.sh
-fi
-
 if [[ "$ENABLE_INSTALL_CONTAINER" == "true" ]]; then
     source $HOME/.dotfiles/install/container.sh
+fi
+
+if [[ "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
+    source $HOME/.dotfiles/install/kubernetes.sh
 fi
 
 if [[ "$ENABLE_INSTALL_PHP" == "true" ]]; then
