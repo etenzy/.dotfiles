@@ -35,13 +35,6 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     mkdir -p $HOME/.kube/config.d
 fi
 
-if [[ "$ENABLE_INSTALL_KUBECOLOR" == "true" ]]; then
-    echo ''
-    echo 'Install kubecolor'
-    echo '-----------------'
-    brew install dty1er/tap/kubecolor
-fi
-
 if [[ "$ENABLE_INSTALL_CLUSTERCTL" == "true" ]]; then
     echo ''
     echo 'Install clusterctl'
@@ -75,13 +68,6 @@ if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
     echo 'Install Flux CLI'
     echo '----------------'
     brew install fluxcd/tap/flux
-fi
-
-if [[ "$ENABLE_INSTALL_KUBEVAL" == "true" ]]; then
-    echo ''
-    echo 'Install Kubeval'
-    echo '---------------'
-    brew install instrumenta/instrumenta/kubeval
 fi
 
 if [[ "$ENABLE_INSTALL_KUBESEAL" == "true" ]]; then
