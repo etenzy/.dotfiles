@@ -52,7 +52,7 @@ if [[ "$ENABLE_INSTALL_CLOUD" == "true" ]]; then
 fi
 
 if [[ "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
-    source $HOME/.dotfiles/install/kube.sh
+    source $HOME/.dotfiles/install/kubernetes.sh
 fi
 
 if [[ "$ENABLE_INSTALL_CONTAINER" == "true" ]]; then
