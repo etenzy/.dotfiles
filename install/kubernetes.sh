@@ -145,6 +145,6 @@ fi
 if [[ "$ENABLE_INSTALL_POPEYE" == "true" ]]; then
     echo ''
     echo 'Install Popeye'
-    echo '-----------'
+    echo '--------------'
     brew install derailed/popeye/popeye
 fi
