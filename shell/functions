@@ -21,37 +21,12 @@ fuction fixQL() {
     xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
 }
 
-function kubectl_completion() {
-    kubectl completion zsh > $SZH/completions/_kubectl
-}
-
-function helm_completion() {
-    helm completion zsh > $ZSH/completions/_helm
-}
-
-function flux_completion() {
-    flux completion zsh > $ZSH/completions/_flux
-}
-
-function gh_completion() {
-    gh completion -s zsh > $ZSH/completions/_gh
-}
-
-function hcloud_completion() {
-    hcloud completion zsh > $ZSH/completions/_hcloud
-}
-
 function kubeone_completion() {
     kubeone completion zsh > $ZSH/completions/_kubeone
 }
 
 function update_completions() {
     mkdir -p $ZSH/completions
-    kubectl_completion
-    helm_completion
-    flux_completion
-    gh_completion
-    hcloud_completion
     kubeone_completion
 }
 

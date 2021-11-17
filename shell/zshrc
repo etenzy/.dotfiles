@@ -121,7 +121,9 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+export BREW_PREFIX="$(brew --prefix)"
+
+export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/opt/node/bin:$PATH"
@@ -131,15 +133,22 @@ export PATH="$HOME/.gem/bin:$PATH"
 
 export PATH="$HOME/.bin:$PATH"
 
-source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# If you receive "zsh compinit: insecure directories" warnings when attempting
+# to load these completions, you may need to run this:
+#  compaudit
+#  chmod -R go-w 'directory'
+#  or compaudit | xargs chmod g-w
+FPATH=$BREW_PREFIX/share/zsh-completions:$FPATH
+FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
+complete -F __start_kubectl k
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
-
-complete -F __start_kubectl k
 
 autoload -Uz compinit; compinit
