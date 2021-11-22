@@ -45,4 +45,10 @@ alias sail='bash vendor/bin/sail'
 
 # alias kubectl="kubecolor --force-colors"
 alias kctx="kubectx"
+# alias kns="kubectl config set-context --current --namespace"
 alias kns="kubens"
+alias ktmp="kubectl run tmp --restart=Never --rm -i --image=radial/busyboxplus -- "
+
+export kdo="--dry-run=client -o yaml"
+export know="--force --grace-period 0"
+
