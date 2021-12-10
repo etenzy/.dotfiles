@@ -2,7 +2,7 @@
 	excludesfile = ~/.global-gitignore
 [user]
 	email = hello@mroedel.de
-	name = etenzy
+	name = Michael Rödel
 [pull]
 	rebase = true
 [diff "sopsdiffer"]
