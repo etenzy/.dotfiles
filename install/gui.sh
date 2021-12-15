@@ -28,13 +28,6 @@ if [[ "$ENABLE_INSTALL_CHEATSHEET" == "true" ]]; then
     brew install --cask cheatsheet
 fi
 
-if [[ "$ENABLE_INSTALL_DROPBOX" == "true" ]]; then
-    echo ''
-    echo 'Install Dropbox'
-    echo '---------------'
-    brew install dropbox
-fi
-
 if [[ "$ENABLE_INSTALL_EVERNOTE" == "true" ]]; then
     echo ''
     echo 'Install evernote'
@@ -54,6 +47,13 @@ if [[ "$ENABLE_INSTALL_INSOMNIA" == "true" ]]; then
     echo 'Install insomnia'
     echo '----------------'
     brew install insomnia
+fi
+
+if [[ "$ENABLE_INSTALL_MAESTRAL" == "true" ]]; then
+    echo ''
+    echo 'Install Maestral'
+    echo '----------------'
+    brew install --cask maestral
 fi
 
 if [[ "$ENABLE_INSTALL_RECTANGLE" == "true" ]]; then
