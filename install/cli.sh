@@ -154,6 +154,13 @@ if [[ "$ENABLE_INSTALL_PIPEVIEWER" == "true" ]]; then
     brew install pv
 fi
 
+if [[ "$ENABLE_INSTALL_RENAME" == "true" ]]; then
+    echo ''
+    echo 'Install rename'
+    echo '--------------'
+    brew install rename
+fi
+
 if [[ "$ENABLE_INSTALL_SCREEN" == "true" ]]; then
     echo ''
     echo 'Install Screen'
