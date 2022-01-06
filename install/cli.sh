@@ -223,3 +223,10 @@ if [[ "$ENABLE_INSTALL_WGET" == "true" ]]; then
     echo '------------'
     brew install wget
 fi
+
+if [[ "$ENABLE_INSTALL_XH" == "true" ]]; then
+    echo ''
+    echo 'Install xh'
+    echo '----------'
+    brew install xh
+fi
