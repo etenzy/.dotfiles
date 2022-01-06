@@ -1,0 +1,30 @@
+#!/bin/bash
+
+path=$@
+
+if [ -z "$path" ]
+then
+	path=$(pwd)
+fi
+
+path=$(realpath "$path")
+
+for f in "${path}"/*;
+do
+	dirName=$(realpath $(dirname "${f}"))
+    baseName=$(basename -- "${f}")
+    extension="${baseName##*.}"
+    fileName="${baseName%.*}"
+	
+	if [ "$baseName" != "*" ]; then
+		file ${f} >> /dev/null
+
+		fontName=$(mdls "$f" | grep -A1 name_postscript | tr -d \ | tail -n 1 | tr -d \")
+
+		if [ "$fileName" != "$fontName" ]; then
+			echo $fontName
+
+			rename "s/$fileName/$fontName/" "${f}"
+		fi
+	fi
+done
