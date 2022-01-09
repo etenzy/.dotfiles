@@ -4,7 +4,7 @@ if [[ "$ENABLE_INSTALL_COLIMA" == "true" ]]; then
     echo ''
     echo 'Install colima'
     echo '--------------'
-    brew install docker docker-compose docker-credential-helper
+    brew install docker docker-compose docker-compose-completion docker-credential-helper
     brew install colima
 fi
 
