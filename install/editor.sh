@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ "$ENABLE_INSTALL_MACDOWN" == "true" ]]; then
+    echo ''
+    echo 'Install macdown'
+    echo '---------------'
+    brew install --cask macdown
+fi
+
 if [[ "$ENABLE_INSTALL_PHPSTORM" == "true" ]]; then
     echo ''
     echo 'Install PhpStorm'

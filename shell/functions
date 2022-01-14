@@ -30,6 +30,10 @@ function update_completions() {
     kubeone_completion
 }
 
+function lsom() {
+    lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
+}
+
 # Print the full command before running kubectl
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
