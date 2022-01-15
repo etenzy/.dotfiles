@@ -56,6 +56,13 @@ if [[ "$ENABLE_INSTALL_MAESTRAL" == "true" ]]; then
     brew install --cask maestral
 fi
 
+if [[ "$ENABLE_INSTALL_NFOV" == "true" ]]; then
+    echo ''
+    echo 'Install nfov'
+    echo '------------'
+    brew install --cask nfov
+fi
+
 if [[ "$ENABLE_INSTALL_RECTANGLE" == "true" ]]; then
     echo ''
     echo 'Install rectangle'
