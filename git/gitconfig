@@ -3,6 +3,8 @@
 [user]
 	email = hello@mroedel.de
 	name = Michael Rödel
+[init]
+	defaultBranch = main
 [pull]
 	rebase = true
 [diff "sopsdiffer"]
@@ -16,4 +18,3 @@
 	new = !git init && git symbolic-ref HEAD refs/heads/main
 [include]
 	path = ~/.gitconfig-include
-
