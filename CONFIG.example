@@ -8,6 +8,7 @@
 # export ENABLE_INSTALL_COWSAY=true
 # export ENABLE_INSTALL_CURL=true
 # export ENABLE_INSTALL_FORTUNE=true
+# export ENABLE_INSTALL_FZF=true
 # export ENABLE_INSTALL_GNUPG=true
 # export ENABLE_INSTALL_GPGSUITE=true
 # export ENABLE_INSTALL_GREP=true
