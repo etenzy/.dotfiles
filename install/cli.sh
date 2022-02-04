@@ -56,6 +56,13 @@ if [[ "$ENABLE_INSTALL_FORTUNE" == "true" ]]; then
     brew install fortune
 fi
 
+if [[ "$ENABLE_INSTALL_FZF" == "true" ]]; then
+    echo ''
+    echo 'Install fzf'
+    echo '---------------'
+    brew install fzf
+fi
+
 if [[ "$ENABLE_INSTALL_GNUPG" == "true" ]]; then
     echo ''
     echo 'Install gnupg'

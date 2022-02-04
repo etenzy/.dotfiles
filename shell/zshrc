@@ -144,6 +144,10 @@ source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completio
 #  or compaudit | xargs chmod g-w
 FPATH=$BREW_PREFIX/share/zsh-completions:$FPATH
 FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
+
+source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
+source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+
 complete -F __start_kubectl k
 
 eval "$(direnv hook zsh)"
