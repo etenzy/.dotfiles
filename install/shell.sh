@@ -90,14 +90,13 @@ if [[ "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
     brew install openssh
 fi
 
-if [[ "$ENABLE_INSTALL_COLORLS" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_LSDELUXE" == "true" ]]; then
     echo ''
-    echo 'Install colorls'
-    echo '---------------'
-    brew gem install colorls
-    mkdir -p $HOME/.config/colorls
-    rm -rf $HOME/.config/colorls/dark_colors.yaml
-    ln -nfs $HOME/.dotfiles/shell/config/colorls/dark_colors.yaml $HOME/.config/colorls/dark_colors.yaml
+    echo 'Install LSDeluxe'
+    echo '----------------'
+    brew install lsd
+    rm -rf $HOME/.config/lsd
+    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd
 fi
 
 if [[ "$ENABLE_INSTALL_DIRCOLORS" == "true" ]]; then
