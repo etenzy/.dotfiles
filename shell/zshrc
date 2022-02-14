@@ -152,5 +152,6 @@ complete -F __start_kubectl k
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 autoload -Uz compinit; compinit
