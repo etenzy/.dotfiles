@@ -53,3 +53,17 @@ if [[ "$ENABLE_INSTALL_BFG" == "true" ]]; then
     echo '------------------------'
     brew install bfg
 fi
+
+if [[ "$ENABLE_INSTALL_PRECOMMIT" == "true" ]]; then
+    echo ''
+    echo 'Install pre-commit'
+    echo '------------------'
+    brew install pre-commit
+fi
+
+if [[ "$ENABLE_INSTALL_LOLCOMMITS" == "true" ]]; then
+    echo ''
+    echo 'Install lolcommits'
+    echo '------------------'
+    brew gem install lolcommits
+fi
