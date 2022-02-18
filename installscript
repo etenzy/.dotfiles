@@ -47,16 +47,8 @@ if [[ "$ENABLE_INSTALL_VIM" == "true" ]]; then
     source $HOME/.dotfiles/install/vim.sh
 fi
 
-if [[ "$ENABLE_INSTALL_CLOUD" == "true" ]]; then
-    source $HOME/.dotfiles/install/cloud.sh
-fi
-
-if [[ "$ENABLE_INSTALL_CONTAINER" == "true" ]]; then
-    source $HOME/.dotfiles/install/container.sh
-fi
-
-if [[ "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
-    source $HOME/.dotfiles/install/kubernetes.sh
+if [[ "$ENABLE_INSTALL_GO" == "true" ]]; then
+    source $HOME/.dotfiles/install/go.sh
 fi
 
 if [[ "$ENABLE_INSTALL_PHP" == "true" ]]; then
@@ -69,6 +61,18 @@ fi
 
 if [[ "$ENABLE_INSTALL_VIRTUALISATION" == "true" ]]; then
     source $HOME/.dotfiles/install/gui.sh
+fi
+
+if [[ "$ENABLE_INSTALL_CONTAINER" == "true" ]]; then
+    source $HOME/.dotfiles/install/container.sh
+fi
+
+if [[ "$ENABLE_INSTALL_CLOUD" == "true" ]]; then
+    source $HOME/.dotfiles/install/cloud.sh
+fi
+
+if [[ "$ENABLE_INSTALL_KUBERNETES" == "true" ]]; then
+    source $HOME/.dotfiles/install/kubernetes.sh
 fi
 
 if [[ "$ENABLE_INSTALL_GUI" == "true" ]]; then
