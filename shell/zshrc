@@ -124,6 +124,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 export BREW_PREFIX="$(brew --prefix)"
 
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/opt/node/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
@@ -136,6 +137,7 @@ source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$HOME/.cargo/env"
 
 # If you receive "zsh compinit: insecure directories" warnings when attempting
 # to load these completions, you may need to run this:
