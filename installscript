@@ -51,6 +51,10 @@ if [[ "$ENABLE_INSTALL_GO" == "true" ]]; then
     source $HOME/.dotfiles/install/go.sh
 fi
 
+if [[ "$ENABLE_INSTALL_RUST" == "true" ]]; then
+    source $HOME/.dotfiles/install/rust.sh
+fi
+
 if [[ "$ENABLE_INSTALL_PHP" == "true" ]]; then
     source $HOME/.dotfiles/install/php.sh
 fi
