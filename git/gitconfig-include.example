@@ -1,8 +1,8 @@
-[includeIf "gitdir:~/Workspaces/github.com/"]
+[includeIf "gitdir:~/Developer/github.com/"]
 	path = .gitconfig-github
 
-[includeIf "gitdir:~/Workspaces/gitlab.com/"]
+[includeIf "gitdir:~/Developer/gitlab.com/"]
 	path = .gitconfig-gitlab
 
-[includeIf "gitdir:~/Workspaces/bitbucket.org/"]
+[includeIf "gitdir:~/Developer/bitbucket.org/"]
 	path = .gitconfig-bitbucket
