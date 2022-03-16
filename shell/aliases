@@ -48,7 +48,7 @@ alias sail='bash vendor/bin/sail'
 alias kctx="kubectx"
 # alias kns="kubectl config set-context --current --namespace"
 alias kns="kubens"
-alias ktmp="kubectl run tmp --restart=Never --rm -i --image=radial/busyboxplus -- "
+alias ktmp="kubectl run tmp --restart=Never --rm -i --image=nicolaka/netshoot -- "
 
 export kdo="--dry-run=client -o yaml"
 export know="--force --grace-period 0"
