@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+main() {
+    kubectl $@ --dry-run=client -o yaml
+}
+
+main "$@"
