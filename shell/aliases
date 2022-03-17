@@ -21,6 +21,7 @@ alias dircolors="gdircolors"
 # Shortcuts
 alias fuck="sudo !!"
 alias finder="open ."
+alias browse="open -a /Applications/Google\ Chrome.app"
 alias dotfiles="code -n ~/.dotfiles/"
 alias hostfile="sudo vi /etc/hosts"
 alias sshconfig="vi ~/.ssh/config"
