@@ -47,7 +47,6 @@ alias sail="bash vendor/bin/sail"
 
 # alias kubectl="kubecolor --force-colors"
 alias kctx="kubectx"
-# alias kns="kubectl config set-context --current --namespace"
 alias kns="kubens"
 alias ktmp="kubectl run tmp --restart=Never --rm -i --image=nicolaka/netshoot -- "
 
