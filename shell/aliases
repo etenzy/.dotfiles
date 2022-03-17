@@ -50,6 +50,5 @@ alias kctx="kubectx"
 alias kns="kubens"
 alias ktmp="kubectl run tmp --restart=Never --rm -it --image=nicolaka/netshoot"
 
-export kdo="--dry-run=client -o yaml"
-export know="--force --grace-period 0"
-
+alias -g kdo="--dry-run=client -o yaml"
+alias -g know="--force --grace-period 0"
