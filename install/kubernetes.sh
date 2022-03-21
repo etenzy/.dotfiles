@@ -119,6 +119,10 @@ if [[ "$ENABLE_INSTALL_KNINES" == "true" ]]; then
     echo 'Install k9s'
     echo '-----------'
     brew install k9s
+    mkdir -p $HOME/.config/k9s
+    ln -nfs $HOME/.dotfiles/shell/config/k9s/config.yml $HOME/.config/k9s/config.yml
+    ln -nfs $HOME/.dotfiles/shell/config/k9s/plugin.yml $HOME/.config/k9s/plugin.yml
+    curl https://raw.githubusercontent.com/derailed/k9s/master/skins/nord.yml -s -o ~/.config/k9s/skin.yml
 fi
 
 if [[ "$ENABLE_INSTALL_POPEYE" == "true" ]]; then
