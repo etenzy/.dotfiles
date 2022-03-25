@@ -19,6 +19,13 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
 	fi
 fi
 
+if [[ "$ENABLE_INSTALL_GIT_FILTER_REPO" == "true" ]]; then
+    echo ''
+    echo 'Install git-filter-repo'
+    echo '-------------'
+    brew install git-filter-repo
+fi
+
 if [[ "$ENABLE_INSTALL_GITLFS" == "true" ]]; then
     echo ''
     echo 'Install git-lfs'
