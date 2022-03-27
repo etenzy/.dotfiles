@@ -119,6 +119,7 @@
 # export ENABLE_INSTALL_LENS=true
 # export ENABLE_INSTALL_KNINES=true
 # export ENABLE_INSTALL_POPEYE=true
+# export ENABLE_INSTALL_STERN=true
 
 # export ENABLE_INSTALL_GUI=true
 # export ENABLE_INSTALL_ALFRED=true

@@ -131,3 +131,10 @@ if [[ "$ENABLE_INSTALL_POPEYE" == "true" ]]; then
     echo '--------------'
     brew install derailed/popeye/popeye
 fi
+
+if [[ "$ENABLE_INSTALL_STERN" == "true" ]]; then
+    echo ''
+    echo 'Install stern'
+    echo '--------------'
+    brew install stern
+fi
