@@ -17,10 +17,12 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
     
     # Install kubectl convert
+    VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
+
     if [ "$(uname -m)" = "arm64" ]; then
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/arm64/kubectl-convert"
+        curl -LO "https://dl.k8s.io/release/${VERSION}/bin/darwin/arm64/kubectl-convert"
     else
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl-convert"
+        curl -LO "https://dl.k8s.io/release/${VERSION}/bin/darwin/amd64/kubectl-convert"
     fi
     chmod +x ./kubectl-convert
     sudo mv ./kubectl-convert /usr/local/bin/kubectl-convert
@@ -53,7 +55,20 @@ if [[ "$ENABLE_INSTALL_KUBEONE" == "true" ]]; then
     echo ''
     echo 'Install KubeOne'
     echo '---------------'
-    curl -sfL get.kubeone.io | sh
+    OS=$(uname | tr '[:upper:]' '[:lower:]')
+    VERSION=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/kubermatic/kubeone/releases | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/' | sort -V | tail -1)
+
+    if [ "$(uname -m)" = "arm64" ]; then
+        curl -LO "https://github.com/kubermatic/kubeone/releases/download/v${VERSION}/kubeone_${VERSION}_${OS}_arm64.zip"
+        unzip kubeone_${VERSION}_${OS}_arm64.zip -d kubeone_${VERSION}_${OS}_arm64
+        sudo mv kubeone_${VERSION}_${OS}_arm64/kubeone /usr/local/bin
+        rm -rf kubeone_${VERSION}_${OS}_arm64*
+    else
+        curl -LO "https://github.com/kubermatic/kubeone/releases/download/v${VERSION}/kubeone_${VERSION}_${OS}_amd64.zip"
+        unzip kubeone_${VERSION}_${OS}_amd64.zip -d kubeone_${VERSION}_${OS}_amd64
+        sudo mv kubeone_${VERSION}_${OS}_amd64/kubeone /usr/local/bin
+        rm -rf kubeone_${VERSION}_${OS}_amd64*
+    fi
 fi
 
 if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
