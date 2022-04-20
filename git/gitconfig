@@ -17,6 +17,7 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
+	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 	new = !git init && git symbolic-ref HEAD refs/heads/main
 	empty = "commit --allow-empty"
 [include]
