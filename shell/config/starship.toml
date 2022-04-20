@@ -4,8 +4,5 @@ eu-central-1 = "fra"
 [kubernetes]
 disabled = false
 
-[battery.display]
-threshold = 100
-
 [time]
 disabled = true
