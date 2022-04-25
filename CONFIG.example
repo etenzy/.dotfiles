@@ -4,6 +4,7 @@
 # export ENABLE_INSTALL_COREUTILS=true
 # export ENABLE_INSTALL_ACK=true
 # export ENABLE_INSTALL_ASCIINEMA=true
+# export ENABLE_INSTALL_BAT=true
 # export ENABLE_INSTALL_BREWGEM=true
 # export ENABLE_INSTALL_COWSAY=true
 # export ENABLE_INSTALL_CURL=true

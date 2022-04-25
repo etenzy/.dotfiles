@@ -35,6 +35,13 @@ if [[ "$ENABLE_INSTALL_ASCIINEMA" == "true" ]]; then
     brew install asciinema
 fi
 
+if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
+    echo ''
+    echo 'Install bat'
+    echo '-----------'
+    brew install bat
+fi
+
 if [[ "$ENABLE_INSTALL_COWSAY" == "true" ]]; then
     echo ''
     echo 'Install cowsay'
