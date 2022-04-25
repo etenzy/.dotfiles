@@ -49,6 +49,13 @@ if [[ "$ENABLE_INSTALL_CURL" == "true" ]]; then
     brew install curl
 fi
 
+if [[ "$ENABLE_INSTALL_FD" == "true" ]]; then
+    echo ''
+    echo 'Install fd'
+    echo '----------'
+    brew install fd
+fi
+
 if [[ "$ENABLE_INSTALL_FORTUNE" == "true" ]]; then
     echo ''
     echo 'Install fortune'

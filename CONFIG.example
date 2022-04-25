@@ -7,6 +7,7 @@
 # export ENABLE_INSTALL_BREWGEM=true
 # export ENABLE_INSTALL_COWSAY=true
 # export ENABLE_INSTALL_CURL=true
+# export ENABLE_INSTALL_FD=true
 # export ENABLE_INSTALL_FORTUNE=true
 # export ENABLE_INSTALL_FZF=true
 # export ENABLE_INSTALL_GNUPG=true
