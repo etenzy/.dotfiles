@@ -40,4 +40,4 @@ unset AWS_REGION
 export CLOUDSDK_CONFIG=''
 
 # kubectx
-export KUBECONFIG="$(find $HOME/.kube/config.d -type f -exec printf '%s:' '{}' +)$HOME/.kube/config"
+export KUBECONFIG="$HOME/.kube/config"
