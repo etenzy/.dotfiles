@@ -56,6 +56,13 @@ if [[ "$ENABLE_INSTALL_INSOMNIA" == "true" ]]; then
     brew install insomnia
 fi
 
+if [[ "$ENABLE_INSTALL_KEYCASTR" == "true" ]]; then
+    echo ''
+    echo 'Install keycastr'
+    echo '----------------'
+    brew install --cask keycastr
+fi
+
 if [[ "$ENABLE_INSTALL_NFOV" == "true" ]]; then
     echo ''
     echo 'Install nfov'
