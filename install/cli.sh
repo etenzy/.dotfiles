@@ -70,10 +70,17 @@ if [[ "$ENABLE_INSTALL_FORTUNE" == "true" ]]; then
     brew install fortune
 fi
 
+if [[ "$ENABLE_INSTALL_FX" == "true" ]]; then
+    echo ''
+    echo 'Install fx'
+    echo '----------'
+    brew install fx
+fi
+
 if [[ "$ENABLE_INSTALL_FZF" == "true" ]]; then
     echo ''
     echo 'Install fzf'
-    echo '---------------'
+    echo '-----------'
     brew install fzf
 fi
 
