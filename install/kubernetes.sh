@@ -44,6 +44,13 @@ if [[ "$ENABLE_INSTALL_KUBECTX" == "true" ]]; then
     brew install kubectx
 fi
 
+if [[ "$ENABLE_INSTALL_KUBECM" == "true" ]]; then
+    echo ''
+    echo 'Install kubecm'
+    echo '--------------'
+    brew install kubecm
+fi
+
 if [[ "$ENABLE_INSTALL_KUBELOGIN" == "true" ]]; then
     echo ''
     echo 'Install kubelogin'
