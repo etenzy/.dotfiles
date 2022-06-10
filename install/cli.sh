@@ -56,6 +56,13 @@ if [[ "$ENABLE_INSTALL_CURL" == "true" ]]; then
     brew install curl
 fi
 
+if [[ "$ENABLE_INSTALL_DUF" == "true" ]]; then
+    echo ''
+    echo 'Install duf'
+    echo '------------'
+    brew install duf
+fi
+
 if [[ "$ENABLE_INSTALL_FD" == "true" ]]; then
     echo ''
     echo 'Install fd'
