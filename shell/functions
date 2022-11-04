@@ -30,6 +30,7 @@ function update_completions() {
     kubeone_completion
 }
 
+#List open media
 function lsom() {
     lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
 }
