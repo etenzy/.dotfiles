@@ -1,0 +1,31 @@
+#!/bin/zsh
+# Asks a series of questions and then returns an image
+# use like "bash catchphrase.sh"
+if [ $# -eq 0 ]; then
+	echo "What is your favorite color?"
+	read askColor
+	echo "What is your catchphrase?"
+	read askPhrase
+	echo "What should the fileType be?"
+	read askType
+
+	color=$askColor
+	phrase=$askPhrase
+	fileType=$askType
+else
+	color=$1
+	phrase=$2
+	fileType=$3
+	echo "Writing $phrase on $color"
+fi
+
+if [ "$fileType" = "svg" ]; then
+	echo "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" style=\"background-color: $color;\"><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"white\" style=\"font-family: Menlo-Regular; font-size: 30;\">$phrase</text></svg>" > "${PWD}/$phrase.$fileType"
+else
+	convert -size 1000x1000 xc:$color +repage \
+	-size 700x700 -fill white -background None  \
+	-font Menlo-Regular -gravity center caption:"$phrase" +repage \
+	-gravity Center -composite -strip "$phrase".$fileType
+fi
+
+echo "See your special image at ${PWD}/$phrase.$fileType"
