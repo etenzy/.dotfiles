@@ -133,7 +133,7 @@ if [[ "$ENABLE_INSTALL_LENS" == "true" ]]; then
     echo ''
     echo 'Install lens'
     echo '------------'
-    brew install lens
+    brew install openlens
 fi
 
 if [[ "$ENABLE_INSTALL_KNINES" == "true" ]]; then
