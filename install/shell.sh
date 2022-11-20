@@ -79,8 +79,11 @@ if [[ "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     echo 'Install tmux'
     echo '------------'
     brew install tmux
-    rm -rf $HOME/.tmux/plugins/tpm
+    rm -rf $HOME/.tmux
+    git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+    ln -nfs $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
+    ln -nfs $HOME/.dotfiles/shell/tmux.conf.local $HOME/.tmux.conf.local
 fi
 
 if [[ "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
