@@ -1,8 +1,64 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$kubernetes$aws$gcloud$openstack$azure\
+$line_break\
+$battery$status$container$shell$character"""
+
+right_format = '$cmd_duration$jobs$time'
+
+[fill]
+symbol = ' '
+
+[directory]
+#style = "blue"
+read_only = " "
+truncation_length = 4
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+#style = "bright-black"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+#style = "cyan"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+#style = "bright-black"
+
+[git_metrics]
+disabled = true
+
 [aws.region_aliases]
 eu-central-1 = "fra"
 
 [kubernetes]
 disabled = false
+format = 'on [$symbol$context( \($namespace\))]($style) '
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[jobs]
+symbol = ""
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style) "
+
+[memory_usage]
+symbol = " "
 
 [time]
-disabled = true
+disabled = false
+style = "bold white"
+format = "[$time]($style)"
