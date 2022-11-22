@@ -1,0 +1,27 @@
+user: [140, 170, 238] # Blue
+group: [198, 208, 245] # Text
+permission:
+  read: [166, 209, 137]
+  write: [229, 200, 144] # Yellow
+  exec: [239, 159, 118] # Peach
+  exec-sticky: [202, 158, 230] # Green
+  no-access: [231, 130, 132] # Red
+  # octal: 6
+  # acl: dark_cyan
+  # context: cyan
+date:
+  hour-old: [186, 187, 241] # Lavender
+  day-old: [157, 158, 211] # Lavender -30
+  older: [127, 128, 181] # Lavender -60
+size:
+  none: [165, 173, 206] # Subtext0
+  small: [153, 209, 219] # Sky
+  medium: [123, 179, 189] # Sky -30
+  large: [93, 149, 159] # Sky -60
+inode:
+  valid: [198, 208, 245] # Text
+  invalid: [239, 159, 118] # Peach
+links:
+  valid: [129, 200, 190] # Teal
+  invalid: [234, 153, 156] # Maroon
+tree-edge: [48, 52, 70] # Base

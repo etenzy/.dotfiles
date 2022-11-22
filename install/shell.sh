@@ -45,6 +45,7 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     echo 'Install zsh-syntax-highlighting'
     echo '-------------------------------'
     brew install zsh-syntax-highlighting
+    git clone https://github.com/catppuccin/zsh-syntax-highlighting.git $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting
 
     echo ''
     echo 'Symlink shell preferences'
@@ -93,48 +94,10 @@ if [[ "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
     brew install openssh
 fi
 
-if [[ "$ENABLE_INSTALL_LSDELUXE" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_LS_COLORS" == "true" ]]; then
     echo ''
-    echo 'Install LSDeluxe'
-    echo '----------------'
-    brew install lsd
-    rm -rf $HOME/.config/lsd
-    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd
-fi
-
-if [[ "$ENABLE_INSTALL_DIRCOLORS" == "true" ]]; then
-    echo ''
-    echo 'Install Nord dircolors theme'
+    echo 'Install LS_COLORS theme'
     echo '----------------------------'
-    rm -rf $HOME/.dir_colors
-    rm -rf $HOME/.dotfiles/shell/dircolors
-    git clone https://github.com/arcticicestudio/nord-dircolors.git $HOME/.dotfiles/shell/dircolors
-    ln -nfs $HOME/.dotfiles/shell/dircolors/src/dir_colors $HOME/.dir_colors
-fi
-
-if [[ "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
-    echo ''
-    echo 'Install figlet'
-    echo '--------------'
-    brew install figlet
-
-    fontsDir=$(find $(brew --prefix)/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
-
-    if [ -d "$fontsDir/.git/" ]; then
-        rm -rf $fontsDir
-    else
-        mv $fontsDir "$fontsDir.bak"
-    fi
-
-    git clone https://github.com/xero/figlet-fonts $fontsDir
-fi
-
-if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
-    if command -v npm &> /dev/null
-    then
-        echo ''
-        echo 'Install mklicense'
-        echo '-----------------'
-        npm install -g mklicense
-    fi
+    rm -rf $HOME/.LS_COLORS
+    ln -nfs $HOME/.dotfiles/shell/LS_COLORS $HOME/.LS_COLORS
 fi

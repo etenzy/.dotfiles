@@ -8,10 +8,13 @@ set bs=2
 
 set nocompatible
 set hidden
+set termguicolors
+set noshowmode
+set laststatus=2
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'andrewstuart/vim-kubernetes'
 Plug 'morhetz/gruvbox'
@@ -33,7 +36,7 @@ Plug 'ap/vim-buftabline'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-"NERDTre
+"NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let NERDTreeDirArrows = 1
@@ -46,4 +49,5 @@ nnoremap <silent> <Leader>n :NERDTreeFind<CR>
 nnoremap <C-S-n> :bnext<CR>
 nnoremap <C-S-b> :bprev<CR>
 
-colorscheme nord
+colorscheme catppuccin_frappe
+let g:lightline = {'colorscheme': 'catppuccin_frappe'}

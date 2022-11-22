@@ -17,7 +17,7 @@ fi
 if [[ "$ENABLE_INSTALL_BREWGEM" == "true" ]]; then
     echo ''
     echo 'Install brew-gem'
-    echo '-----------------'
+    echo '----------------'
     brew install brew-gem
 fi
 
@@ -40,6 +40,22 @@ if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
     echo 'Install bat'
     echo '-----------'
     brew install bat
+    git clone https://github.com/catppuccin/bat.git $HOME/.dotfiles/shell/catppuccin/bat
+    rm -rf "$(bat --config-dir)/themes"
+    mkdir -p "$(bat --config-dir)/themes"
+    ln -nfs $HOME/.dotfiles/shell/catppuccin/bat/*.tmTheme "$(bat --config-dir)/themes/"
+    bat cache --build
+fi
+
+if [[ "$ENABLE_INSTALL_BTOP" == "true" ]]; then
+    echo ''
+    echo 'Install btop'
+    echo '------------'
+    brew install btop
+    git clone https://github.com/catppuccin/btop.git $HOME/.dotfiles/shell/catppuccin/btop
+    rm -rf $XDG_CONFIG_HOME/btop/themes/
+    mkdir -p $XDG_CONFIG_HOME/btop/themes/
+    ln -nfs $HOME/.dotfiles/shell/catppuccin/btop/*.theme $XDG_CONFIG_HOME/btop/themes/
 fi
 
 if [[ "$ENABLE_INSTALL_COWSAY" == "true" ]]; then
@@ -68,6 +84,23 @@ if [[ "$ENABLE_INSTALL_FD" == "true" ]]; then
     echo 'Install fd'
     echo '----------'
     brew install fd
+fi
+
+if [[ "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
+    echo ''
+    echo 'Install figlet'
+    echo '--------------'
+    brew install figlet
+
+    fontsDir=$(find $(brew --prefix)/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
+
+    if [ -d "$fontsDir/.git/" ]; then
+        rm -rf $fontsDir
+    else
+        mv $fontsDir "$fontsDir.bak"
+    fi
+
+    git clone https://github.com/xero/figlet-fonts $fontsDir
 fi
 
 if [[ "$ENABLE_INSTALL_FORTUNE" == "true" ]]; then
@@ -166,6 +199,25 @@ if [[ "$ENABLE_INSTALL_LOLCAT" == "true" ]]; then
     echo 'Install lolcat'
     echo '--------------'
     brew install lolcat
+fi
+
+if [[ "$ENABLE_INSTALL_LSDELUXE" == "true" ]]; then
+    echo ''
+    echo 'Install LSDeluxe'
+    echo '----------------'
+    brew install lsd
+    rm -rf $HOME/.config/lsd
+    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd
+fi
+
+if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
+    if command -v npm &> /dev/null
+    then
+        echo ''
+        echo 'Install mklicense'
+        echo '-----------------'
+        npm install -g mklicense
+    fi
 fi
 
 if [[ "$ENABLE_INSTALL_PRETTYPING" == "true" ]]; then

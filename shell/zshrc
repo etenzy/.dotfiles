@@ -151,6 +151,7 @@ complete -F __start_kubectl k
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+source $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 autoload -Uz compinit; compinit

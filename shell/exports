@@ -2,6 +2,15 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export TERM=xterm-256color
 
+export LS_COLORS="$(cat $HOME/.LS_COLORS)"
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+
+export BAT_THEME="Catppuccin-frappe"
+
 # Make vim the default editor
 export EDITOR="vim"
 
@@ -26,8 +35,6 @@ export MANPAGER="less -X"
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
-
-export BAT_THEME=Nord
 
 # Coding Support
 export COMPOSER_HOME="$HOME/.composer"
