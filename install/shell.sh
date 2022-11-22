@@ -82,7 +82,7 @@ if [[ "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     brew install tmux
     rm -rf $HOME/.tmux
     git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
-    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
     ln -nfs $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
     ln -nfs $HOME/.dotfiles/shell/tmux.conf.local $HOME/.tmux.conf.local
 fi
