@@ -17,7 +17,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'andrewstuart/vim-kubernetes'
-Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
