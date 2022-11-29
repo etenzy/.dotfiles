@@ -5,7 +5,6 @@ if [[ "$ENABLE_INSTALL_NODE_LATEST" == "true" ]]; then
     echo 'Install node'
     echo '------------'
     brew install node
-    brew install node@10
 fi
 
 if [[ "$ENABLE_INSTALL_NODE_TEN" == "true" ]]; then
