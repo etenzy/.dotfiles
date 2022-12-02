@@ -1,5 +1,21 @@
 #!/bin/bash
 
+if [[ "$ENABLE_INSTALL_FFMPEG" == "true" ]]; then
+    echo ''
+    echo 'Install ffmpeg'
+    echo '--------------'
+    brew install ffmpeg
+fi
+
+if [[ "$ENABLE_INSTALL_FLAC" == "true" ]]; then
+    echo ''
+    echo 'Install flac'
+    echo '------------'
+    brew install flac
+    brew install cuetools
+    brew install shntool
+fi
+
 if [[ "$ENABLE_INSTALL_MPV" == "true" ]]; then
     echo ''
     echo 'Install mpv'

@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+if ! command -v flac &> /dev/null
+then
+    echo "Please install flac:"
+    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+if ! command -v shnsplit &> /dev/null
+then
+    echo "Please install flac:"
+    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+if ! command -v cuetag.sh &> /dev/null
+then
+    echo "Please install flac:"
+    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+mkdir -p tmp
+mv *(flac|ape) tmp/.
+shnsplit -f *.cue -t "%n - %p - %t" -o "flac flac -s -8 -o %f -" tmp/*.(flac|ape)
+rm -f 00*
+cuetag.sh *.cue *.flac
+find . -exec rename 's/[^\x00-\x7F]//g' "{}" \;
+mv tmp/*(flac|ape) .
+rm -rf tmp

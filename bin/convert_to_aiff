@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+if ! command -v ffmpeg &> /dev/null
+then
+    echo "Please install ffmpeg:"
+    echo "ENABLE_INSTALL_FFMPEG=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+for file in "$(pwd)/"*; do 
+    ffmpeg -i "$file" -write_id3v2 1 -c:v copy "$(basename -- ${file%.*})".aiff
+done
