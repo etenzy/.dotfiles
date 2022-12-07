@@ -38,11 +38,15 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 [git_metrics]
 disabled = true
 
+[aws]
+symbol = " "
+
 [aws.region_aliases]
 eu-central-1 = "fra"
 
 [kubernetes]
 disabled = false
+symbol = "ﴱ "
 format = 'on [$symbol$context( \($namespace\))]($style) '
 
 [cmd_duration]
