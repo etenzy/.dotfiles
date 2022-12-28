@@ -13,6 +13,17 @@ if [[ "$ENABLE_INSTALL_FONT_FIRA" == "true" ]]; then
     brew install font-fira-mono-nerd-font
 fi
 
+if [[ "$ENABLE_INSTALL_FONT_GITHUB" == "true" ]]; then
+    echo ''
+    echo 'Install Font Mona Sans'
+    echo '-----------------'
+    brew install font-mona-sans
+    echo ''
+    echo 'Install Font Hubot Sans'
+    echo '-----------------'
+    brew install font-hubot-sans
+fi
+
 if [[ "$ENABLE_INSTALL_FONT_HACK" == "true" ]]; then
     echo ''
     echo 'Install Font Hack'
@@ -28,6 +39,13 @@ if [[ "$ENABLE_INSTALL_FONT_INCONSOLALTA" == "true" ]]; then
     brew install font-inconsolata
     brew install font-inconsolata-for-powerline
     brew install font-inconsolata-nerd-font
+fi
+
+if [[ "$ENABLE_INSTALL_FONT_MAPLE" == "true" ]]; then
+    echo ''
+    echo 'Install Font Maple'
+    echo '-----------------'
+    brew install font-maple
 fi
 
 if [[ "$ENABLE_INSTALL_FONT_ROBOTO" == "true" ]]; then
