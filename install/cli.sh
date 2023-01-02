@@ -60,6 +60,13 @@ if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
     bat cache --build
 fi
 
+if [[ "$ENABLE_INSTALL_BITWARDENCLI" == "true" ]]; then
+    echo ''
+    echo 'Install bitwarden-cli'
+    echo '---------------------'
+    brew install bitwarden-cli
+fi
+
 if [[ "$ENABLE_INSTALL_BTOP" == "true" ]]; then
     echo ''
     echo 'Install btop'
