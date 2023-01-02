@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [[ "$ENABLE_INSTALL_ALFRED" == "true" ]]; then
-    echo ''
-    echo 'Install alfred'
-    echo '--------------'
-    brew install --cask alfred
-fi
-
 if [[ "$ENABLE_INSTALL_BARTENDER" == "true" ]]; then
     echo ''
     echo 'Install bartender'
@@ -68,6 +61,13 @@ if [[ "$ENABLE_INSTALL_NFOV" == "true" ]]; then
     echo 'Install nfov'
     echo '------------'
     brew install --cask nfov
+fi
+
+if [[ "$ENABLE_INSTALL_RAYCAST" == "true" ]]; then
+    echo ''
+    echo 'Install raycast'
+    echo '---------------'
+    brew install --cask raycast
 fi
 
 if [[ "$ENABLE_INSTALL_RECTANGLE" == "true" ]]; then
