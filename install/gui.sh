@@ -4,14 +4,14 @@ if [[ "$ENABLE_INSTALL_BARTENDER" == "true" ]]; then
     echo ''
     echo 'Install bartender'
     echo '-----------------'
-    brew install bartender
+    brew install --cask bartender
 fi
 
 if [[ "$ENABLE_INSTALL_BITWARDEN" == "true" ]]; then
     echo ''
     echo 'Install Bitwarden'
     echo '-----------------'
-    brew install bitwarden
+    brew install --cask bitwarden
 fi
 
 if [[ "$ENABLE_INSTALL_CHEATSHEET" == "true" ]]; then
@@ -32,21 +32,21 @@ if [[ "$ENABLE_INSTALL_EVERNOTE" == "true" ]]; then
     echo ''
     echo 'Install evernote'
     echo '----------------'
-    brew install evernote
+    brew install --cask evernote
 fi
 
 if [[ "$ENABLE_INSTALL_HOT" == "true" ]]; then
     echo ''
     echo 'Install hot'
     echo '-----------'
-    brew install hot
+    brew install --cask hot
 fi
 
 if [[ "$ENABLE_INSTALL_INSOMNIA" == "true" ]]; then
     echo ''
     echo 'Install insomnia'
     echo '----------------'
-    brew install insomnia
+    brew install --cask insomnia
 fi
 
 if [[ "$ENABLE_INSTALL_KEYCASTR" == "true" ]]; then
@@ -74,14 +74,14 @@ if [[ "$ENABLE_INSTALL_RECTANGLE" == "true" ]]; then
     echo ''
     echo 'Install rectangle'
     echo '-----------------'
-    brew install rectangle
+    brew install --cask rectangle
 fi
 
 if [[ "$ENABLE_INSTALL_UBERSICHT" == "true" ]]; then
     echo ''
     echo 'Install ubersicht'
     echo '------------------'
-    brew install ubersicht
+    brew install --cask ubersicht
     rm -rf "$HOME/Library/Application Support/Übersicht/widgets"
     git clone https://github.com/etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 fi
@@ -90,12 +90,12 @@ if [[ "$ENABLE_INSTALL_VERACRYPT" == "true" ]]; then
     echo ''
     echo 'Install veracrypt'
     echo '-----------------'
-    brew install veracrypt
+    brew install --cask veracrypt
 fi
 
 if [[ "$ENABLE_INSTALL_VISCOSITY" == "true" ]]; then
     echo ''
     echo 'Install viscosity'
     echo '-----------------'
-    brew install viscosity
+    brew install --cask viscosity
 fi
