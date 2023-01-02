@@ -13,6 +13,7 @@
 # export ENABLE_INSTALL_FD=true
 # export ENABLE_INSTALL_FIGLET=true
 # export ENABLE_INSTALL_FORTUNE=true
+# export ENABLE_INSTALL_FZF=true
 # export ENABLE_INSTALL_GNUPG=true
 # export ENABLE_INSTALL_GPGSUITE=true
 # export ENABLE_INSTALL_GREP=true
