@@ -67,6 +67,13 @@ if [[ "$ENABLE_INSTALL_FONT_SOURCECODEPRO" == "true" ]]; then
     brew install font-sauce-code-pro-nerd-font
 fi
 
+if [[ "$ENABLE_INSTALL_FONT_SYMBOLSNERDFONT" == "true" ]]; then
+    echo ''
+    echo 'Install Font Symbols Nerd Font'
+    echo '------------------------------'
+    brew install font-symbols-only-nerd-font 
+fi
+
 if [[ "$ENABLE_INSTALL_FONT_VICTORMONO" == "true" ]]; then
     echo ''
     echo 'Install Font Victor Mono'
