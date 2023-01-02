@@ -28,6 +28,19 @@ if [[ "$ENABLE_INSTALL_ACK" == "true" ]]; then
     brew install ack
 fi
 
+if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
+    echo ''
+    echo 'Install alacritty'
+    echo '-----------------'
+    brew install --cask alacritty
+    rm -rf $XDG_CONFIG_HOME/alacritty
+    mkdir -p $XDG_CONFIG_HOME/alacritty
+    ln -nfs $HOME/.dotfiles/shell/config/alacritty/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+    git clone https://github.com/catppuccin/alacritty.git $HOME/.dotfiles/shell/catppuccin/alacritty
+    mkdir -p $XDG_CONFIG_HOME/alacritty/catppuccin
+    ln -nfs $HOME/.dotfiles/shell/catppuccin/alacritty/*.yml $XDG_CONFIG_HOME/alacritty/catppuccin/
+fi
+
 if [[ "$ENABLE_INSTALL_ASCIINEMA" == "true" ]]; then
     echo ''
     echo 'Install asciinema'
