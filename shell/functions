@@ -44,6 +44,11 @@ function lsom() {
     lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
 }
 
+# create dmg
+function dmg(){
+  hdiutil create -srcfolder "$1" -volname "$2" "$2.dmg"
+}
+
 # Print the full command before running kubectl
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
