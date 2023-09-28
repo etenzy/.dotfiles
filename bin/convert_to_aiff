@@ -8,5 +8,7 @@ then
 fi
 
 for file in "$(pwd)/"*; do 
-    ffmpeg -i "$file" -write_id3v2 1 -c:v copy "$(basename -- ${file%.*})".aiff
+    if [[ $file != *.jpg ]] then
+        ffmpeg -i "$file" -write_id3v2 1 -c:v copy "$(basename -- ${file%.*})".aiff
+    fi
 done
