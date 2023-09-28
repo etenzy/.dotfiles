@@ -28,6 +28,13 @@ if [[ "$ENABLE_INSTALL_ACK" == "true" ]]; then
     brew install ack
 fi
 
+if [[ "$ENABLE_INSTALL_P7ZIP" == "true" ]]; then
+    echo ''
+    echo 'Install p7zip'
+    echo '-------------'
+    brew install p7zip
+fi
+
 if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
     echo ''
     echo 'Install alacritty'
