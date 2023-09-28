@@ -64,6 +64,8 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
 
     rm $HOME/.functions
     ln -nfs $HOME/.dotfiles/shell/functions $HOME/.functions
+
+    compaudit | xargs chmod go-w
 fi
 
 if [[ "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
