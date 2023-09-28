@@ -1,0 +1,4 @@
+export MyComputerName="MY MAC"
+export MyHostName="my-mac"
+export MyLocalHostName="my-mac"
+export MyNetBIOSName="my-mac"

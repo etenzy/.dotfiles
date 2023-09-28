@@ -1,6 +1,13 @@
 
 #!/usr/bin/env bash
-echo 'start osx/set-#defaults.sh'
+
+if [ -f "$HOME/.dotfiles/macos/CONFIG" ]; then
+	source $HOME/.dotfiles/macos/CONFIG
+else
+    echo "No CONFIG supplied..."
+fi
+
+echo 'start macos/set-#defaults.sh'
 
 # Ask for the administrator password upfront
 sudo -v
@@ -13,10 +20,29 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Michael’s MacBook Pro"
-sudo scutil --set HostName "macbook-michael"
-sudo scutil --set LocalHostName "macbook-michael"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "macbook-michael"
+if [ -n "$MyComputerName" ]; then
+	scutil --get ComputerName > $HOME/.dotfiles/macos/ComputerName.bak
+	echo "Setting ComputerName to '$MyComputerName'" 
+	sudo scutil --set ComputerName "$MyComputerName"
+fi
+
+if [ -n "$MyHostName" ]; then
+	scutil --get HostName > $HOME/.dotfiles/macos/HostName.bak
+	echo "Setting HostName to '$MyHostName'" 
+	sudo scutil --set HostName "$MyHostName"
+fi
+
+if [ -n "$MyLocalHostName" ]; then
+	scutil --get LocalHostName > $HOME/.dotfiles/macos/LocalHostName.bak
+	echo "Setting LocalHostName to '$MyLocalHostName'"
+	sudo scutil --set LocalHostName "$MyLocalHostName"
+fi
+
+if [ -n "$MyNetBIOSName" ]; then
+	defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName > $HOME/.dotfiles/macos/NetBIOSName.bak
+	echo "Setting NetBIOSName to '$MyNetBIOSName'"
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$MyNetBIOSName"
+fi
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "

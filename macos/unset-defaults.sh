@@ -13,7 +13,33 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo defaults delete /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
+if [ -f "$HOME/.dotfiles/macos/ComputerName.bak" ]; then
+	MyComputerName=$(cat $HOME/.dotfiles/macos/ComputerName.bak)
+	echo "Restoring ComputerName to '$MyComputerName'" 
+	sudo scutil --set ComputerName "$MyComputerName"
+	rm -f $HOME/.dotfiles/macos/ComputerName.bak
+fi
+
+if [ -f "$HOME/.dotfiles/macos/HostName.bak" ]; then
+	MyHostName=$(cat $HOME/.dotfiles/macos/HostName.bak)
+  	echo "Restoring HostName to '$MyHostName'" 
+	sudo scutil --set HostName "$MyHostName"
+	rm -f $HOME/.dotfiles/macos/HostName.bak
+fi
+
+if [ -f "$HOME/.dotfiles/macos/LocalHostName.bak" ]; then
+	MyLocalHostName=$(cat $HOME/.dotfiles/macos/LocalHostName.bak)
+  	echo "Restoring LocalHostName to '$MyLocalHostName'"
+  	sudo scutil --set LocalHostName "$MyLocalHostName"
+	rm -f $HOME/.dotfiles/macos/LocalHostName.bak
+fi
+
+if [ -f "$HOME/.dotfiles/macos/NetBIOSName.bak" ]; then
+	MyNetBIOSName=$(cat $HOME/.dotfiles/macos/NetBIOSName.bak)
+	echo "Restoring NetBIOSName to '$MyNetBIOSName'"
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$MyNetBIOSName"
+	rm -f $HOME/.dotfiles/macos/NetBIOSName.bak
+fi
 
 # Set sidebar icon size to small
 defaults delete NSGlobalDomain NSTableViewDefaultSizeMode
