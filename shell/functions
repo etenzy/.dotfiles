@@ -19,7 +19,7 @@ function artisan() {
 }
 
 # Fix permissions of QuickLook plugins
-fuction fixQL() {
+function fixQL() {
     xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
 }
 

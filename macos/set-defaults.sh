@@ -1,13 +1,12 @@
-
 #!/usr/bin/env bash
+
+echo 'start macos/set-#defaults.sh'
 
 if [ -f "$HOME/.dotfiles/macos/CONFIG" ]; then
 	source $HOME/.dotfiles/macos/CONFIG
 else
     echo "No CONFIG supplied..."
 fi
-
-echo 'start macos/set-#defaults.sh'
 
 # Ask for the administrator password upfront
 sudo -v

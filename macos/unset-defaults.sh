@@ -1,5 +1,5 @@
-
 #!/usr/bin/env bash
+
 echo 'start osx/unset-defaults.sh'
 
 # Ask for the administrator password upfront
