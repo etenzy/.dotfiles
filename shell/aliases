@@ -29,7 +29,7 @@ alias copyed25519="cat ~/.ssh/id_ed25519.pub | pbcopy"
 alias copyrsa="cat ~/.ssh/id_rsa.pub | pbcopy"
 
 # Flush Directory Service cache
-alias flushdns="dscacheutil -flushcache && echo \"DNS cache cleared\""
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder; echo \"DNS cache cleared\""
 
 # Lock the screen
 alias afk="pmset displaysleepnow"
