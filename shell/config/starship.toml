@@ -13,6 +13,8 @@ $battery$status$container$shell$character"""
 
 right_format = '$cmd_duration$jobs$time'
 
+command_timeout = 2000
+
 [fill]
 symbol = ' '
 
