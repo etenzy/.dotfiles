@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ "$ENABLE_INSTALL_PACKER" == "true" ]]; then
+    echo ''
+    echo 'Install Packer'
+    echo '--------------'
+    brew install hashicorp/tap/packer
+fi
+
 if [[ "$ENABLE_INSTALL_TERRAFORM" == "true" ]]; then
     echo ''
     echo 'Install Terraform'
