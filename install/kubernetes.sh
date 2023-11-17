@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ "$ENABLE_INSTALL_TALOSCTL" == "true" ]]; then
+    echo ''
+    echo 'Install talosctl'
+    echo '----------------'
+    curl -sL https://talos.dev/install | sh
+
+    talosctl_completion
+fi
+
 if [[ "$ENABLE_INSTALL_KIND" == "true" ]]; then
     echo ''
     echo 'Install kind'
@@ -76,6 +85,8 @@ if [[ "$ENABLE_INSTALL_KUBEONE" == "true" ]]; then
         sudo mv kubeone_${VERSION}_${OS}_amd64/kubeone /usr/local/bin
         rm -rf kubeone_${VERSION}_${OS}_amd64*
     fi
+
+    kubeone_completion
 fi
 
 if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then

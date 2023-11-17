@@ -28,10 +28,16 @@ function kubeone_completion() {
     kubeone completion zsh > $ZSH/completions/_kubeone
 }
 
+# Update zsh completions for talosctl
+function talosctl_completion() {
+    talosctl completion zsh > $ZSH/completions/_talosctl
+}
+
 # Update zsh completions
 function update_completions() {
     mkdir -p $ZSH/completions
     kubeone_completion
+    talosctl_completion
 }
 
 # Create dmg file of folder
