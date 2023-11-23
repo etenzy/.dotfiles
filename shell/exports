@@ -48,7 +48,5 @@ unset AWS_REGION
 # gcloud
 export CLOUDSDK_CONFIG=''
 
-export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
