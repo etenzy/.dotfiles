@@ -48,7 +48,7 @@ eu-central-1 = "fra"
 
 [kubernetes]
 disabled = false
-symbol = "ﴱ "
+symbol = "☸ "
 format = 'on [$symbol$context( \($namespace\))]($style) '
 
 [cmd_duration]
