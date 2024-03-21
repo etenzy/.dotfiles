@@ -173,6 +173,13 @@ if [[ "$ENABLE_INSTALL_GREP" == "true" ]]; then
     brew install grep
 fi
 
+if [[ "$ENABLE_INSTALL_HTMLQ" == "true" ]]; then
+    echo ''
+    echo 'Install htmlq'
+    echo '-------------'
+    brew install htmlq
+fi
+
 if [[ "$ENABLE_INSTALL_HTTPIE" == "true" ]]; then
     echo ''
     echo 'Install httpie'

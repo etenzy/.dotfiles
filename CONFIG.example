@@ -20,6 +20,7 @@
 # export ENABLE_INSTALL_GNUPG=true
 # export ENABLE_INSTALL_GPGSUITE=true
 # export ENABLE_INSTALL_GREP=true
+# export ENABLE_INSTALL_HTMLQ=true
 # export ENABLE_INSTALL_HTTPIE=true
 # export ENABLE_INSTALL_HTOP=true
 # export ENABLE_INSTALL_IPROUTE=true
