@@ -35,6 +35,13 @@ if [[ "$ENABLE_INSTALL_P7ZIP" == "true" ]]; then
     brew install p7zip
 fi
 
+if [[ "$ENABLE_INSTALL_ONEPASSWORDCLI" == "true" ]]; then
+    echo ''
+    echo 'Install 1Password CLI'
+    echo '---------------------'
+    brew install 1password-cli
+fi
+
 if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
     echo ''
     echo 'Install alacritty'

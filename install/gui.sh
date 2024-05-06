@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ "$ENABLE_INSTALL_ONEPASSWORD" == "true" ]]; then
+    echo ''
+    echo 'Install 1Password'
+    echo '-----------------'
+    brew install --cask 1password
+fi
+
 if [[ "$ENABLE_INSTALL_BARTENDER" == "true" ]]; then
     echo ''
     echo 'Install bartender'
