@@ -25,7 +25,6 @@ If you’re using macOS Sierra 10.12.2 or later, to load the keys automatically 
 ```
 Host *
   AddKeysToAgent yes
-  UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
   IdentityFile ~/.ssh/id_rsa # Keep any old key files if you want
 ```
