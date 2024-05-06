@@ -107,7 +107,7 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export BREW_PREFIX="$(brew --prefix)"
+export BREW_PREFIX="/opt/homebrew/"
 export PATH="$BREW_PREFIX/bin:$PATH"
 export PATH="$BREW_PREFIX/sbin:$PATH"
 
@@ -154,4 +154,4 @@ eval "$(starship init zsh)"
 source $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
-autoload -Uz compinit; compinit
+autoload -Uz compinit; compinit -u
