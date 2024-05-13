@@ -19,17 +19,25 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
 	fi
 fi
 
+if [[ "$ENABLE_INSTALL_GIT_TEAM" == "true" ]]; then
+    echo ''
+    echo 'Install git-team'
+    echo '----------------'
+    brew tap hekmekk/git-team
+    brew install git-team
+fi
+
 if [[ "$ENABLE_INSTALL_GIT_FILTER_REPO" == "true" ]]; then
     echo ''
     echo 'Install git-filter-repo'
-    echo '-------------'
+    echo '-----------------------'
     brew install git-filter-repo
 fi
 
 if [[ "$ENABLE_INSTALL_GITLFS" == "true" ]]; then
     echo ''
     echo 'Install git-lfs'
-    echo '-------------'
+    echo '---------------'
     brew install git-lfs
 fi
 
