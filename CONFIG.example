@@ -103,6 +103,7 @@
 
 # export ENABLE_INSTALL_CONTAINER=true
 # export ENABLE_INSTALL_COLIMA=true
+# export ENABLE_INSTALL_DOCKER=true
 # export ENABLE_INSTALL_PODMAN=true
 
 # export ENABLE_INSTALL_CLOUD=true
