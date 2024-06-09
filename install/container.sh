@@ -4,8 +4,16 @@ if [[ "$ENABLE_INSTALL_COLIMA" == "true" ]]; then
     echo ''
     echo 'Install colima'
     echo '--------------'
-    brew install docker docker-compose docker-compose-completion docker-credential-helper
+    brew install docker docker-completion docker-compose docker-credential-helper
     brew install colima
+fi
+
+if [[ "$ENABLE_INSTALL_DOCKER" == "true" ]]; then
+    echo ''
+    echo 'Install docker Desktop'
+    echo '----------------------'
+    brew install --cask docker
+    brew install docker docker-completion docker-compose docker-credential-helper
 fi
 
 if [[ "$ENABLE_INSTALL_PODMAN" == "true" ]]; then
