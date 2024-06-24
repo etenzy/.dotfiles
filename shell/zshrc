@@ -74,7 +74,7 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(macos sudo iterm2 docker minikube terraform history-substring-search command-not-found)
+plugins=(macos sudo docker history-substring-search command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -155,3 +155,6 @@ source $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting/themes/catppucci
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 autoload -Uz compinit; compinit -u
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/tofu tofu

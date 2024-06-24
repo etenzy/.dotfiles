@@ -38,6 +38,21 @@ alias afk="pmset displaysleepnow"
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
+#OpenTofu
+alias tf='tofu'
+alias tfa='tofu apply'
+alias tfc='tofu console'
+alias tfd='tofu destroy'
+alias tff='tofu fmt'
+alias tfi='tofu init'
+alias tfiu='tofu init -upgrade'
+alias tfo='tofu output'
+alias tfp='tofu plan'
+alias tfv='tofu validate'
+alias tfs='tofu state'
+alias tft='tofu test'
+alias tfsh='tofu show'
+
 #PHP-Stuff
 alias php74="phpv php@7.4"
 alias php80="phpv php@8.0"
