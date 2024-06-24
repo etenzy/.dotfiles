@@ -7,11 +7,12 @@ if [[ "$ENABLE_INSTALL_PACKER" == "true" ]]; then
     brew install hashicorp/tap/packer
 fi
 
-if [[ "$ENABLE_INSTALL_TERRAFORM" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_OPENTOFU" == "true" ]]; then
     echo ''
-    echo 'Install Terraform'
-    echo '-----------------'
-    brew install hashicorp/tap/terraform
+    echo 'Install OpenTofu'
+    echo '----------------'
+    brew install opentofu
+    tofu -install-autocomplete
 fi
 
 if [[ "$ENABLE_INSTALL_ANSIBLE" == "true" ]]; then
