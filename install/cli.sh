@@ -42,6 +42,14 @@ if [[ "$ENABLE_INSTALL_ONEPASSWORDCLI" == "true" ]]; then
     brew install 1password-cli
 fi
 
+if [[ "$ENABLE_INSTALL_SUDO_TOUCHID" == "true" ]]; then
+    echo ''
+    echo 'Install sudo-touchid'
+    echo '--------------------'
+    brew install artginzburg/tap/sudo-touchid
+    sudo brew services start sudo-touchid
+fi
+
 if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
     echo ''
     echo 'Install alacritty'
