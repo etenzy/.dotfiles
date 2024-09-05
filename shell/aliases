@@ -38,6 +38,8 @@ alias afk="pmset displaysleepnow"
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
+alias kinit='op-password Employee Kerberos | kinit --password-file=STDIN'
+
 #OpenTofu
 alias tf='tofu'
 alias tfa='tofu apply'
