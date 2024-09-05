@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -eo pipefail
+
+mode="default"
+
+if  [[ $1 = "-members" ]]; then
+    mode="members"
+    shift 1
+fi
+
+if [ "$mode" == "members" ]; then
+    output=$(ldapquery gruppen "cn=$1" "memberUid")
+else
+    output=$(ldapquery gruppen "cn=$1" "$2")
+fi
+
+if [[ -z "$output" ]]; then
+    exit 1
+fi
+
+echo "$output"

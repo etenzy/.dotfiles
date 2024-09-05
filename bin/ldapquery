@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -eo pipefail
+
+organizational_unit="$1"
+filter="($2)"
+attributes=($3)
+
+# This is for anonymous authentication
+output=$(ldapsearch -x -LLL -H "$LDAP_URI" \
+-o ldif-wrap=no \
+-b "ou=$organizational_unit,$LDAP_DOMAIN_COMPONENTS" \
+"$filter" ${attributes[@]} | grep -v "dn")
+
+# This is for GSSAPI authentication
+# output=$(ldapsearch -Y GSSAPI -Q -Z -LLL -H "$LDAP_URI" \
+# -D "uid=$(whoami),ou=$LDAP_AUTH_ORGANIZATIONAL_UNIT,$LDAP_DOMAIN_COMPONENTS" \
+# -o ldif-wrap=no \
+# -b "ou=$organizational_unit,$LDAP_DOMAIN_COMPONENTS" \
+# "$filter" ${attributes[@]} | grep -v "dn")
+
+# This is for simple authentication (with 1Password)
+# output=$(ldapsearch -x -Z -LLL -H "$LDAP_URI" \
+# -D "uid=$(whoami),ou=$LDAP_AUTH_ORGANIZATIONAL_UNIT,$LDAP_DOMAIN_COMPONENTS" \
+# -o ldif-wrap=no \
+# -b "ou=$organizational_unit,$LDAP_DOMAIN_COMPONENTS" \
+# -w $(op item get --vault Employee Ldap --fields label=password --reveal) \
+# "$filter" ${attributes[@]})
+
+if [[ ${#attributes[@]} -eq 1 ]]; then
+    output=$(echo "$output" | grep "${attributes[@]}" | awk '{print $2}')
+fi
+
+if [[ -z "$output" ]]; then
+    exit 1
+fi
+
+echo "$output"
