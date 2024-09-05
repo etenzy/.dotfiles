@@ -13,6 +13,7 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
     rm $HOME/.global-gitignore
     ln -nfs $HOME/.dotfiles/git/global-gitignore $HOME/.global-gitignore
+    ln -nfs $HOME/.dotfiles/git/git-commit-template $HOME/.git-commit-template
 
     if [ ! -f "$HOME/.gitconfig-include" ]; then
 		cp "$HOME/.dotfiles/git/gitconfig-include.example" "$HOME/.gitconfig-include"

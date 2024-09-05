@@ -12,6 +12,7 @@
 	rebase = true
 [commit]
 	gpgsign = true
+	template = ~/.git-commit-template
 [tag]
 	gpgsign = true
 [push]
@@ -28,5 +29,19 @@
 	new = !git init && git symbolic-ref HEAD refs/heads/main
 	empty = "commit --allow-empty"
 	st = status
+[team "config"]
+	activation-scope = repo-local
 [include]
 	path = ~/.gitconfig-include
+[team "alias"]
+	tristan = Tristan Leo <tleo@sipgate.de>
+	timm = Timm Szigat <szigat@sipgate.de>
+	simon = Simon Lansing <lansing@sipgate.de>
+	steffen = Steffen Schaffert <schaffert@sipgate.de>
+	jan = Jan Wiele <wiele@sipgate.de>
+	markus = Markus Witt <witt@sipgate.de>
+	robert = Robert Deppe <deppe@sipgate.de>
+	dominik = Dominik Klein <klein@sipgate.de>
+	richard = Richard Meyeringh <meyeringh@sipgate.de>
+	jonas = Jonas Böttner <boettner@sipgate.de>
+	berger = Christian Berger <berger@sipgate.de>
