@@ -9,6 +9,7 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     echo ''
     echo 'Configure Git'
     echo '-------------'
+    brew install commitizen
     rm $HOME/.gitconfig
     ln -nfs $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
     rm $HOME/.global-gitignore
