@@ -53,7 +53,7 @@ if [[ "$ENABLE_INSTALL_SUDO_TOUCHID" == "true" ]]; then
 file=/etc/pam.d/sudo_local
 # A backup file will be created with the pattern /etc/pam.d/.sudo_local.1
 # (where 1 is the number of backups, so that rerunning this doesn't make you lose your original)
-bak=$(dirname $file)/.$(basename $file).$(echo $(ls $(dirname $file)/{,.}$(basename $file)* | grep -v template  | wc -l))
+bak=$(dirname $file)/.$(basename $file).$(echo $(ls $(dirname $file)/{,.}$(basename $file)* | grep -v template | wc -l))
 cp $file $bak
 awk -v is_done='pam_reattach' -v rule='auth       optional       /opt/homebrew/lib/pam/pam_reattach.so' '
 {
