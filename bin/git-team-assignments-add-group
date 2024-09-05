@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -eo pipefail
+
+members=$(ldapquery gruppen "cn=$1" "memberUid")
+
+searchString="|"
+
+for member in $members
+do
+    if [[ "$member" == "$(whoami)" ]]; then
+        continue
+    fi
+
+    searchString+="(uid=$member)"
+done
+
+output=$(ldapquery mitarbeiter "$searchString" "uid mail displayName")
+
+while IFS= read -r line; do
+	if [[ -z $line ]]; then	
+		(( n++ ))
+		continue
+	else
+		users[n]+=${users[n]:+$'\n'}$line
+	fi
+done <<< "$output"
+
+for i in ${!users[@]}
+do
+    uid=$(echo "${users[i]}" | grep uid | awk '{print $2}')
+    mail=$(echo "${users[i]}" | grep mail | awk '{print $2}')
+    displayName=$(echo "${users[i]}" | grep displayName | awk -F  ': ' '{print $2}')
+
+    if [[ "$displayName" =~ ^((([A-Za-z0-9+/]{4})*)([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==))$ ]]; then
+        displayName=$(echo $displayName | base64 -d)
+    fi
+
+    if [[ -z "$uid" || -z "$displayName" || -z "$mail" ]]; then
+        continue
+    fi
+    
+    git team assignments add --force-override "$uid" "$displayName <$mail>"
+done
