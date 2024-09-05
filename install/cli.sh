@@ -46,8 +46,29 @@ if [[ "$ENABLE_INSTALL_SUDO_TOUCHID" == "true" ]]; then
     echo ''
     echo 'Install sudo-touchid'
     echo '--------------------'
-    brew install artginzburg/tap/sudo-touchid
-    sudo brew services start sudo-touchid
+    sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+    sudo sed -i '' '/.*pam\_tid\.so/s/^#//g' /etc/pam.d/sudo_local
+    brew install pam-reattach
+    sudo bash -eu <<'EOF'
+file=/etc/pam.d/sudo_local
+# A backup file will be created with the pattern /etc/pam.d/.sudo_local.1
+# (where 1 is the number of backups, so that rerunning this doesn't make you lose your original)
+bak=$(dirname $file)/.$(basename $file).$(echo $(ls $(dirname $file)/{,.}$(basename $file)* | grep -v template  | wc -l))
+cp $file $bak
+awk -v is_done='pam_reattach' -v rule='auth       optional       /opt/homebrew/lib/pam/pam_reattach.so' '
+{
+    # $1 is the first field
+    # !~ means "does not match pattern"
+    if($1 !~ /^#.*/){
+    line_number_not_counting_comments++
+    }
+    # $0 is the whole line
+    if(line_number_not_counting_comments==1 && $0 !~ is_done){
+    print rule
+    }
+    print
+}' > $file < $bak
+EOF
 fi
 
 if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
