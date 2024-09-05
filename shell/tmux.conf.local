@@ -163,4 +163,4 @@ set -g @catppuccin_status_fill "all"
 set -g @catppuccin_date_time_text "%Y-%m-%d %H:%M:%S"
 
 set -g @plugin 'catppuccin/tmux'
-set -g @catppuccin_flavour 'frappe' # or frappe, macchiato, mocha
+set -g @catppuccin_flavor 'frappe' # or frappe, macchiato, mocha
