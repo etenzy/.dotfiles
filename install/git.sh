@@ -11,9 +11,12 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     echo '-------------'
     brew install commitizen
     rm $HOME/.gitconfig
-    ln -nfs $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
-    rm $HOME/.global-gitignore
-    ln -nfs $HOME/.dotfiles/git/global-gitignore $HOME/.global-gitignore
+    cp "$HOME/.dotfiles/git/gitconfig" "$HOME/.gitconfig"
+    rm $HOME/.gitconfig-default
+    ln -nfs $HOME/.dotfiles/git/gitconfig-default $HOME/.gitconfig-default
+    rm $HOME/.gitignore-global
+    ln -nfs $HOME/.dotfiles/git/gitignore-global $HOME/.gitignore-global
+    rm $HOME/.git-commit-template
     ln -nfs $HOME/.dotfiles/git/git-commit-template $HOME/.git-commit-template
 
     if [ ! -f "$HOME/.gitconfig-include" ]; then

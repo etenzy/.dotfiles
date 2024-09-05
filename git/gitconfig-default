@@ -1,0 +1,35 @@
+[core]
+	excludesfile = ~/.gitignore-global
+[user]
+	email = hello@mroedel.de
+	name = Michael Rödel
+	signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[commit]
+	gpgsign = true
+	template = ~/.git-commit-template
+[tag]
+	gpgsign = true
+[push]
+	default = current
+[diff "sopsdiffer"]
+	textconv = sops -d
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	new = !git init && git symbolic-ref HEAD refs/heads/main
+	empty = "commit --allow-empty"
+	st = status
+[team "config"]
+	activation-scope = repo-local
+[include]
+	path = ~/.gitconfig-include
