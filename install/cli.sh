@@ -46,9 +46,9 @@ if [[ "$ENABLE_INSTALL_SUDO_TOUCHID" == "true" ]]; then
     echo ''
     echo 'Install sudo-touchid'
     echo '--------------------'
+    brew install pam-reattach
     sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
     sudo sed -i '' '/.*pam\_tid\.so/s/^#//g' /etc/pam.d/sudo_local
-    brew install pam-reattach
     sudo bash -eu <<'EOF'
 file=/etc/pam.d/sudo_local
 # A backup file will be created with the pattern /etc/pam.d/.sudo_local.1
