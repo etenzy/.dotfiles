@@ -55,7 +55,7 @@ file=/etc/pam.d/sudo_local
 # (where 1 is the number of backups, so that rerunning this doesn't make you lose your original)
 bak=$(dirname $file)/.$(basename $file).$(echo $(ls $(dirname $file)/{,.}$(basename $file)* | grep -v template | wc -l))
 cp $file $bak
-awk -v is_done='pam_reattach' -v rule='auth       optional       /opt/homebrew/lib/pam/pam_reattach.so' '
+awk -v is_done='pam_reattach' -v rule="auth       optional       $(brew --prefix)/lib/pam/pam_reattach.so" '
 {
     # $1 is the first field
     # !~ means "does not match pattern"
