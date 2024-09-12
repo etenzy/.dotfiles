@@ -9,7 +9,7 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     echo ''
     echo 'Configure Git'
     echo '-------------'
-    brew install commitizen
+    brew install meteor
     rm $HOME/.gitconfig
     cp "$HOME/.dotfiles/git/gitconfig" "$HOME/.gitconfig"
     rm $HOME/.gitconfig-default
