@@ -27,14 +27,17 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     
     # Install kubectl convert
     VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
-
-    if [ "$(uname -m)" = "arm64" ]; then
-        curl -LO "https://dl.k8s.io/release/${VERSION}/bin/darwin/arm64/kubectl-convert"
-    else
-        curl -LO "https://dl.k8s.io/release/${VERSION}/bin/darwin/amd64/kubectl-convert"
-    fi
+    curl -LO "https://dl.k8s.io/release/${VERSION}/bin/darwin/arm64/kubectl-convert"
     chmod +x ./kubectl-convert
     sudo mv ./kubectl-convert /usr/local/bin/kubectl-convert
+
+    #Install krew
+    brew install krew
+
+    #Install kubectl plugins
+    kubectl krew update
+    kubectl krew install neat
+    kubectl krew upgrade cnpg
 
     mkdir -p $HOME/.kube/config.d
 fi
