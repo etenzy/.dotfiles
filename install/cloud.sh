@@ -19,7 +19,7 @@ if [[ "$ENABLE_INSTALL_ANSIBLE" == "true" ]]; then
     echo ''
     echo 'Install Ansible'
     echo '---------------'
-    brew install ansible
+    brew install ansible@9
 fi
 
 if [[ "$ENABLE_INSTALL_OPENSTACK" == "true" ]]; then
