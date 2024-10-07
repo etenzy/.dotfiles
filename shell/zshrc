@@ -110,6 +110,7 @@ export LANG=en_US.UTF-8
 export BREW_PREFIX="/opt/homebrew"
 export PATH="$BREW_PREFIX/bin:$PATH"
 export PATH="$BREW_PREFIX/sbin:$PATH"
+export PATH="$BREW_PREFIX/opt/ansible@9/bin:$PATH"
 
 source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
