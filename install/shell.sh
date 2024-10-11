@@ -83,10 +83,10 @@ if [[ "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     echo '------------'
     brew install tmux
     rm -rf $HOME/.tmux
-    git clone https://github.com/gpakosz/.tmux.git $HOME/.tmux
+    mkdir $HOME/.tmux
+    ln -nfs $HOME/.dotfiles/shell/tmux.conf $HOME/.tmux.conf
     git clone https://github.com/tmux-plugins/tpm.git $HOME/.tmux/plugins/tpm
-    ln -nfs $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
-    ln -nfs $HOME/.dotfiles/shell/tmux.conf.local $HOME/.tmux.conf.local
+    bash $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 if [[ "$ENABLE_INSTALL_OPENSSH" == "true" ]]; then
