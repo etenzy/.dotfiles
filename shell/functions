@@ -13,6 +13,10 @@ function removehost() {
     ssh-keygen -R "$1"
 }
 
+function microtime() {
+    gdate +"%Y-%m-%d %H:%M:%S,%5N"
+}
+
 # Run artisan
 function artisan() {
     php artisan "$@"
