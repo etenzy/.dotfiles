@@ -1,3 +1,4 @@
+[general]
 import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/catppuccin/catppuccin-mocha.toml"
@@ -21,7 +22,7 @@ style = "Light italic"
 family = "Maple Mono NF"
 style = "Light"
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/bin/zsh"
 
@@ -31,3 +32,5 @@ opacity = 0.9
 [window.padding]
 x = 4
 y = 4
+
+[terminal]
