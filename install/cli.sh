@@ -79,10 +79,6 @@ if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
     rm -rf $XDG_CONFIG_HOME/alacritty
     mkdir -p $XDG_CONFIG_HOME/alacritty
     ln -nfs $HOME/.dotfiles/shell/config/alacritty/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
-    rm -rf $HOME/.dotfiles/shell/catppuccin/alacritty
-    git clone https://github.com/catppuccin/alacritty.git $HOME/.dotfiles/shell/catppuccin/alacritty
-    mkdir -p $XDG_CONFIG_HOME/alacritty/catppuccin
-    ln -nfs $HOME/.dotfiles/shell/catppuccin/alacritty/*.toml $XDG_CONFIG_HOME/alacritty/catppuccin/
 fi
 
 if [[ "$ENABLE_INSTALL_ASCIINEMA" == "true" ]]; then
