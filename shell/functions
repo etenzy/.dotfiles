@@ -54,6 +54,12 @@ function lsom() {
     lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
 }
 
+# zmk_build <build-dir> <board> <shield>
+# zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
+function zmk_build() {
+    west build --pristine --source-dir "$ZMK_PATH/app" --build-dir "$1" --board "$2" -- -DZMK_CONFIG="$ZMK_CONFIG_PATH/config" -DSHIELD="$3"
+}
+
 # Print the full command before running kubectl
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
