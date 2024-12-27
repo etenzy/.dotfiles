@@ -71,16 +71,6 @@ awk -v is_done='pam_reattach' -v rule="auth       optional       $(brew --prefix
 EOF
 fi
 
-if [[ "$ENABLE_INSTALL_ALACRITTY" == "true" ]]; then
-    echo ''
-    echo 'Install alacritty'
-    echo '-----------------'
-    brew install --cask alacritty
-    rm -rf $XDG_CONFIG_HOME/alacritty
-    mkdir -p $XDG_CONFIG_HOME/alacritty
-    ln -nfs $HOME/.dotfiles/shell/config/alacritty/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
-fi
-
 if [[ "$ENABLE_INSTALL_ASCIINEMA" == "true" ]]; then
     echo ''
     echo 'Install asciinema'
@@ -231,13 +221,6 @@ if [[ "$ENABLE_INSTALL_IPROUTE" == "true" ]]; then
     echo 'Install iproute2mac'
     echo '-------------------'
     brew install iproute2mac
-fi
-
-if [[ "$ENABLE_INSTALL_ITERM" == "true" ]]; then
-    echo ''
-    echo 'Install iterm2'
-    echo '--------------'
-    brew install iterm2
 fi
 
 if [[ "$ENABLE_INSTALL_JQ" == "true" ]]; then

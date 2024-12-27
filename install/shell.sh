@@ -77,6 +77,16 @@ if [[ "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
     ln -nfs $HOME/.dotfiles/shell/config/starship.toml $HOME/.config/starship.toml
 fi
 
+if [[ "$ENABLE_INSTALL_GHOSTTY" == "true" ]]; then
+    echo ''
+    echo 'Install ghostty'
+    echo '---------------'
+    brew install ghostty
+    rm -rf $XDG_CONFIG_HOME/ghostty
+    mkdir -p $XDG_CONFIG_HOME/ghostty
+    ln -nfs $HOME/.dotfiles/shell/config/ghostty/config $XDG_CONFIG_HOME/ghostty/config
+fi
+
 if [[ "$ENABLE_INSTALL_TMUX" == "true" ]]; then
     echo ''
     echo 'Install tmux'
