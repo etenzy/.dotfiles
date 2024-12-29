@@ -62,8 +62,12 @@ function x_to_spaces() {
     for f in *$1*; do mv "$f" "${f//$1/ }"; done 
 }
 
-dedup_lines() {
+function dedup_lines() {
     sort $1 -u -o $1
+}
+
+function ds_delete() {
+    find . -name ".DS_Store" -delete
 }
 
 # zmk_build <build-dir> <board> <shield>
