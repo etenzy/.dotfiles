@@ -70,6 +70,10 @@ function ds_delete() {
     find . -name ".DS_Store" -delete
 }
 
+function files_larger_than() {
+    find $(pwd) -type f -size +$1 -exec ls -lh {} \; | awk '{print $5 " " $9}' | sort -h
+}
+
 function sed_regex() {
     sed -E 's/'"$1"'/'"$2"'/g' $3
 }
