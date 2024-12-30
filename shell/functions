@@ -70,6 +70,10 @@ function ds_delete() {
     find . -name ".DS_Store" -delete
 }
 
+function sed_regex() {
+    sed -E 's/'"$1"'/'"$2"'/g' $3
+}
+
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {
