@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # export ENABLE_INSTALL_CLI=true
 # export ENABLE_INSTALL_COREUTILS=true
@@ -7,7 +7,6 @@
 # export ENABLE_INSTALL_P7ZIP=true
 # export ENABLE_INSTALL_ONEPASSWORDCLI=true
 # export ENABLE_INSTALL_SUDO_TOUCHID=true
-# export ENABLE_INSTALL_ALACRITTY=true
 # export ENABLE_INSTALL_ASCIINEMA=true
 # export ENABLE_INSTALL_BAT=true
 # export ENABLE_INSTALL_BITWARDENCLI=true
@@ -26,7 +25,6 @@
 # export ENABLE_INSTALL_HTTPIE=true
 # export ENABLE_INSTALL_HTOP=true
 # export ENABLE_INSTALL_IPROUTE=true
-# export ENABLE_INSTALL_ITERM=true
 # export ENABLE_INSTALL_JQ=true
 # export ENABLE_INSTALL_JSONPP=true
 # export ENABLE_INSTALL_LESS=true
@@ -64,6 +62,7 @@
 # export ENABLE_INSTALL_SVN_LATEST=true
 
 # export ENABLE_INSTALL_SHELL=true
+# export ENABLE_INSTALL_GHOSTTY=true
 # export ENABLE_INSTALL_DIRENV=true
 # export ENABLE_INSTALL_NEOFETCH=true
 # export ENABLE_INSTALL_OHMYZSH=true

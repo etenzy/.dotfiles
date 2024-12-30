@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ "$ENABLE_INSTALL_MICROSOFTTEAMS" == "true" ]]; then
     echo ''
