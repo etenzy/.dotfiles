@@ -1,0 +1,4 @@
+{
+    "messageTemplate": "@type(@scope): @message",
+    "messageWithTicketTemplate": "@type(@ticket): @message"
+  }

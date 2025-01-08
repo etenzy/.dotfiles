@@ -24,12 +24,13 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
 	fi
 fi
 
-if [[ "$ENABLE_INSTALL_GIT_TEAM" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_GIT_METEOR" == "true" ]]; then
     echo ''
-    echo 'Install git-team'
-    echo '----------------'
-    brew tap hekmekk/git-team
-    brew install git-team
+    echo 'Install git-meteor'
+    echo '------------------'
+    brew brew tap stefanlogue/tools
+    brew install meteor
+    ln -nfs $HOME/.dotfiles/shell/config/meteor/config.json $HOME/.config/meteor/config.json
 fi
 
 if [[ "$ENABLE_INSTALL_GIT_FILTER_REPO" == "true" ]]; then
