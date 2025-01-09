@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-brew tap homebrew/cask-fonts
-
 if [[ "$ENABLE_INSTALL_FONT_FIRA" == "true" ]]; then
     echo ''
     echo 'Install Font Fira'
