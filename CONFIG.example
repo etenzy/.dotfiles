@@ -45,6 +45,7 @@
 # export ENABLE_INSTALL_WATCH=true
 # export ENABLE_INSTALL_WGET=true
 # export ENABLE_INSTALL_XH=true
+# export ENABLE_INSTALL_YQ=true
 
 # export ENABLE_INSTALL_GIT=true
 # export ENABLE_INSTALL_GIT_LATEST=true

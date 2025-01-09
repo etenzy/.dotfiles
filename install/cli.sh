@@ -367,3 +367,10 @@ if [[ "$ENABLE_INSTALL_XH" == "true" ]]; then
     echo '----------'
     brew install xh
 fi
+
+if [[ "$ENABLE_INSTALL_YQ" == "true" ]]; then
+    echo ''
+    echo 'Install qy'
+    echo '----------'
+    brew install yq
+fi
