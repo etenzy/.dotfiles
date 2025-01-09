@@ -20,6 +20,10 @@ echo '----------------'
 sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+eval $(/opt/homebrew/bin/brew shellenv)
+
+mkdir -p $HOME/.dotfiles-custom/shell
+
 # homebrew-cask-upgrade
 # brew cu shows all cask with their status
 # brew cu --all Force upgrade outdated apps

@@ -41,6 +41,8 @@ if [[ "$ENABLE_INSTALL_GCP" == "true" ]]; then
     echo 'Install Google Cloud SDK'
     echo '------------------------'
     brew install --cask google-cloud-sdk
+    echo 'source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' >> $HOME/.dotfiles-custom/shell/zshrc
+    echo 'source $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' >> $HOME/.dotfiles-custom/shell/zshrc
 fi
 
 if [[ "$ENABLE_INSTALL_AZURE" == "true" ]]; then

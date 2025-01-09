@@ -107,14 +107,15 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export BREW_PREFIX=$(brew --prefix)
-export PATH="$BREW_PREFIX/bin:$PATH"
-export PATH="$BREW_PREFIX/sbin:$PATH"
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
 
-source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/sbin:$PATH"
+
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -128,11 +129,11 @@ export PATH="$HOME/.bin:$PATH"
 #  compaudit
 #  chmod -R go-w 'directory'
 #  or compaudit | xargs chmod g-w
-FPATH=$BREW_PREFIX/share/zsh-completions:$FPATH
-FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
+FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
+FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
 
-source "$BREW_PREFIX/opt/fzf/shell/completion.zsh"
-source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
+source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
 # Load the shell dotfiles, and then some:
 # * ~/.dotfiles-custom can be used for other settings you don’t want to commit.
@@ -141,7 +142,7 @@ for file in ~/.dotfiles/shell/{exports,functions,aliases}; do
 done
 unset file
 
-for file in ~/.dotfiles-custom/shell/{exports,functions,aliases,zshrc}; do
+for file in ~/.dotfiles-custom/shell/{zshrc,exports,functions,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
