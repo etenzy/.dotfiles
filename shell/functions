@@ -66,6 +66,10 @@ function dedup_lines() {
     sort $1 -u -o $1
 }
 
+function remove_empty_lines() {
+    sed -r '/^\s*$/d' $1
+}
+
 function ds_delete() {
     find . -name ".DS_Store" -delete
 }
@@ -76,6 +80,10 @@ function files_larger_than() {
 
 function sed_regex() {
     sed -E 's/'"$1"'/'"$2"'/g' $3
+}
+
+function only_email_pass() {   
+    grep -Eo '^[[:print:]]+\@([[:alnum:]]+\.)+[[:alnum:]]{2,}\:[[:graph:]]+' $1
 }
 
 # zmk_build <build-dir> <board> <shield>
