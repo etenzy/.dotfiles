@@ -11,5 +11,5 @@ background-opacity = 0.9
 background-blur-radius = 15
 
 cursor-style = bar
-cursor-style-blink = false
+cursor-style-blink = true
 shell-integration-features = no-cursor
