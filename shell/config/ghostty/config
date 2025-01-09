@@ -9,3 +9,7 @@ theme = catppuccin-frappe
 
 background-opacity = 0.9
 background-blur-radius = 15
+
+cursor-style = bar
+cursor-style-blink = false
+shell-integration-features = no-cursor
