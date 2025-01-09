@@ -44,9 +44,7 @@ if [[ "$ENABLE_INSTALL_FONT_MAPLE" == "true" ]]; then
     echo 'Install Font Maple'
     echo '-----------------'
     brew install font-maple
-    latest=$(curl -I https://github.com/subframe7536/maple-font/releases/latest | awk -F '/' '/^location/ {print  substr($NF, 1, length($NF)-1)}')
-    curl https://github.com/subframe7536/maple-font/releases/download/$latest/MapleMono-NF.zip -L -o /tmp/MapleMono-NF.zip
-    7z e -o$HOME/Library/Fonts/ /tmp/MapleMono-NF.zip -y
+    brew install font-maple-mono-nf
 fi
 
 if [[ "$ENABLE_INSTALL_FONT_ROBOTO" == "true" ]]; then
