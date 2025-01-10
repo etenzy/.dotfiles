@@ -86,6 +86,10 @@ function only_email_pass() {
     grep -Eo '^[[:print:]]+\@([[:alnum:]]+\.)+[[:alnum:]]{2,}\:[[:graph:]]+' $1
 }
 
+function search() {
+    grep -rni "${2:-$(pwd)}" -e $1
+}
+
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {
