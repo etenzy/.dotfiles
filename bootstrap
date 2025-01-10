@@ -19,12 +19,28 @@ function bootstrapTerminal() {
 	source $HOME/.dotfiles/installscript
 }
 
+echo "It's recommended to set a GitHub-Token..."
+echo 'Do you want to set a GitHub-Token? (y/n)'
+read -p 'Answer: ' answerToken
+if [[ $answerToken =~ ^[Yy]$ ]] then
+	read -p 'Please enter your token: ' token
+	if [[ $token =~ ^ghp_.*$ ]] then
+		mkdir -p $HOME/.dotfiles-custom/shell
+		echo "export GITHUB_TOKEN=$token" >> $HOME/.dotfiles-custom/shell/exports
+		source $HOME/.dotfiles-custom/shell/exports
+		echo 'Token set & sourced'
+	else
+		echo 'Invalid token'
+		exit 1
+	fi
+fi
+
+echo ''
 echo 'Bootstrap terminal'
 echo '------------------'
-echo 'This will reset your terminal. Are you sure you want to to this? (y/n) '
-read -p 'Answer: '  reply
+echo 'This will reset your terminal. Are you sure you want to to this? (y/n)'
+read -p 'Answer: ' answerBootstrap
 
-if [[ $reply =~ ^[Yy]$ ]]
-then
-   bootstrapTerminal
+if [[ $answerBootstrap =~ ^[Yy]$ ]] then
+	bootstrapTerminal
 fi
