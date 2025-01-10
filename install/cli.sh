@@ -103,9 +103,9 @@ if [[ "$ENABLE_INSTALL_BTOP" == "true" ]]; then
     echo '------------'
     brew install btop
     git clone https://github.com/catppuccin/btop.git $HOME/.dotfiles/shell/catppuccin/btop
-    rm -rf $XDG_CONFIG_HOME/btop/themes/
-    mkdir -p $XDG_CONFIG_HOME/btop/themes/
-    ln -nfs $HOME/.dotfiles/shell/catppuccin/btop/*.theme $XDG_CONFIG_HOME/btop/themes/
+    rm -rf $HOME/.config/btop/themes/
+    mkdir -p $HOME/.config/btop/themes/
+    ln -nfs $HOME/.dotfiles/shell/catppuccin/btop/*.theme $HOME/.config/btop/themes/
 fi
 
 if [[ "$ENABLE_INSTALL_COWSAY" == "true" ]]; then

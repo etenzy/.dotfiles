@@ -5,9 +5,9 @@ if [[ "$ENABLE_INSTALL_GHOSTTY" == "true" ]]; then
     echo 'Install ghostty'
     echo '---------------'
     brew install ghostty
-    rm -rf $XDG_CONFIG_HOME/ghostty
-    mkdir -p $XDG_CONFIG_HOME/ghostty
-    ln -nfs $HOME/.dotfiles/shell/config/ghostty/config $XDG_CONFIG_HOME/ghostty/config
+    rm -rf $HOME/.config/ghostty
+    mkdir -p $HOME/.config/ghostty
+    ln -nfs $HOME/.dotfiles/shell/config/ghostty/config $HOME/.config/ghostty/config
 fi
 
 if [[ "$ENABLE_INSTALL_DIRENV" == "true" ]]; then
