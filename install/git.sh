@@ -67,7 +67,7 @@ if [[ "$ENABLE_INSTALL_GITLAB" == "true" ]]; then
     echo ''
     echo 'Install GitLab cli'
     echo '------------------'
-    brew install profclems/tap/glab
+    brew install glab
 fi
 
 if [[ "$ENABLE_INSTALL_BFG" == "true" ]]; then
