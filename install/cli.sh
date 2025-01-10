@@ -256,8 +256,12 @@ if [[ "$ENABLE_INSTALL_LSDELUXE" == "true" ]]; then
     echo 'Install LSDeluxe'
     echo '----------------'
     brew install lsd
-    rm -rf $HOME/.config/lsd
-    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd
+    mkdir -p $HOME/.config/lsd
+    git clone https://github.com/catppuccin/lsd.git $HOME/.dotfiles/shell/catppuccin/lsd
+    rm -rf $HOME/.config/lsd/colors.yaml
+    ln -nfs $HOME/.dotfiles/shell/catppuccin/lsd/themes/catppuccin-frappe/colors.yaml $HOME/.config/lsd/colors.yaml
+    rm -rf $HOME/.config/lsd/config.yaml
+    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd/config.yaml
 fi
 
 if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
