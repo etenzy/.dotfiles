@@ -261,7 +261,7 @@ if [[ "$ENABLE_INSTALL_LSDELUXE" == "true" ]]; then
     rm -rf $HOME/.config/lsd/colors.yaml
     ln -nfs $HOME/.dotfiles/shell/catppuccin/lsd/themes/catppuccin-frappe/colors.yaml $HOME/.config/lsd/colors.yaml
     rm -rf $HOME/.config/lsd/config.yaml
-    ln -nfs $HOME/.dotfiles/shell/config/lsd $HOME/.config/lsd/config.yaml
+    ln -nfs $HOME/.dotfiles/shell/config/lsd/config.yaml $HOME/.config/lsd/config.yaml
 fi
 
 if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
