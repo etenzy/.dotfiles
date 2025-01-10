@@ -78,6 +78,13 @@ if [[ "$ENABLE_INSTALL_ASCIINEMA" == "true" ]]; then
     brew install asciinema
 fi
 
+if [[ "$ENABLE_INSTALL_ASDF" == "true" ]]; then
+    echo ''
+    echo 'Install asdf'
+    echo '------------'
+    brew install asdf
+fi
+
 if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
     echo ''
     echo 'Install bat'
