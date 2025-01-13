@@ -210,104 +210,103 @@ fi
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# Prevent applications from bouncing in Dock
-defaults write com.apple.dock no-bouncing -bool true
+if [[ "$ENABLE_DOCK_NO_BOUNCING" == "true" ]]; then
+	defaults write com.apple.dock no-bouncing -bool true
+fi
 
-# Set the icon size of Dock items to 32 pixels
-defaults write com.apple.dock tilesize -int 32
+if [[ "$ENABLE_DOCK_TILESIZE" == "true" ]]; then
+	defaults write com.apple.dock tilesize -int $DOCK_tilesize
+fi
 
-# Enable magnification
-defaults write com.apple.dock magnification -bool true
+if [[ "$ENABLE_DOCK_LARGESIZE" == "true" ]]; then
+	defaults write com.apple.dock largesize -int $DOCK_largesize
+fi
 
-# Set the icon hover-size of Dock items to 48 pixels
-defaults write com.apple.dock largesize -int 48
+if [[ "$ENABLE_DOCK_MAGNIFICATION" == "true" ]]; then
+	defaults write com.apple.dock magnification -bool true
+fi
 
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-defaults write com.apple.dock persistent-apps -array '{}'
+if [[ "$ENABLE_DOCK_WIPE" == "true" ]]; then
+	defaults write com.apple.dock persistent-apps -array '{}'
+fi
 
-# Hide recent Apps in Dock
-defaults write com.apple.dock show-recents -bool false
+if [[ "$ENABLE_DOCK_HIDE_RECENTS" == "true" ]]; then
+	defaults write com.apple.dock show-recents -bool false
+fi
 
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
+if [[ "$DISABLE_DOCK_REARRANGE_SPACES" == "true" ]]; then
+	defaults write com.apple.dock mru-spaces -bool false
+fi
 
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
-# Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+if [[ "$ENABLE_DOCK_HIDDEN_TRANSLUCENT" == "true" ]]; then
+	defaults write com.apple.dock showhidden -bool true
+fu
 
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
 
 # Show the main window when launching Activity Monitor
-defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
-# Visualize CPU usage in the Activity Monitor Dock icon
-defaults write com.apple.ActivityMonitor IconType -int 5
+if [[ "$ENABLE_ACTIVITY_MONITOR_OPENMAINWINDOW" == "true" ]]; then
+	defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+fi
 
-# Show all processes in Activity Monitor
-defaults write com.apple.ActivityMonitor ShowCategory -int 0
+if [[ "$ENABLE_ACTIVITY_MONITOR_DOCKICON_CPU" == "true" ]]; then
+	defaults write com.apple.ActivityMonitor IconType -int 5
+fi
 
-# Sort Activity Monitor results by CPU usage
-defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-defaults write com.apple.ActivityMonitor SortDirection -int 0
+if [[ "$ENABLE_ACTIVITY_MONITOR_ALLPROCESSES" == "true" ]]; then
+	defaults write com.apple.ActivityMonitor ShowCategory -int 0
+fi
+
+if [[ "$ENABLE_ACTIVITY_MONITOR_SORTING" == "true" ]]; then
+	defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+	defaults write com.apple.ActivityMonitor SortDirection -int 0
+fi
 
 ###############################################################################
-# Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
+# TextEdit                                                                    #
 ###############################################################################
 
-# Use plain text mode for new TextEdit documents
-defaults write com.apple.TextEdit RichText -int 0
+if [[ "$ENABLE_TEXTEDIT_PLAINTEXT" == "true" ]]; then
+	defaults write com.apple.TextEdit RichText -int 0
+fi
 
-# Open and save files as UTF-8 in TextEdit
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+if [[ "$ENABLE_TEXTEDIT_PLAINTEXT_ENCODING" == "true" ]]; then
+	defaults write com.apple.TextEdit PlainTextEncoding -int 4
+	defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+fi
 
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
 
-# Disable Safari’s thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+if [[ "$ENABLE_SAFARI_FULL_URL" == "true" ]]; then
+	defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+fi
 
-# Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+if [[ "$ENABLE_SAFARI_FAVORITES_BAR" == "true" ]]; then
+	defaults write com.apple.Safari ShowFavoritesBar -bool true
+fi
 
-# Show Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool true
+if [[ "$ENABLE_SAFARI_DEBUG_MENU" == "true" ]]; then
+	defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+fi
 
-# Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# Enable “Do Not Track”
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-
-# Update extensions automatically
-defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
-
-###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-# Disable Spotlight indexing for external volumes
-# sudo defaults write /Library/Preferences/com.apple.SpotlightServer.plist ExternalVolumesIgnore -bool True
+if [[ "$ENABLE_SAFARI_DEVELOPER_MENU" == "true" ]]; then
+	defaults write com.apple.Safari IncludeDevelopMenu -bool true
+	defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+	defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+fi
 
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
+for app in  \
+	"Dock" "Finder" "System Settings" "SizeUp" "SystemUIServer" "cfprefsd"  \
+	"Activity Monitor" "Terminal" "Safari" "TextEdit"; do
 	killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

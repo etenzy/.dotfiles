@@ -208,98 +208,97 @@ fi
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# Prevent applications from bouncing in Dock
-defaults delete com.apple.dock no-bouncing
+if [[ "$ENABLE_DOCK_NO_BOUNCING" == "true" ]]; then
+	defaults delete com.apple.dock no-bouncing
+fi
 
-# Set the icon size of Dock items to 32 pixels
-defaults delete com.apple.dock tilesize
+if [[ "$ENABLE_DOCK_TILESIZE" == "true" ]]; then
+	defaults delete com.apple.dock tilesize
+fi
 
-# Set the icon hover-size of Dock items to 48 pixels
-defaults delete com.apple.dock largesize
+if [[ "$ENABLE_DOCK_LARGESIZE" == "true" ]]; then
+	defaults delete com.apple.dock largesize
+fi
 
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-defaults delete com.apple.dock persistent-apps
+if [[ "$ENABLE_DOCK_MAGNIFICATION" == "true" ]]; then
+	defaults delete com.apple.dock magnification
+fi
 
-# Disable Dashboard
-defaults delete com.apple.dashboard mcx-disabled
+if [[ "$ENABLE_DOCK_HIDE_RECENTS" == "true" ]]; then
+	defaults delete com.apple.dock show-recents
+fi
 
-# Don’t show Dashboard as a Space
-defaults delete com.apple.dock dashboard-in-overlay
+if [[ "$DISABLE_DOCK_REARRANGE_SPACES" == "true" ]]; then
+	defaults delete com.apple.dock mru-spaces
+fi
 
-# Don’t automatically rearrange Spaces based on most recent use
-defaults delete com.apple.dock mru-spaces
-
-# Make Dock icons of hidden applications translucent
-defaults delete com.apple.dock showhidden
+if [[ "$ENABLE_DOCK_HIDDEN_TRANSLUCENT" == "true" ]]; then
+	defaults delete com.apple.dock showhidden
+fi
 
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
 
-# Show the main window when launching Activity Monitor
-defaults delete com.apple.ActivityMonitor OpenMainWindow
+if [[ "$ENABLE_ACTIVITY_MONITOR_OPENMAINWINDOW" == "true" ]]; then
+	defaults delete com.apple.ActivityMonitor OpenMainWindow
+fi
 
-# Visualize CPU usage in the Activity Monitor Dock icon
-defaults delete com.apple.ActivityMonitor IconType
+if [[ "$ENABLE_ACTIVITY_MONITOR_DOCKICON_CPU" == "true" ]]; then
+	defaults delete com.apple.ActivityMonitor IconType
+fi
 
-# Show all processes in Activity Monitor
-defaults delete com.apple.ActivityMonitor ShowCategory
+if [[ "$ENABLE_ACTIVITY_MONITOR_ALLPROCESSES" == "true" ]]; then
+	defaults delete com.apple.ActivityMonitor ShowCategory
+fi
 
-# Sort Activity Monitor results by CPU usage
-defaults delete com.apple.ActivityMonitor SortColumn 
-defaults delete com.apple.ActivityMonitor SortDirection
+if [[ "$ENABLE_ACTIVITY_MONITOR_SORTING" == "true" ]]; then
+	defaults delete com.apple.ActivityMonitor SortColumn
+	defaults delete com.apple.ActivityMonitor SortDirection
+fi
 
 ###############################################################################
 # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
 ###############################################################################
 
-# Use plain text mode for new TextEdit documents
-defaults delete com.apple.TextEdit RichText
+if [[ "$ENABLE_TEXTEDIT_PLAINTEXT" == "true" ]]; then
+	defaults delete com.apple.TextEdit RichText
+fi
 
-# Open and save files as UTF-8 in TextEdit
-defaults delete com.apple.TextEdit PlainTextEncoding
-defaults delete com.apple.TextEdit PlainTextEncodingForWrite
+if [[ "$ENABLE_TEXTEDIT_PLAINTEXT_ENCODING" == "true" ]]; then
+	defaults delete com.apple.TextEdit PlainTextEncoding
+	defaults delete com.apple.TextEdit PlainTextEncodingForWrite
+fi
 
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
 
-# Disable Safari’s thumbnail cache for History and Top Sites
-defaults delete com.apple.Safari DebugSnapshotsUpdatePolicy
+if [[ "$ENABLE_SAFARI_FULL_URL" == "true" ]]; then
+	defaults delete com.apple.Safari ShowFullURLInSmartSearchField
+fi
 
-# Enable Safari’s debug menu
-defaults delete com.apple.Safari IncludeInternalDebugMenu
+if [[ "$ENABLE_SAFARI_FAVORITES_BAR" == "true" ]]; then
+	defaults delete com.apple.Safari ShowFavoritesBar
+fi
 
-# Show Safari’s bookmarks bar by default
-defaults delete com.apple.Safari ShowFavoritesBar
+if [[ "$ENABLE_SAFARI_DEBUG_MENU" == "true" ]]; then
+	defaults delete com.apple.Safari IncludeInternalDebugMenu
+fi
 
-# Enable the Develop menu and the Web Inspector in Safari
-defaults delete com.apple.Safari IncludeDevelopMenu
-defaults delete com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey
-defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
-
-# Enable “Do Not Track”
-defaults delete com.apple.Safari SendDoNotTrackHTTPHeader
-
-# Update extensions automatically
-defaults delete com.apple.Safari InstallExtensionUpdatesAutomatically
-
-###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-# Disable Spotlight indexing for external volumes
-sudo defaults delete /Library/Preferences/com.apple.SpotlightServer.plist ExternalVolumesIgnore
+if [[ "$ENABLE_SAFARI_DEVELOPER_MENU" == "true" ]]; then
+	defaults delete com.apple.Safari IncludeDevelopMenu
+	defaults delete com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey
+	defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
+fi
 
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
+for app in  \
+	"Dock" "Finder" "System Settings" "SizeUp" "SystemUIServer" "cfprefsd"  \
+	"Activity Monitor" "Terminal" "Safari" "TextEdit"; do
 	killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
