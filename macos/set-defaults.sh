@@ -43,137 +43,168 @@ if [ -n "$MyNetBIOSName" ]; then
 	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$MyNetBIOSName"
 fi
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+if [[ "$DISABLE_STARTUP_SOUND" == "true" ]]; then
+	sudo nvram -d SystemAudioVolume
+fi
 
-# Set sidebar icon size to small
-defaults write NSGlobalDomain NSTableView#defaultsizeMode -int 1
+if [[ "$ENABLE_SMALL_SIDEBARICONS" == "true" ]]; then
+	defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
+fi
 
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+if [[ "$ENABLE_INCREASED_RESIZE_SPEED" == "true" ]]; then
+	defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+fi
 
-# Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+if [[ "$ENABLE_EXPANDED_SAVEDIALOG" == "true" ]]; then
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+fi
 
-# Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+if [[ "$DISABLE_DEFAULT_SAVETO_ICLOUD" == "true" ]]; then
+	defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+fi
 
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+if [[ "$ENABLE_EXPANDED_PRINTDIALOG" == "true" ]]; then
+	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+fi
 
-# Automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+if [[ "$ENABLE_AUTOCLOSE_PRINTER" == "true" ]]; then
+	defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+fi
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+if [[ "$DISABLE_SMARTQUOTES" == "true" ]]; then
+	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+fi
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+if [[ "$DISABLE_SMARTDASHES" == "true" ]]; then
+	defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+fi
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+if [[ "$ENABLE_TAPTCLICK" == "true" ]]; then
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+	defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+	defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+fi
 
-# Disable “natural” (Lion-style) scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+if [[ "$ENABLE_FAST_KEYBOARD_REPEAT" == "true" ]]; then
+	defaults write NSGlobalDomain KeyRepeat -int 2
+	defaults write NSGlobalDomain InitialKeyRepeat -int 25
+fi
 
-# Stop iTunes from responding to the keyboard media keys
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
-# Set a fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+if [[ "$DISABLE_AUTOCORRECT" == "true" ]]; then
+	defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+	defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
+fi
 
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+if [[ "$ENABLE_REQUIRE_PASSWORD_IMMEDIATELY" == "true" ]]; then
+	defaults write com.apple.screensaver askForPassword -int 1
+	defaults write com.apple.screensaver askForPasswordDelay -int 0
+fi
 
-# Save screenshots to custom folder
-defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
+if [[ "$ENABLE_CUSTOM_SCREENCAPTURE_LOCATION" == "true" ]]; then
+	mkdir -p $CUSTOM_SCREENCAPTURE_LOCATION
+	defaults write com.apple.screencapture location -string "$CUSTOM_SCREENCAPTURE_LOCATION"
+	defaults write com.apple.screencapture location-last -string "$CUSTOM_SCREENCAPTURE_LOCATION"
+fi
 
-# Disable screenshot shadows
-defaults write com.apple.screencapture disable-shadow -bool true
+if [[ "$DISABLE_SCREENCAPTURE_SHADOW" == "true" ]]; then
+	defaults write com.apple.screencapture disable-shadow -bool true
+fi
+
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
-# Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+if [[ "$ENABLE_FINDER_NEW_WINDOW_TARGET" == "true" ]]; then
+	defaults write com.apple.finder NewWindowTarget -string "$FINDER_NewWindowTarget"
 
-# Show icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+	if [[ "$FINDER_NewWindowTarget" == "PfLo" ]]; then
+		defaults write com.apple.finder NewWindowTargetPath -string "file://${FINDER_NewWindowTargetPath}/"
+	fi
+fi
 
-# Automatically open a new Finder window when a volume is mounted
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+if [[ "$ENABLE_FINDER_MOUNT_DESKTOP_ICONS" == "true" ]]; then
+	defaults write com.apple.finder ShowHardDrivesOnDesktop -bool $FINDER_ShowHardDrivesOnDesktop
+	defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool $FINDER_ShowExternalHardDrivesOnDesktop
+	defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool $FINDER_ShowRemovableMediaOnDesktop
+	defaults write com.apple.finder ShowMountedServersOnDesktop -bool $FINDER_ShowMountedServersOnDesktop
+fi
 
-# Finder: allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
+if [[ "$ENABLE_FINDER_NEW_WINDOW_REMOVEABLE_MEDIA" == "true" ]]; then
+	defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+	defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+	defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+fi
 
-# Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+if [[ "$ENABLE_FINDER_SHOW_PATHBAR" == "true" ]]; then
+	defaults write com.apple.finder ShowPathbar -bool true
+fi
 
-# When performing a search, search the current folder by default
-#defaults write com.apple.finder FX#defaultsearchScope -string "SCcf"
+if [[ "$ENABLE_FINDER_SHOW_PATH_IN_TITLE" == "true" ]]; then
+	defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+fi
 
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+if [[ "$ENABLE_FINDER_SHOW_ALL_EXTENSIONS" == "true" ]]; then
+	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+fi
 
-# Avoid creating .DS_Store files on network volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+if [[ "$DISABLE_FINDER_WARNING_EXTENSION_CHANGE" == "true" ]]; then
+	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+fi
 
-# Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+if [[ "$ENABLE_FINDER_QL_PANE" == "true" ]]; then
+	defaults write com.apple.finder ShowPreviewPane -bool true
+	defaults write com.apple.finder QLEnableTextSelection -bool true
+fi
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+if [[ "$ENABLE_FINDER_SEARCH_SCOPE" == "true" ]]; then
+	defaults write com.apple.finder FXDefaultSearchScope -string "$FINDER_FXDefaultSearchScope"
+fi
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
+if [[ "$DISABLE_DS_Store_ON_MOUNTS" == "true" ]]; then
+	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+	defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+fi
 
-# Show the ~/Users folder
-chflags nohidden /Users
+if [[ "$DISABLE_DISK_IMAGE_VERIFICATION" == "true" ]]; then
+	defaults write com.apple.frameworks.diskimages skip-verify -bool true
+	defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+	defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+fi
 
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+if [[ "$ENABLE_FINDER_VIEW_STYLE" == "true" ]]; then
+	defaults write com.apple.finder FXPreferredViewStyle -string "$FINDER_FXPreferredViewStyle"
+fi
 
-# Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+if [[ "$ENABLE_FINDER_LIBRARY_FOLDER" == "true" ]]; then
+	chflags nohidden ~/Library
+fi
+
+if [[ "$ENABLE_FINDER_USER_FOLDER" == "true" ]]; then
+	chflags nohidden /Users
+fi
+
+if [[ "$ENABLE_FINDER_EXPAND_INFO_PANE" == "true" ]]; then
+	defaults write com.apple.finder FXInfoPanesExpanded -dict \
+		General -bool true \
+		OpenWith -bool true \
+		Privileges -bool true
+fi
+
+if [[ "$DISABLE_ASK_FOR_TIMEMACHINE" == "true" ]]; then
+	defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+fi
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -268,7 +299,7 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 ###############################################################################
 
 # Disable Spotlight indexing for external volumes
-sudo defaults write /Library/Preferences/com.apple.SpotlightServer.plist ExternalVolumesIgnore -bool True
+# sudo defaults write /Library/Preferences/com.apple.SpotlightServer.plist ExternalVolumesIgnore -bool True
 
 ###############################################################################
 # Kill affected applications                                                  #

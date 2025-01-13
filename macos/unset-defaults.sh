@@ -2,6 +2,12 @@
 
 echo 'start osx/unset-defaults.sh'
 
+if [ -f "$HOME/.dotfiles/macos/CONFIG" ]; then
+	source $HOME/.dotfiles/macos/CONFIG
+else
+    echo "No CONFIG supplied..."
+fi
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -41,131 +47,162 @@ if [ -f "$HOME/.dotfiles/macos/NetBIOSName.bak" ]; then
 	rm -f $HOME/.dotfiles/macos/NetBIOSName.bak
 fi
 
-# Set sidebar icon size to small
-defaults delete NSGlobalDomain NSTableViewDefaultSizeMode
+if [[ "$DISABLE_STARTUP_SOUND" == "true" ]]; then
+	sudo nvram SystemAudioVolume=%80
+fi
 
-# Increase window resize speed for Cocoa applications
-defaults delete NSGlobalDomain NSWindowResizeTime
+if [[ "$ENABLE_SMALL_SIDEBARICONS" == "true" ]]; then
+	defaults delete NSGlobalDomain NSTableViewDefaultSizeMode
+fi
 
-# Expand save panel by default
-defaults delete NSGlobalDomain NSNavPanelExpandedStateForSaveMode
-defaults delete NSGlobalDomain NSNavPanelExpandedStateForSaveMode2
+if [[ "$ENABLE_INCREASED_RESIZE_SPEED" == "true" ]]; then
+	defaults delete NSGlobalDomain NSWindowResizeTime
+fi
 
-# Expand print panel by default
-defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint
-defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint2
+if [[ "$ENABLE_EXPANDED_SAVEDIALOG" == "true" ]]; then
+	defaults delete NSGlobalDomain NSNavPanelExpandedStateForSaveMode
+	defaults delete NSGlobalDomain NSNavPanelExpandedStateForSaveMode2
+fi
 
-# Save to disk (not to iCloud) by default
-defaults delete NSGlobalDomain NSDocumentSaveNewDocumentsToCloud
+if [[ "$DISABLE_DEFAULT_SAVETO_ICLOUD" == "true" ]]; then
+	defaults delete NSGlobalDomain NSDocumentSaveNewDocumentsToCloud
+fi
 
-# Automatically quit printer app once the print jobs complete
-defaults delete com.apple.print.PrintingPrefs "Quit When Finished"
+if [[ "$ENABLE_EXPANDED_PRINTDIALOG" == "true" ]]; then
+	defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint
+	defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint2
+fi
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults delete com.apple.LaunchServices LSQuarantine
+if [[ "$ENABLE_AUTOCLOSE_PRINTER" == "true" ]]; then
+	defaults delete com.apple.print.PrintingPrefs "Quit When Finished"
+fi
 
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults delete /Library/Preferences/com.apple.loginwindow
+if [[ "$DISABLE_SMARTQUOTES" == "true" ]]; then
+	defaults delete NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled
+fi
 
-# Disable smart quotes as they’re annoying when typing code
-defaults delete NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled
-
-# Disable smart dashes as they’re annoying when typing code
-defaults delete NSGlobalDomain NSAutomaticDashSubstitutionEnabled
+if [[ "$DISABLE_SMARTDASHES" == "true" ]]; then
+	defaults delete NSGlobalDomain NSAutomaticDashSubstitutionEnabled
+fi
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
-defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
-defaults delete NSGlobalDomain com.apple.mouse.tapBehavior
+if [[ "$ENABLE_TAPTCLICK" == "true" ]]; then
+	defaults delete com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
+	defaults delete NSGlobalDomain com.apple.mouse.tapBehavior
+	defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 0
+fi
 
-# Disable “natural” (Lion-style) scrolling
-defaults delete NSGlobalDomain com.apple.swipescrolldirection
+if [[ "$ENABLE_FAST_KEYBOARD_REPEAT" == "true" ]]; then
+	defaults delete NSGlobalDomain KeyRepeat
+	defaults delete NSGlobalDomain InitialKeyRepeat
+fi
 
-# Set a fast keyboard repeat rate
-defaults delete NSGlobalDomain KeyRepeat
-defaults delete NSGlobalDomain InitialKeyRepeat
-
-# Disable auto-correct
-defaults delete NSGlobalDomain NSAutomaticSpellingCorrectionEnabled
+if [[ "$DISABLE_AUTOCORRECT" == "true" ]]; then
+	defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool true
+	defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool true
+fi
 
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
 
-# Require password immediately after sleep or screen saver begins
-defaults delete com.apple.screensaver askForPassword
-defaults delete com.apple.screensaver askForPasswordDelay
+if [[ "$ENABLE_REQUIRE_PASSWORD_IMMEDIATELY" == "true" ]]; then
+	defaults delete com.apple.screensaver askForPassword
+	defaults delete com.apple.screensaver askForPasswordDelay
+fi
 
-# Save screenshots to custom folder
-defaults delete com.apple.screencapture location
+if [[ "$ENABLE_CUSTOM_SCREENCAPTURE_LOCATION" == "true" ]]; then
+	defaults delete com.apple.screencapture location
+	defaults delete com.apple.screencapture location-last
+fi
 
-# Disable screenshot shadows
-defaults delete com.apple.screencapture disable-shadow
+if [[ "$DISABLE_SCREENCAPTURE_SHADOW" == "true" ]]; then
+	defaults delete com.apple.screencapture disable-shadow
+fi
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
-# Set Desktop as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
-defaults delete com.apple.finder NewWindowTarget
-defaults delete com.apple.finder NewWindowTargetPath
+if [[ "$ENABLE_FINDER_NEW_WINDOW_TARGET" == "true" ]]; then
+	if [[ "$FINDER_NewWindowTarget" == "PfLo" ]]; then
+		defaults delete com.apple.finder NewWindowTargetPath
+	fi
 
-# Show icons for hard drives, servers, and removable media on the desktop
-defaults delete com.apple.finder ShowExternalHardDrivesOnDesktop
-defaults delete com.apple.finder ShowHardDrivesOnDesktop
-defaults delete com.apple.finder ShowMountedServersOnDesktop
-defaults delete com.apple.finder ShowRemovableMediaOnDesktop
+	defaults delete com.apple.finder NewWindowTarget
+fi
 
-# Automatically open a new Finder window when a volume is mounted
-defaults delete com.apple.frameworks.diskimages auto-open-ro-root
-defaults delete com.apple.frameworks.diskimages auto-open-rw-root
-defaults delete com.apple.finder OpenWindowForNewRemovableDisk
+if [[ "$ENABLE_FINDER_MOUNT_DESKTOP_ICONS" == "true" ]]; then
+	defaults delete com.apple.finder ShowHardDrivesOnDesktop
+	defaults delete com.apple.finder ShowExternalHardDrivesOnDesktop
+	defaults delete com.apple.finder ShowMountedServersOnDesktop
+	defaults delete com.apple.finder ShowRemovableMediaOnDesktop
+fi
 
-# Finder: show all filename extensions
-#defaults delete NSGlobalDomain AppleShowAllExtensions
+if [[ "$ENABLE_FINDER_NEW_WINDOW_REMOVEABLE_MEDIA" == "true" ]]; then
+	defaults delete com.apple.frameworks.diskimages auto-open-ro-root
+	defaults delete com.apple.frameworks.diskimages auto-open-rw-root
+	defaults delete com.apple.finder OpenWindowForNewRemovableDisk
+fi
 
-# Finder: allow text selection in Quick Look
-defaults delete com.apple.finder QLEnableTextSelectio
+if [[ "$ENABLE_FINDER_SHOW_PATHBAR" == "true" ]]; then
+	defaults delete com.apple.finder ShowPathbar
+fi
 
-# Display full POSIX path as Finder window title
-defaults delete com.apple.finder _FXShowPosixPathInTitle
+if [[ "$ENABLE_FINDER_SHOW_PATH_IN_TITLE" == "true" ]]; then
+	defaults delete com.apple.finder _FXShowPosixPathInTitle
+fi
 
-# When performing a search, search the current folder by default
-defaults delete com.apple.finder FXDefaultSearchScope
+if [[ "$ENABLE_FINDER_SHOW_ALL_EXTENSIONS" == "true" ]]; then
+	defaults delete NSGlobalDomain AppleShowAllExtensions
+fi
 
-# Disable the warning when changing a file extension
-defaults delete com.apple.finder FXEnableExtensionChangeWarning
+if [[ "$DISABLE_FINDER_WARNING_EXTENSION_CHANGE" == "true" ]]; then
+	defaults delete com.apple.finder FXEnableExtensionChangeWarning
+fi
 
-# Avoid creating .DS_Store files on network volumes
-defaults delete com.apple.desktopservices DSDontWriteNetworkStores
-defaults delete com.apple.desktopservices DSDontWriteUSBStores
+if [[ "$ENABLE_FINDER_QL_PANE" == "true" ]]; then
+	defaults delete com.apple.finder ShowPreviewPane
+	defaults delete com.apple.finder QLEnableTextSelection
+fi
 
-# Disable disk image verification
-defaults delete com.apple.frameworks.diskimages skip-verify
-defaults delete com.apple.frameworks.diskimages skip-verify-locked
-defaults delete com.apple.frameworks.diskimages skip-verify-remote
+if [[ "$ENABLE_FINDER_SEARCH_SCOPE" == "true" ]]; then
+	defaults delete com.apple.finder FXDefaultSearchScope
+fi
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults delete com.apple.finder FXPreferredViewStyle
+if [[ "$DISABLE_DS_Store_ON_MOUNTS" == "true" ]]; then
+	defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+	defaults delete com.apple.desktopservices DSDontWriteUSBStores
+fi
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
+if [[ "$DISABLE_DISK_IMAGE_VERIFICATION" == "true" ]]; then
+	defaults delete com.apple.frameworks.diskimages skip-verify
+	defaults delete com.apple.frameworks.diskimages skip-verify-locked
+	defaults delete com.apple.frameworks.diskimages skip-verify-remote
+fi
 
-# Show the ~/Users folder
-chflags nohidden /Users
+if [[ "$ENABLE_FINDER_VIEW_STYLE" == "true" ]]; then
+	defaults delete com.apple.finder FXPreferredViewStyle
+fi
 
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
-defaults delete com.apple.finder FXInfoPanesExpanded
+if [[ "$ENABLE_FINDER_LIBRARY_FOLDER" == "true" ]]; then
+	chflags hidden ~/Library
+fi
 
-# Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults delete com.apple.TimeMachine DoNotOfferNewDisksForBackup
+if [[ "$ENABLE_FINDER_USERS_FOLDER" == "true" ]]; then
+	chflags hidden /Users
+fi
+
+if [[ "$ENABLE_FINDER_EXPAND_INFO_PANE" == "true" ]]; then
+	defaults delete com.apple.finder FXInfoPanesExpanded
+fi
+
+if [[ "$DISABLE_ASK_FOR_TIMEMACHINE" == "true" ]]; then
+	defaults delete com.apple.TimeMachine DoNotOfferNewDisksForBackup
+fi
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
