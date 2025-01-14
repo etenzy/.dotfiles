@@ -93,6 +93,13 @@ if [[ "$ENABLE_INSTALL_UBERSICHT" == "true" ]]; then
     git clone https://github.com/etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 fi
 
+if [[ "$ENABLE_INSTALL_STREAMDECK" == "true" ]]; then
+    echo ''
+    echo 'Install streamdeck'
+    echo '------------------'
+    brew install --cask elgato-stream-deck
+fi
+
 if [[ "$ENABLE_INSTALL_VERACRYPT" == "true" ]]; then
     echo ''
     echo 'Install veracrypt'
