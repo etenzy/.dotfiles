@@ -19,4 +19,5 @@ if [[ "$ENABLE_INSTALL_YARN" == "true" ]]; then
     echo 'Install yarn'
     echo '------------'
     brew install yarn
+    echo 'path=("$HOME/.yarn/bin" $path)' >> $HOME/.homebrew-env/yarn
 fi

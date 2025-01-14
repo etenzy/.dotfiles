@@ -40,10 +40,7 @@ export MANPAGER="less -X"
 export GREP_OPTIONS="--color=auto"
 
 # Coding Support
-export COMPOSER_HOME="$HOME/.composer"
-export COMPOSER_MEMORY_LIMIT=-1
 export JAVA_HOME="/usr/local/opt/openjdk/"
-export GEM_HOME="$HOME/.gem"
 
 # AWS
 unset AWS_REGION
@@ -53,3 +50,7 @@ export CLOUDSDK_CONFIG=''
 
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
+
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none

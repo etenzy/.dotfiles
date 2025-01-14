@@ -22,7 +22,7 @@ sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 
 eval $(/opt/homebrew/bin/brew shellenv)
 
-mkdir -p $HOME/.dotfiles-custom/shell
+mkdir -p $HOME/.homebrew-env
 
 # homebrew-cask-upgrade
 # brew cu shows all cask with their status

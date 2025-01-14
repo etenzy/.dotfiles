@@ -20,10 +20,10 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     echo ''
     echo 'Install kubectl'
     echo '---------------'
-    brew install kubernetes-cli
+    brew install kubectl
     
     #Download https://github.com/ahmetb/kubectl-aliases/
-    curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o ~/.kubectl_aliases
+    curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o $HOME/.homebrew-env/kubectl
     
     # Install kubectl convert
     VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
@@ -33,6 +33,7 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
 
     #Install krew
     brew install krew
+    echo 'path=("$HOME/.krew/bin" $path)' >> $HOME/.homebrew-env/krew
 
     #Install kubectl plugins
     kubectl krew update

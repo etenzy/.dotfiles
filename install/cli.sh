@@ -19,6 +19,8 @@ if [[ "$ENABLE_INSTALL_BREWGEM" == "true" ]]; then
     echo 'Install brew-gem'
     echo '----------------'
     brew install brew-gem
+    echo 'path=("$HOME/.gem/bin" $path)' >> $HOME/.homebrew-env/gem
+    echo 'export GEM_HOME="$HOME/.gem"' >> $HOME/.homebrew-env/gem
 fi
 
 if [[ "$ENABLE_INSTALL_ACK" == "true" ]]; then
@@ -55,7 +57,7 @@ file=/etc/pam.d/sudo_local
 # (where 1 is the number of backups, so that rerunning this doesn't make you lose your original)
 bak=$(dirname $file)/.$(basename $file).$(echo $(ls $(dirname $file)/{,.}$(basename $file)* | grep -v template | wc -l))
 cp $file $bak
-awk -v is_done='pam_reattach' -v rule="auth       optional       $(brew --prefix)/lib/pam/pam_reattach.so" '
+awk -v is_done='pam_reattach' -v rule="auth       optional       $HOMEBREW_PREFIX/lib/pam/pam_reattach.so" '
 {
     # $1 is the first field
     # !~ means "does not match pattern"
@@ -83,6 +85,10 @@ if [[ "$ENABLE_INSTALL_ASDF" == "true" ]]; then
     echo 'Install asdf'
     echo '------------'
     brew install asdf
+    echo 'source "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"' >> $HOME/.homebrew-env/asdf
+    echo 'fpath+=("$HOMEBREW_PREFIX/opt/asdf/share/zsh/site-functions/_asdf")' >> $HOME/.homebrew-env/asdf
+    echo 'autoload -Uz _asdf' >> $HOME/.homebrew-env/asdf
+    echo 'compdef _asdf asdf' >> $HOME/.homebrew-env/asdf
 fi
 
 if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
@@ -149,7 +155,7 @@ if [[ "$ENABLE_INSTALL_FIGLET" == "true" ]]; then
     echo '--------------'
     brew install figlet
 
-    fontsDir=$(find $(brew --prefix)/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
+    fontsDir=$(find $HOMEBREW_PREFIX/Cellar/figlet -type d -name "*" -maxdepth 1 | tail -n 1)/share/figlet/fonts
 
     if [ -d "$fontsDir/.git/" ]; then
         rm -rf $fontsDir
@@ -179,6 +185,8 @@ if [[ "$ENABLE_INSTALL_FZF" == "true" ]]; then
     echo 'Install fzf'
     echo '-----------'
     brew install fzf
+    echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"' >> $HOME/.homebrew-env/fzf
+    echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"' >> $HOME/.homebrew-env/fzf
 fi
 
 if [[ "$ENABLE_INSTALL_GNUPG" == "true" ]]; then

@@ -22,6 +22,9 @@ if [[ "$ENABLE_INSTALL_NEOFETCH" == "true" ]]; then
     echo 'Install neofetch'
     echo '--------------'
     brew install neofetch
+    rm -rf $HOME/.config/neofetch
+    mkdir -p $HOME/.config/neofetch
+    ln -nfs $HOME/.dotfiles/shell/config/neofetch/config.conf $HOME/.config/neofetch/config.conf
 fi
 
 if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
@@ -43,12 +46,13 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     echo 'Install zsh-autosuggestions'
     echo '---------------------------'
     brew install zsh-autosuggestions
+    echo 'source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"' >> $HOME/.homebrew-env/zsh-autosuggestions
 
     echo ''
     echo 'Install zsh-completions'
     echo '-----------------------'
     brew install zsh-completions
-    chmod go-w '$(brew --prefix)/share'
+    chmod go-w "$HOMEBREW_PREFIX/share"
     rm -f ~/.zcompdump; compinit
 
     echo ''
@@ -56,6 +60,8 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     echo '-------------------------------'
     brew install zsh-syntax-highlighting
     git clone https://github.com/catppuccin/zsh-syntax-highlighting.git $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting
+    echo 'source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"' >> $HOME/.homebrew-env/zsh-syntax-highlighting
+    echo 'source "$HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"' >> $HOME/.homebrew-env/zsh-syntax-highlighting
 
     echo ''
     echo 'Symlink shell preferences'
