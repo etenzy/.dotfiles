@@ -17,7 +17,7 @@ if [[ "$ENABLE_INSTALL_DIRENV" == "true" ]]; then
     brew install direnv
 fi
 
-if [[ "$ENABLE_INSTALL_NEOFETCH" == "true" ]]; then
+if [[ "$ENABLE_INSTALL_FASTFETCH" == "true" ]]; then
     echo ''
     echo 'Install neofetch'
     echo '--------------'
