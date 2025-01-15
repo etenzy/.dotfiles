@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+if ! command -v pngquant &> /dev/null
+then
+    echo "Please install imagemagick:"
+    echo "ENABLE_INSTALL_IMAGEMAGICK=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+if ! command -v pngquant &> /dev/null
+then
+    echo "Please install pngquant:"
+    echo "ENABLE_INSTALL_PNGQUANT=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+if ! command -v oxipng &> /dev/null
+then
+    echo "Please install oxipng:"
+    echo "ENABLE_INSTALL_OXIPNG=true bash ~/.dotfiles/install/media.sh"
+    exit
+fi
+
+inputfile=$1
+inputfileDir=$(dirname $inputfile)
+inputfileBasename=$(basename $inputfile)
+inputfileBasenameNoExt="${inputfileBasename%.*}"
+
+if [[ "$(magick identify $inputfile | awk '{print $2}')" != "PNG" ]]; then
+    mogrify -format png $inputfile
+
+    inputfileBasename=$inputfileBasenameNoExt.png
+    inputfile=$inputfileDir/$inputfileBasename
+fi
+
+echo "running pngquant on $inputfileBasename"
+pngquant --force --quality 100 --speed 1 --strip --output "$inputfileDir/_$inputfileBasenameNoExt-pngquant.png" $inputfile
+
+echo "running oxipng on $inputfileBasename"
+oxipng --opt max --fast --quiet --out "$inputfileDir/$inputfileBasenameNoExt-tiny.png" "$inputfileDir/_$inputfileBasenameNoExt-pngquant.png"
+
+rm -f "$inputfileDir/_$inputfileBasenameNoExt-pngquant.png"

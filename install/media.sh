@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 
+if [[ "$ENABLE_INSTALL_IMAGEMAGICK" == "true" ]]; then
+    echo ''
+    echo 'Install imagemagick'
+    echo '-------------------'
+    brew install imagemagick
+fi
+
+if [[ "$ENABLE_INSTALL_PNGQUANT" == "true" ]]; then
+    echo ''
+    echo 'Install pngquant'
+    echo '----------------'
+    brew install pngquant
+fi
+
+if [[ "$ENABLE_INSTALL_OXIPNG" == "true" ]]; then
+    echo ''
+    echo 'Install oxipng'
+    echo '--------------'
+    brew install oxipng
+fi
+
 if [[ "$ENABLE_INSTALL_FFMPEG" == "true" ]]; then
     echo ''
     echo 'Install ffmpeg'
