@@ -3,21 +3,21 @@
 if ! command -v flac &> /dev/null
 then
     echo "Please install flac:"
-    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    echo "ENABLE_INSTALL_FLAC=true bash ~/.dotfiles/install/media.sh"
     exit
 fi
 
 if ! command -v shnsplit &> /dev/null
 then
     echo "Please install flac:"
-    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    echo "ENABLE_INSTALL_FLAC=true bash ~/.dotfiles/install/media.sh"
     exit
 fi
 
 if ! command -v cuetag.sh &> /dev/null
 then
     echo "Please install flac:"
-    echo "ENABLE_INSTALL_flac=true bash ~/.dotfiles/install/media.sh"
+    echo "ENABLE_INSTALL_FLAC=true bash ~/.dotfiles/install/media.sh"
     exit
 fi
 
