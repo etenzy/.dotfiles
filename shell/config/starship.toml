@@ -44,15 +44,49 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 [git_metrics]
 disabled = true
 
+[python]
+style = 'teal'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+[lua]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
+[nodejs]
+style = 'blue'
+symbol = ' '
+
+[golang]
+style = 'blue'
+symbol = ' '
+
+[haskell]
+style = 'blue'
+symbol = ' '
+
+[rust]
+style = 'orange'
+symbol = ' '
+
+[ruby]
+style = 'blue'
+symbol = ' '
+
+[package]
+symbol = '󰏗 '
+
 [aws]
-symbol = " "
+symbol = ' '
 
 [aws.region_aliases]
 eu-central-1 = "fra"
 
 [kubernetes]
 disabled = false
-symbol = "☸ "
+symbol = " "
 format = 'on [$symbol$context( \($namespace\))]($style) '
 
 [cmd_duration]
