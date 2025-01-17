@@ -34,9 +34,13 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     #Install krew
     brew install krew
     echo 'path=("$HOME/.krew/bin" $path)' >> $HOME/.homebrew-env/krew
+    export PATH="$HOME/.krew/bin:$PATH"
+
+    kubectl krew index add netshoot https://github.com/nilic/kubectl-netshoot.git
 
     #Install kubectl plugins
     kubectl krew update
+    kubectl krew install netshoot/netshoot
     kubectl krew install neat
     kubectl krew upgrade cnpg
 
