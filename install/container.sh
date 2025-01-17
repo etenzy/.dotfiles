@@ -6,6 +6,9 @@ if [[ "$ENABLE_INSTALL_COLIMA" == "true" ]]; then
     echo '--------------'
     brew install docker docker-completion docker-compose docker-credential-helper
     brew install colima
+    mkdir -p $HOME/.config/colima/default
+    rm -rf $HOME/.config/colima/default/colima.yaml
+    ln -nfs $HOME/.dotfiles/shell/config/colima/default/colima.yaml $HOME/.config/colima/default/colima.yaml
 fi
 
 if [[ "$ENABLE_INSTALL_DOCKER" == "true" ]]; then
