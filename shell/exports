@@ -51,6 +51,8 @@ export CLOUDSDK_CONFIG=''
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
 
+export netshoot="$HOME/.dotfiles/kubernetes/netshoot.yaml"
+
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
