@@ -21,9 +21,14 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     echo 'Install kubectl'
     echo '---------------'
     brew install kubectl
+
+    if zsh -c 'command -v asdf' &> /dev/null; then
+        asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
+    fi
     
     #Download https://github.com/ahmetb/kubectl-aliases/
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o $HOME/.homebrew-env/kubectl
+    source $HOME/.homebrew-env/kubectl
     
     # Install kubectl convert
     VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
@@ -32,16 +37,29 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     sudo mv ./kubectl-convert /usr/local/bin/kubectl-convert
 
     #Install krew
-    brew install krew
-    echo 'path=("$HOME/.krew/bin" $path)' >> $HOME/.homebrew-env/krew
-    export PATH="$HOME/.krew/bin:$PATH"
+    if ! zsh -c 'command -v kubectl-krew' &> /dev/null; then
+        (
+            set -x; cd "$(mktemp -d)" &&
+            OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+            ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+            KREW="krew-${OS}_${ARCH}" &&
+            curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+            tar zxvf "${KREW}.tar.gz" &&
+            ./"${KREW}" install krew
+        )
+    fi
+
+    if ! echo "$PATH" | grep -q "${KREW_ROOT:-$HOME/.krew}/bin"; then
+        echo 'path=("$HOME/.krew/bin" $path)' >> $HOME/.homebrew-env/krew
+        source $HOME/.homebrew-env/krew
+    fi
 
     kubectl krew index add netshoot https://github.com/nilic/kubectl-netshoot.git
 
     #Install kubectl plugins
     kubectl krew update
-    kubectl krew install netshoot/netshoot
-    kubectl krew install neat
+    kubectl krew upgrade netshoot/netshoot
+    kubectl krew upgrade neat
     kubectl krew upgrade cnpg
 
     mkdir -p $HOME/.kube/config.d
@@ -102,6 +120,10 @@ if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
     echo 'Install Flux CLI'
     echo '----------------'
     brew install fluxcd/tap/flux
+
+    if zsh -c 'command -v asdf' &> /dev/null; then
+        asdf plugin-add flux2 https://github.com/tablexi/asdf-flux2.git
+    fi
 fi
 
 if [[ "$ENABLE_INSTALL_KUBESEAL" == "true" ]]; then
