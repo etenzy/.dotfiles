@@ -58,9 +58,9 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
 
     #Install kubectl plugins
     kubectl krew update
-    kubectl krew upgrade netshoot/netshoot
-    kubectl krew upgrade neat
-    kubectl krew upgrade cnpg
+    kubectl krew install netshoot/netshoot
+    kubectl krew install neat
+    kubectl krew install cnpg
 
     mkdir -p $HOME/.kube/config.d
 fi
