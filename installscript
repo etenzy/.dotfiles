@@ -32,6 +32,10 @@ brew tap buo/cask-upgrade
 
 brew update
 
+if [[ "$ENABLE_INSTALL_SHELL" == "true" ]]; then
+    source $HOME/.dotfiles/install/shell.sh
+fi
+
 if [[ "$ENABLE_INSTALL_CLI" == "true" ]]; then
     source $HOME/.dotfiles/install/cli.sh
 fi
@@ -42,10 +46,6 @@ fi
 
 if [[ "$ENABLE_INSTALL_SVN" == "true" ]]; then
     source $HOME/.dotfiles/install/svn.sh
-fi
-
-if [[ "$ENABLE_INSTALL_SHELL" == "true" ]]; then
-    source $HOME/.dotfiles/install/shell.sh
 fi
 
 if [[ "$ENABLE_INSTALL_VIM" == "true" ]]; then
