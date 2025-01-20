@@ -52,6 +52,7 @@ export CLOUDSDK_CONFIG=''
 export KUBECONFIG="$HOME/.kube/config"
 
 export netshoot="$HOME/.dotfiles/kubernetes/netshoot.yaml"
+export netshootroot="$HOME/.dotfiles/kubernetes/netshoot-root.yaml"
 
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=$(echo $ZSH_HIGHLIGHT_STYLES[path] | sed 's/,underline//')
