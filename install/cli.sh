@@ -21,6 +21,7 @@ if [[ "$ENABLE_INSTALL_BREWGEM" == "true" ]]; then
     brew install brew-gem
     echo 'path=("$HOME/.gem/bin" $path)' >> $HOME/.homebrew-env/gem
     echo 'export GEM_HOME="$HOME/.gem"' >> $HOME/.homebrew-env/gem
+    source $HOME/.homebrew-env/gem
 fi
 
 if [[ "$ENABLE_INSTALL_ACK" == "true" ]]; then
@@ -89,6 +90,7 @@ if [[ "$ENABLE_INSTALL_ASDF" == "true" ]]; then
     echo 'fpath+=("$HOMEBREW_PREFIX/opt/asdf/share/zsh/site-functions/_asdf")' >> $HOME/.homebrew-env/asdf
     echo 'autoload -Uz _asdf' >> $HOME/.homebrew-env/asdf
     echo 'compdef _asdf asdf' >> $HOME/.homebrew-env/asdf
+    source $HOME/.homebrew-env/asdf
 fi
 
 if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
@@ -187,6 +189,7 @@ if [[ "$ENABLE_INSTALL_FZF" == "true" ]]; then
     brew install fzf
     echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"' >> $HOME/.homebrew-env/fzf
     echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"' >> $HOME/.homebrew-env/fzf
+    source $HOME/.homebrew-env/fzf
 fi
 
 if [[ "$ENABLE_INSTALL_GNUPG" == "true" ]]; then

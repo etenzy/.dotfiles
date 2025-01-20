@@ -13,6 +13,7 @@ if [[ "$ENABLE_INSTALL_OPENTOFU" == "true" ]]; then
     echo '----------------'
     brew install opentofu
     echo 'complete -o nospace -C "$HOMEBREW_PREFIX/bin/tofu" tofu' >> $HOME/.homebrew-env/opentofu
+    source $HOME/.homebrew-env/opentofu
 fi
 
 if [[ "$ENABLE_INSTALL_ANSIBLE" == "true" ]]; then
@@ -45,6 +46,7 @@ if [[ "$ENABLE_INSTALL_GCP" == "true" ]]; then
     brew install --cask google-cloud-sdk
     echo 'source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"' >> $HOME/.homebrew-env/google-cloud-sdk
     echo 'source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"' >> $HOME/.homebrew-env/google-cloud-sdk
+    source $HOME/.homebrew-env/google-cloud-sdk
 fi
 
 if [[ "$ENABLE_INSTALL_AZURE" == "true" ]]; then

@@ -22,6 +22,7 @@ if [[ "$ENABLE_INSTALL_PHP_COMPOSER" == "true" ]]; then
     echo 'path=("$HOME/.composer/vendor/bin" $path)' >> $HOME/.homebrew-env/composer
     echo 'export COMPOSER_HOME="$HOME/.composer"' >> $HOME/.homebrew-env/composer
     echo 'export COMPOSER_MEMORY_LIMIT=-1' >> $HOME/.homebrew-env/composer
+    source $HOME/.homebrew-env/composer
 fi
 
 if [[ "$ENABLE_INSTALL_PHP_IMAGEMAGICK" == "true" ]]; then
