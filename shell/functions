@@ -96,6 +96,86 @@ function respring() {
     done
 }
 
+function ts() {
+    if [ -t 0 ]; then
+        if [ -z "$1" ]; then
+            date "+%s"
+        else
+            if [ $IS_GNUDATE = true ]; then
+                date -d "$1" "+%s"
+            else
+                date -j -f "%a %b %d %T %Z %Y" "$1" "+%s"
+            fi
+        fi
+    else
+        while IFS= read -r line; do
+            if [ $IS_GNUDATE = true ]; then
+                date -d "$line" "+%s"
+            else
+                date -j -f "%a %b %d %T %Z %Y" "$line" "+%s"
+            fi
+        done
+    fi
+}
+
+function ts2date() {
+    if [ -t 0 ]; then
+        if [ $IS_GNUDATE = true ]; then
+            date -d @$1
+        else
+            date -r $1
+        fi
+    else
+        while IFS= read -r line; do
+            if [ $IS_GNUDATE = true ]; then
+                date -d @$line
+            else
+                date -r $line
+            fi
+        done
+    fi
+}
+
+function datetime() {
+    if [ -t 0 ]; then
+        if [ -z "$1" ]; then
+            date "+%Y-%m-%d %T"
+        else
+            if [ $IS_GNUDATE = true ]; then
+                date -d "$1" "+%Y-%m-%d %T"
+            else
+                date -j -f "%a %b %d %T %Z %Y" "$1" "+%Y-%m-%d %T"
+            fi
+        fi
+    else
+        while IFS= read -r line; do
+            if [ $IS_GNUDATE = true ]; then
+                date -d "$line" "+%Y-%m-%d %T"
+            else
+                date -j -f "%a %b %d %T %Z %Y" "$line" "+%Y-%m-%d %T"
+            fi
+        done
+    fi
+}
+
+function datetime2date() {
+    if [ -t 0 ]; then
+         if [ $IS_GNUDATE = true ]; then
+            date -d "$1"
+        else
+            date -j -f "%Y-%m-%d %H:%M:%S" "$1"
+        fi
+    else
+        while IFS= read -r line; do
+            if [ $IS_GNUDATE = true ]; then
+                date -d "$line"
+            else
+                date -j -f "%Y-%m-%d %H:%M:%S" "$line"
+            fi
+        done
+    fi
+}
+
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {

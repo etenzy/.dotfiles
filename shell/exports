@@ -59,3 +59,9 @@ ZSH_HIGHLIGHT_STYLES[path]=$(echo $ZSH_HIGHLIGHT_STYLES[path] | sed 's/,underlin
 ZSH_HIGHLIGHT_STYLES[path_pathseparator]=$(echo $ZSH_HIGHLIGHT_STYLES[path_pathseparator] | sed 's/,underline//')
 ZSH_HIGHLIGHT_STYLES[path_prefix]=$(echo $ZSH_HIGHLIGHT_STYLES[path_prefix] | sed 's/,underline//')
 ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]=$(echo $ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator] | sed 's/,underline//')
+
+if DATE_TEST=$(date --version 2>/dev/null); then
+  export IS_GNUDATE=true;
+else
+  export IS_GNUDATE=false;
+fi
