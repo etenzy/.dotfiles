@@ -97,6 +97,14 @@ function respring() {
 }
 
 function ts() {
+    if [ -z "$IS_GNUDATE" ]; then
+        if DATE_TEST=$(date --version 2>/dev/null); then
+            IS_GNUDATE=true;
+        else
+            IS_GNUDATE=false;
+        fi
+    fi
+
     if [ -t 0 ]; then
         if [ -z "$1" ]; then
             date "+%s"
@@ -119,6 +127,14 @@ function ts() {
 }
 
 function ts2date() {
+    if [ -z "$IS_GNUDATE" ]; then
+        if DATE_TEST=$(date --version 2>/dev/null); then
+            IS_GNUDATE=true;
+        else
+            IS_GNUDATE=false;
+        fi
+    fi
+
     if [ -t 0 ]; then
         if [ $IS_GNUDATE = true ]; then
             date -d @$1
@@ -137,6 +153,14 @@ function ts2date() {
 }
 
 function datetime() {
+    if [ -z "$IS_GNUDATE" ]; then
+        if DATE_TEST=$(date --version 2>/dev/null); then
+            IS_GNUDATE=true;
+        else
+            IS_GNUDATE=false;
+        fi
+    fi
+
     if [ -t 0 ]; then
         if [ -z "$1" ]; then
             date "+%Y-%m-%d %T"
@@ -159,6 +183,14 @@ function datetime() {
 }
 
 function datetime2date() {
+    if [ -z "$IS_GNUDATE" ]; then
+        if DATE_TEST=$(date --version 2>/dev/null); then
+            IS_GNUDATE=true;
+        else
+            IS_GNUDATE=false;
+        fi
+    fi
+
     if [ -t 0 ]; then
          if [ $IS_GNUDATE = true ]; then
             date -d "$1"
