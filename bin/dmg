@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+pos=-1
+
+hdiutil create \
+    -puppetstrings \
+    -skipunreadable \
+    -fs APFS \
+    -format UDRO \
+    -srcfolder "$2" \
+    -volname "$1" \
+    "$3/$1.dmg" | while IFS=: read -r part1 part2; do
+        if [[ $part2 =~ ^-?[0-9]+$ ]]; then
+            part2_int=$part2
+        elif [[ $part2 =~ ^-?[0-9]*\.[0-9]+$ ]]; then
+            part2_int=$(printf "%.0f" "$part2")
+        else
+            continue
+        fi
+
+        if [ $part2_int -gt $pos ]; then
+            echo $part2_int
+            pos=$part2_int
+        elif [[ $part2_int -lt $pos && $pos -gt 1 ]]; then
+            echo 100
+        fi
+    done

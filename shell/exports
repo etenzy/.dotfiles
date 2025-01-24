@@ -17,8 +17,7 @@ export BAT_THEME="Catppuccin-frappe"
 # Make vim the default editor
 export EDITOR="vim"
 
-# Larger bash history (allow 32³ entries; default is 500)
-export HISTSIZE=32768
+export HISTSIZE=1000000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
@@ -51,8 +50,9 @@ export CLOUDSDK_CONFIG=''
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
 
-export netshoot="$HOME/.dotfiles/kubernetes/netshoot.yaml"
-export netshootroot="$HOME/.dotfiles/kubernetes/netshoot-root.yaml"
+export debug_netshoot="$HOME/.dotfiles/kubernetes/netshoot.yaml"
+export debug_netshoot_root="$HOME/.dotfiles/kubernetes/netshoot-root.yaml"
+export debug_postgres="$HOME/.dotfiles/kubernetes/postgres.yaml"
 
 export IS_GNUDATE=false;
 

@@ -73,3 +73,5 @@ alias ktmp="kubectl run tmp --restart=Never --rm -it --image=nicolaka/netshoot"
 
 alias -g know="--force --grace-period 0"
 alias -g drcy="--dry-run=client -o yaml"
+
+alias notes="open $HOME/notes.md"
