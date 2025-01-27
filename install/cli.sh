@@ -390,9 +390,16 @@ if [[ "$ENABLE_INSTALL_XH" == "true" ]]; then
     brew install xh
 fi
 
+if [[ "$ENABLE_INSTALL_YJ" == "true" ]]; then
+    echo ''
+    echo 'Install yj'
+    echo '----------'
+    brew install yj
+fi
+
 if [[ "$ENABLE_INSTALL_YQ" == "true" ]]; then
     echo ''
-    echo 'Install qy'
+    echo 'Install yq'
     echo '----------'
     brew install yq
 fi
