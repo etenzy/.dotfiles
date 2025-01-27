@@ -313,6 +313,12 @@ function test-connection-pg() {
         -r=PORTS="$2"
 }
 
+function debug-postgres() {
+    kubectl apply -f $HOME/.dotfiles/kubernetes/psql.yaml
+    sleep 3s
+    kubectl exec -it tmp-shell -- /bin/sh -c $(test-connection-pg “$1” “$2”)
+}
+
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {

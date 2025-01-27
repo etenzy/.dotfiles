@@ -42,17 +42,12 @@ export GREP_OPTIONS="--color=auto"
 export JAVA_HOME="/usr/local/opt/openjdk/"
 
 # AWS
-unset AWS_REGION
 
 # gcloud
 export CLOUDSDK_CONFIG=''
 
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
-
-export debug_netshoot="$HOME/.dotfiles/kubernetes/netshoot.yaml"
-export debug_netshoot_root="$HOME/.dotfiles/kubernetes/netshoot-root.yaml"
-export debug_postgres="$HOME/.dotfiles/kubernetes/postgres.yaml"
 
 export IS_GNUDATE=false;
 

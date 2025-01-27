@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 ips=(${1:-IPS})
 ports=(${2:-PORTS})
