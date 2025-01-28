@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: tmp-shell
-    image: postgres
+    image: alpine/psql
     env:
     - name: TZ
       value: "Europe/Berlin"

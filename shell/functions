@@ -308,15 +308,28 @@ function test-connection-nc() {
 }
 
 function test-connection-pg() {
+    database=${3:-$PG_DEFAULT_DATABASE}
+    user=${4:-$PG_DEFAULT_USER}
+
     render_script $HOME/.dotfiles/kubernetes/test-connection-pg.sh \
         -r=IPS="$1" \
-        -r=PORTS="$2"
+        -r=PORTS="$2" \
+        -r=DATABASE="$database" \
+        -r=USER="$user"
 }
 
-function debug-postgres() {
+function kube-debug-ip() {
+    kubectl apply -f $HOME/.dotfiles/kubernetes/nc.yaml
+    sleep 3s
+    kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-nc $1 $2)"
+    kubectl delete -f $HOME/.dotfiles/kubernetes/nc.yaml --force --grace-period 0
+}
+
+function kube-debug-postgres() {
     kubectl apply -f $HOME/.dotfiles/kubernetes/psql.yaml
     sleep 3s
-    kubectl exec -it tmp-shell -- /bin/sh -c $(test-connection-pg “$1” “$2”)
+    kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 $2 ${3:-} ${4:-})"
+    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --force --grace-period 0
 }
 
 # zmk_build <build-dir> <board> <shield>

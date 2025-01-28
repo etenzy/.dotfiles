@@ -1,10 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-ips=(${1:-IPS})
-ports=(${2:-PORTS})
-
-for ip in "${ips[@]}"; do 
-    for port in "${ports[@]}"; do
+for ip in IPS; do 
+    for port in PORTS; do
         printf "$(date '+%Y-%m-%d %H:%M:%S') | nc on $ip:$port => "
         nc -v -z -w 3 $ip $port &> /dev/null \
             && printf "\e[92msuccess\e[0m\n" \
