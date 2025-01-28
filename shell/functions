@@ -329,3 +329,11 @@ function zmk_build() {
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
 # }
+
+function kubeconfig-flatten() {
+    rename s/:/-/g $(find "$HOME/.kube" -maxdepth 1 -type f -name '*.bk')
+    export KUBECONFIG="$(find "$HOME/.kube" -maxdepth 1 -type f -name '*.bk' | tr '\n' ':')$HOME/.kube/config"
+    kubectl config view --raw --flatten > $HOME/.kube/config_tmp
+    mv $HOME/.kube/config_tmp $HOME/.kube/config
+    mv $HOME/.kube/*.bk $HOME/.kube/.backup/
+}
