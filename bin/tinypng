@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-if ! command -v pngquant &> /dev/null
+if ! command -v magick &> /dev/null
 then
     echo "Please install imagemagick:"
     echo "ENABLE_INSTALL_IMAGEMAGICK=true bash ~/.dotfiles/install/media.sh"
