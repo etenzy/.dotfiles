@@ -56,6 +56,13 @@ if [[ "$ENABLE_INSTALL_INSOMNIA" == "true" ]]; then
     brew install --cask insomnia
 fi
 
+if [[ "$ENABLE_INSTALL_KEYBOARDCLEANTOOL" == "true" ]]; then
+    echo ''
+    echo 'Install KeyboardCleanTool'
+    echo '-------------------------'
+    brew install --cask keyboardcleantool
+fi
+
 if [[ "$ENABLE_INSTALL_KEYCASTR" == "true" ]]; then
     echo ''
     echo 'Install keycastr'
