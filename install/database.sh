@@ -7,6 +7,13 @@ if [[ "$ENABLE_INSTALL_MYCLI" == "true" ]]; then
     brew install mycli
 fi
 
+if [[ "$ENABLE_INSTALL_PGCLI" == "true" ]]; then
+    echo ''
+    echo 'Install pgcli'
+    echo '-------------'
+    brew install pgcli
+fi
+
 if [[ "$ENABLE_INSTALL_SEQUELPRO" == "true" ]]; then
     echo ''
     echo 'Install sequel-pro'
