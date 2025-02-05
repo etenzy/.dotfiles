@@ -310,12 +310,13 @@ function test-connection-nc() {
 }
 
 function test-connection-pg() {
-    database=${3:-$PG_DEFAULT_DATABASE}
-    user=${4:-$PG_DEFAULT_USER}
+    ports=${2:-5432}
+    database=${3:-postgres}
+    user=${4:-postgres}
 
     render_script $HOME/.dotfiles/kubernetes/test-connection-pg.sh \
         -r=IPS="$1" \
-        -r=PORTS="$2" \
+        -r=PORTS="$ports" \
         -r=DATABASE="$database" \
         -r=USER="$user"
 }
@@ -341,7 +342,7 @@ function kube-debug-ip() {
 function kube-debug-pg() {
     kubectl apply -f $HOME/.dotfiles/kubernetes/psql.yaml
     kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
-        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 $2 ${3:-} ${4:-})"
+        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 ${2:-} ${3:-} ${4:-})"
     kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --grace-period=0
 }
 
