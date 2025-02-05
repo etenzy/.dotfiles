@@ -48,6 +48,9 @@ export CLOUDSDK_CONFIG=''
 
 # kubectx
 export KUBECONFIG="$HOME/.kube/config"
+export netshoot="/Users/michael.roedel/.dotfiles/kubernetes/netshoot.yaml"
+export psql="/Users/michael.roedel/.dotfiles/kubernetes/psql.yaml"
+export smb_toolbox="/Users/michael.roedel/.dotfiles/kubernetes/smb-toolbox.yaml"
 
 export IS_GNUDATE=false;
 
