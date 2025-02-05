@@ -290,7 +290,9 @@ function render_script() {
             search=$(echo ${i#*=} | awk -F'=' '{print $1}')
             replace=$(echo ${i#*=} | awk -F'=' '{print $2}')
 
-            template=$(echo "$template" | sed "s/$search/$replace/g")
+            replace=${replace//\\/\\\\}
+
+            template="${template/$search/$replace}"
             shift
             ;;
             *)
@@ -318,18 +320,36 @@ function test-connection-pg() {
         -r=USER="$user"
 }
 
-function kube-debug-ip() {
-    kubectl apply -f $HOME/.dotfiles/kubernetes/nc.yaml
-    sleep 3s
-    kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-nc $1 $2)"
-    kubectl delete -f $HOME/.dotfiles/kubernetes/nc.yaml --force --grace-period 0
+function test-connection-smb() {
+    share=${2//\\/\\\\}
+    output=${5:-'false'}
+
+    render_script $HOME/.dotfiles/kubernetes/test-connection-smb.sh \
+        -r=IP="$1" \
+        -r=SHARE="${share//\\/\\\\}" \
+        -r=USER="$3" \
+        -r=PASSWORD="$4"
 }
 
-function kube-debug-postgres() {
+function kube-debug-ip() {
+    kubectl apply -f $HOME/.dotfiles/kubernetes/netshoot.yaml
+    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
+        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-nc $1 $2)"
+    kubectl delete -f $HOME/.dotfiles/kubernetes/netshoot.yaml --grace-period=0
+}
+
+function kube-debug-pg() {
     kubectl apply -f $HOME/.dotfiles/kubernetes/psql.yaml
-    sleep 3s
-    kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 $2 ${3:-} ${4:-})"
-    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --force --grace-period 0
+    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
+        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 $2 ${3:-} ${4:-})"
+    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --grace-period=0
+}
+
+function kube-debug-smb() {
+    kubectl apply -f $HOME/.dotfiles/kubernetes/smb-toolbox.yaml
+    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
+        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-smb $1 $2 $3 $4)"
+    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --grace-period=0
 }
 
 # zmk_build <build-dir> <board> <shield>
