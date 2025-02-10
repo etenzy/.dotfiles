@@ -1,14 +1,38 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -o pipefail
 
-value=0
-max=100
+max=${2:-100}
 
 lsep="▕"
 rsep="▏"
 fill="░"
 bar="█"
+
+function render() {
+    value=$1
+    max=$2
+
+    if [ $value -lt 0 ]; then
+        value=0
+    fi
+
+    if [ $value -gt $max ]; then
+        value=$max
+    fi
+
+    let _progress=(${value}*100/${max}*100)/100
+    let _done=(${_progress}*4)/10
+	let _left=40-$_done
+    # Build progressbar string lengths
+    _done=$(printf "%${_done}s")
+	_left=$(printf "%${_left}s")
+
+    # 1.2 Build progressbar strings and print the ProgressBar line
+    # 1.2.1 Output example:
+    # 1.2.1.1 Progress : ▕████████████████████░░░░░░░░░░░░░░░░░░░░▏ 50%
+    echo "$lsep${_done// /$bar}${_left// /$fill}$rsep ${_progress}%%"
+}
 
 if ! [ -t 0 ]; then
     while IFS= read -r line; do
@@ -16,26 +40,8 @@ if ! [ -t 0 ]; then
             continue
         fi
 
-        value=$line
-
-        if [ $value -lt 0 ]; then
-            value=0
-        fi
-
-        if [ $value -gt $max ]; then
-            value=$max
-        fi
-
-        let _progress=($value*100/$max*100)/100
-        let _done=(${_progress}*4)/10
-        let _left=40-$_done
-        # Build progressbar string lengths
-        _done=$(printf "%${_done}s")
-        _left=$(printf "%${_left}s")
-
-        # 1.2 Build progressbar strings and print the ProgressBar line
-        # 1.2.1 Output example:
-        # 1.2.1.1 Progress : ▕████████████████████░░░░░░░░░░░░░░░░░░░░▏ 50%
-        echo "$lsep${_done// /$bar}${_left// /$fill}$rsep ${_progress}%%"
+        render $line $max
     done
+else
+    render $1 $max
 fi

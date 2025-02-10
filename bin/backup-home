@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+source $HOME/.dotfiles/shell/logging.sh
+
+ANYFAIL=false
+log_task "Creating Backup"
+
+mkdir -p $HOME/Backup/_temp
+
+log_task "Copying files" \
+    && rsync --info=progress2 --no-i-r -avr \
+        --exclude="go" \
+        --exclude="Library" \
+        --exclude="Movies" \
+        --exclude="Music" \
+        --exclude="Pictures/Photos Library.photoslibrary" \
+        --exclude="Backup" \
+        --exclude=".config/colima" \
+        --exclude=".asdf" \
+        --exclude=".cache" \
+        --exclude=".k8slens" \
+        --exclude=".krew" \
+        --exclude=".kube/cache" \
+        --exclude=".vscode/extensions" \
+        --exclude=".Trash" \
+        --exclude="*/.DS_Store" \
+        --exclude="*/*.sock" \
+        $HOME $HOME/Backup/_temp | grep -o "[0-9]*%" | sed 's/%//' | progressBar | log_progress  \
+    && log_task_success \
+    || (log_task_fail && ANYFAIL=true)
+
+log_task "Creating DMG" \
+    && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | progressbar | log_progress \
+    && log_task_success \
+    || (log_task_fail && ANYFAIL=true)
+
+log_task "Cleaning up" \
+    && rm -rf $HOME/Backup/_temp \
+    && log_info "Temporary files removed" \
+    && log_task_success \
+    || (log_task_fail && ANYFAIL=true)
+
+if [ "$ANYFAIL" = true ]; then
+    log_task_fail "Backup failed"
+else
+    log_task_success "$HOME/Backup/$(date "+%Y-%m").dmg"
+fi

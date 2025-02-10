@@ -44,50 +44,6 @@ function update_completions() {
     talosctl_completion
 }
 
-function backup_home() {
-    ANYFAIL=false
-    log_task "Creating Backup"
-
-    mkdir -p $HOME/Backup/_temp
-
-    log_task "Copying files" \
-        && rsync --info=progress2 --no-i-r -avr \
-            --exclude="Library" \
-            --exclude="Movies" \
-            --exclude="Music" \
-            --exclude="Pictures/Photos Library.photoslibrary" \
-            --exclude="Downloads" \
-            --exclude="Backup" \
-            --exclude=".config/colima" \
-            --exclude=".k8slens" \
-            --exclude=".krew" \
-            --exclude=".kube/cache" \
-            --exclude=".vscode/extensions" \
-            --exclude=".Trash" \
-            --exclude="*/.DS_Store" \
-            --exclude="*/*.sock" \
-            $HOME $HOME/Backup/_temp | grep -o "[0-9]*%" | sed 's/%//' | progressBar | log_progress  \
-        && log_task_success \
-        || (log_task_fail && ANYFAIL=true)
-
-    log_task "Creating DMG" \
-        && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | progressbar | log_progress \
-        && log_task_success \
-        || (log_task_fail && ANYFAIL=true)
-
-    log_task "Cleaning up" \
-        && rm -rf mkdir -p $HOME/Backup/_temp \
-        && log_info "Temporary files removed" \
-        && log_task_success \
-        || (log_task_fail && ANYFAIL=true)
-
-    if [ "$ANYFAIL" = true ]; then
-        log_task_fail "Backup failed"
-    else
-        log_task_success "$HOME/Backup/$(date "+%Y-%m").dmg"
-    fi
-}
-
 # List open media
 function lsom() {
     lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
@@ -244,38 +200,6 @@ function datetime2date() {
                 date -j -f "%Y-%m-%d %H:%M:%S" "$line"
             fi
         done
-    fi
-}
-
-function log_progress() {
-    symbolEmpty="⠀"
-    symbolFull="⠿"
-    if ! [ -t 0 ]; then
-        i=1
-
-        symbol=$symbolEmpty
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} $(echo 0 | progressBar)${TXT_CLEAR}\r";
-        
-        while IFS= read -r line; do
-            case $((i % 10)) in
-                0) symbol="⠋" ;;
-                1) symbol="⠙" ;;
-                2) symbol="⠹" ;;
-                3) symbol="⠸" ;;
-                4) symbol="⠼" ;;
-                5) symbol="⠴" ;;
-                6) symbol="⠦" ;;
-                7) symbol="⠧" ;;
-                8) symbol="⠇" ;;
-                9) symbol="⠏" ;;
-            esac
-
-            printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} ${line}${TXT_CLEAR}\r";
-            i=$((i+1))
-        done
-
-        symbol=$symbolFull
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} $(echo 100 | progressBar)${TXT_CLEAR}\r\n";
     fi
 }
 
