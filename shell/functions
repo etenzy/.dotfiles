@@ -333,24 +333,24 @@ function test-connection-smb() {
 }
 
 function kube-debug-ip() {
-    kubectl apply -f $HOME/.dotfiles/kubernetes/netshoot.yaml
+    kubectl apply -f $kube_netshoot
     kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
         && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-nc $1 $2)"
-    kubectl delete -f $HOME/.dotfiles/kubernetes/netshoot.yaml --grace-period=0
+    kubectl delete -f $kube_netshoot --grace-period=0
 }
 
 function kube-debug-pg() {
-    kubectl apply -f $HOME/.dotfiles/kubernetes/psql.yaml
+    kubectl apply -f $kube_psql
     kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
         && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 ${2:-} ${3:-} ${4:-})"
-    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --grace-period=0
+    kubectl delete -f $kube_psql --grace-period=0
 }
 
 function kube-debug-smb() {
-    kubectl apply -f $HOME/.dotfiles/kubernetes/smb-toolbox.yaml
+    kubectl apply -f $kube_smb_toolbox
     kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
         && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-smb $1 $2 $3 $4)"
-    kubectl delete -f $HOME/.dotfiles/kubernetes/psql.yaml --grace-period=0
+    kubectl delete -f $kube_smb_toolbox --grace-period=0
 }
 
 # zmk_build <build-dir> <board> <shield>
