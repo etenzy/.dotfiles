@@ -86,10 +86,10 @@ if [[ "$ENABLE_INSTALL_ASDF" == "true" ]]; then
     echo 'Install asdf'
     echo '------------'
     brew install asdf
-    echo 'source "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"' >> $HOME/.homebrew-env/asdf
-    echo 'fpath+=("$HOMEBREW_PREFIX/opt/asdf/share/zsh/site-functions/_asdf")' >> $HOME/.homebrew-env/asdf
-    echo 'autoload -Uz _asdf' >> $HOME/.homebrew-env/asdf
-    echo 'compdef _asdf asdf' >> $HOME/.homebrew-env/asdf
+    echo 'path=(${ASDF_DATA_DIR:-$HOME/.asdf}/shims $path)' >> $HOME/.homebrew-env/asdf
+    echo 'fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)' >> $HOME/.homebrew-env/asdf
+    mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+    asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
     source $HOME/.homebrew-env/asdf
 fi
 
