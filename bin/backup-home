@@ -3,6 +3,11 @@
 source $HOME/.dotfiles/shell/logging.sh
 
 ANYFAIL=false
+function anyfail() {
+    log_task_fail
+    ANYFAIL=true
+}
+
 log_task "Creating Backup"
 
 mkdir -p $HOME/Backup/_temp
@@ -27,18 +32,18 @@ log_task "Copying files" \
         --exclude="*/*.sock" \
         $HOME $HOME/Backup/_temp | grep -o "[0-9]*%" | sed 's/%//' | progressBar | log_progress  \
     && log_task_success \
-    || (log_task_fail && ANYFAIL=true)
+    || anyfail
 
 log_task "Creating DMG" \
     && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | progressbar | log_progress \
     && log_task_success \
-    || (log_task_fail && ANYFAIL=true)
+    || anyfail
 
 log_task "Cleaning up" \
     && rm -rf $HOME/Backup/_temp \
     && log_info "Temporary files removed" \
     && log_task_success \
-    || (log_task_fail && ANYFAIL=true)
+    || anyfail
 
 if [ "$ANYFAIL" = true ]; then
     log_task_fail "Backup failed"

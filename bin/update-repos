@@ -2,11 +2,18 @@
 
 source $HOME/.dotfiles/shell/logging.sh
 
-set -eo pipefail
-
 inputDir=${1:-$(pwd)}
 
+directories=""
+repo=""
+mainBranch=""
+
 ANYFAIL=false
+function anyfail() {
+    log_task_fail
+    ANYFAIL=true
+}
+
 log_task "Updating git repositories"
 
 directories=$(find $inputDir -path $HOME/Library -prune -o -path $HOME/Pictures -prune -o -name "**.Trash" -prune -o -type d -name ".git" -print)
@@ -18,9 +25,19 @@ for directory in $directories; do
 
         echo $repo >> $HOME/git-log
 
-        mainBranch=$(git branch --list | grep -E "(main|master)" | awk '{print $2}')
+        while [ -z "$mainBranch" ]; do
+            branchlist=$(git branch --list)
 
-        git switch $mainBranch &>> $HOME/git-log
+            if echo "$branchlist" | grep -q "main"; then
+                mainBranch="main"
+            elif echo "$branchlist" | grep -q "master"; then
+                mainBranch="master"
+            fi
+        done
+
+        if [ -n "$mainBranch" ]; then
+            git switch $mainBranch &>> $HOME/git-log
+        fi
         
         log_task "Updating $repo" \
             && git fetch origin &>> $HOME/git-log \
@@ -28,9 +45,15 @@ for directory in $directories; do
             && git pull --all &>> $HOME/git-log \
             && log_info "git pull --all" \
             && log_task_success \
-            || (log_task_fail && ANYFAIL=true)
-
+            || anyfail
+        
         echo "" >> $HOME/git-log
+        
+        mainBranch=""
+
+        if [ "$ANYFAIL" = true ]; then
+            break
+        fi
     else
         log_error "$directory is not a git repository"
     fi
@@ -38,10 +61,10 @@ done
 
 if [ "$ANYFAIL" = true ]; then
     log_task_fail
-
-    log_info "Check $HOME/git-log for more information"
+    log_warn "Check $HOME/git-log for more information"
+    exit 1
 else
     log_task_success
-
     mv $HOME/git-log $HOME/.Trash/
+    exit 0
 fi
