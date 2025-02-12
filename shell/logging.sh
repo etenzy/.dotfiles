@@ -26,7 +26,7 @@ cout() {
 
 get_current_time() {
   # date is different on macos and linux
-  date_format="$(($(date +%s) + 7200))"
+  date_format="$(date +%s)"
 
   # shellcheck disable=SC2039
   if [ $IS_GNUDATE = true ]; then
