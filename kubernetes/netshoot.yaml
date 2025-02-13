@@ -5,7 +5,7 @@ metadata:
   name: tmp-shell
 spec:
   containers:
-  - name: tmp-shell
+  - name: netshoot
     image: nicolaka/netshoot
     env:
     - name: TZ
