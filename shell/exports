@@ -51,6 +51,7 @@ export KUBECONFIG="$HOME/.kube/config"
 export kube_netshoot="/Users/michael.roedel/.dotfiles/kubernetes/netshoot.yaml"
 export kube_psql="/Users/michael.roedel/.dotfiles/kubernetes/psql.yaml"
 export kube_smb_toolbox="/Users/michael.roedel/.dotfiles/kubernetes/smb-toolbox.yaml"
+export kube_debian="/Users/michael.roedel/.dotfiles/kubernetes/debian.yaml"
 
 export IS_GNUDATE=false;
 
