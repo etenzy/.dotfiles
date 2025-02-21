@@ -49,6 +49,8 @@ if [[ "$ENABLE_INSTALL_SUDO_TOUCHID" == "true" ]]; then
     echo ''
     echo 'Install sudo-touchid'
     echo '--------------------'
+    HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_PREFIX="/opt/homebrew"
     brew install pam-reattach
     sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
     sudo sed -i '' '/.*pam\_tid\.so/s/^#//g' /etc/pam.d/sudo_local
