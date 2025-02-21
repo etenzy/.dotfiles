@@ -22,9 +22,9 @@ function bootstrapTerminal() {
 echo "It's recommended to set a GitHub-Token..."
 echo 'Do you want to set a GitHub-Token? (y/n)'
 read -p 'Answer: ' answerToken
-if [[ $answerToken =~ ^[Yy]$ ]] then
+if [[ $answerToken =~ ^[Yy]$ ]]; then
 	read -p 'Please enter your token: ' token
-	if [[ $token =~ ^ghp_.*$ ]] then
+	if [[ $token =~ ^ghp_.*$ ]]; then
 		mkdir -p $HOME/.dotfiles-custom/shell
 		echo "export GITHUB_TOKEN=$token" >> $HOME/.dotfiles-custom/shell/exports
 		source $HOME/.dotfiles-custom/shell/exports
@@ -41,6 +41,6 @@ echo '------------------'
 echo 'This will reset your terminal. Are you sure you want to to this? (y/n)'
 read -p 'Answer: ' answerBootstrap
 
-if [[ $answerBootstrap =~ ^[Yy]$ ]] then
+if [[ $answerBootstrap =~ ^[Yy]$ ]]; then
 	bootstrapTerminal
 fi
