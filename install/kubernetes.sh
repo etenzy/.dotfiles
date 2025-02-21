@@ -23,7 +23,7 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     brew install kubectl
 
     if zsh -c 'command -v asdf' &> /dev/null; then
-        asdf plugin-add kubectl https://github.com/asdf-community/asdf-kubectl.git
+        asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git
     fi
     
     #Download https://github.com/ahmetb/kubectl-aliases/
@@ -122,7 +122,7 @@ if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
     brew install fluxcd/tap/flux
 
     if zsh -c 'command -v asdf' &> /dev/null; then
-        asdf plugin-add flux2 https://github.com/tablexi/asdf-flux2.git
+        asdf plugin add flux2 https://github.com/tablexi/asdf-flux2.git
     fi
 fi
 
