@@ -19,12 +19,9 @@ fi
 
 if [[ "$ENABLE_INSTALL_FASTFETCH" == "true" ]]; then
     echo ''
-    echo 'Install neofetch'
-    echo '--------------'
-    brew install neofetch
-    rm -rf $HOME/.config/neofetch
-    mkdir -p $HOME/.config/neofetch
-    ln -nfs $HOME/.dotfiles/shell/config/neofetch/config.conf $HOME/.config/neofetch/config.conf
+    echo 'Install fastfetch'
+    echo '-----------------'
+    brew install fastfetch
 fi
 
 if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
