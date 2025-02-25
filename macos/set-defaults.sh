@@ -240,7 +240,7 @@ fi
 
 if [[ "$ENABLE_DOCK_HIDDEN_TRANSLUCENT" == "true" ]]; then
 	defaults write com.apple.dock showhidden -bool true
-fu
+fi
 
 ###############################################################################
 # Activity Monitor                                                            #
