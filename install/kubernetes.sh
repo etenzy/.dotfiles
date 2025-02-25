@@ -156,13 +156,6 @@ if [[ "$ENABLE_INSTALL_HELM" == "true" ]]; then
     helm repo update
 fi
 
-if [[ "$ENABLE_INSTALL_YAMLHIGHLIGHTER" == "true" ]]; then
-    echo ''
-    echo 'Install YAML Highlighter'
-    echo '------------------------'
-    brew install yh
-fi
-
 if [[ "$ENABLE_INSTALL_MINIKUBE" == "true" ]]; then
     echo ''
     echo 'Install minikube'

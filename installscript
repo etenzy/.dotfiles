@@ -68,6 +68,10 @@ if [[ "$ENABLE_INSTALL_NODE" == "true" ]]; then
     source $HOME/.dotfiles/install/node.sh
 fi
 
+if [[ "$ENABLE_INSTALL_YAML" == "true" ]]; then
+    source $HOME/.dotfiles/install/yaml.sh
+fi
+
 if [[ "$ENABLE_INSTALL_VIRTUALISATION" == "true" ]]; then
     source $HOME/.dotfiles/install/gui.sh
 fi
