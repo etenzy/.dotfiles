@@ -1,35 +1,101 @@
 [core]
 	excludesfile = ~/.gitignore-global
+
 [user]
 	email = hello@mroedel.de
 	name = Michael Rödel
 	signingkey = ~/.ssh/id_ed25519.pub
+
 [gpg]
 	format = ssh
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase = true
+
 [commit]
 	gpgsign = true
 	template = ~/.git-commit-template
+
 [tag]
 	gpgsign = true
+
 [push]
 	default = current
+
 [diff "sopsdiffer"]
 	textconv = sops -d
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+
+[status]
+	short = true
+	branch = true
+	showStash = true
+	submoduleSummary = true
+	renames = copy
+
 [alias]
 	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 	new = !git init && git symbolic-ref HEAD refs/heads/main
 	empty = "commit --allow-empty"
 	st = status
+
+	# w-commands
+	which = branch --all --contains
+	which-tag = describe --always --contains
+	who = shortlog --summary --numbered --no-merges
+	whoami = "!echo $(git config --get user.name) '<'$(git config --get user.email)'>'"
+	watch = "!f() { watch -ctn 2 git \"${@:-l}\"; }; f"
+
+	# initialize repository in current directory
+	#    git this [<git-init-args>...]
+	this = "!f() { git init \"$@\" && git commit --message='Initialize' --allow-empty; }; f"
+
+	# show authors and and commit counts
+	#    git thanks [<git-log-args>...]
+	thanks = "!f() { git log --pretty=tformat:'%aN <%aE>' \"$@\" | sort | uniq -c | sort -rn; }; f"
+
+	# open GitHub repository in browser
+	#    git open [<remote>]
+	open = "!f() { URL=$(git config remote.${1:-origin}.url); open \"${URL%%.git}\"; }; f"
+
+	# hard reset with commit before (use reflog to recover)
+	#    git wipe [<commit>]
+	wipe = "!f() { git add --all && git commit --quiet --message='WIPE-SAVEPOINT' && git reset ${1:-HEAD~} --hard && git clean -fd; }; f"
+
+	# hard reset and clean (unrecoverable)
+	nuke = "!git reset --hard HEAD && git clean -fd"
+
+[trailer]
+	separators = ":#"
+
+[url "git@github.com:"]
+	insteadOf = @gh:
+
+[url "git@gitlab.com:"]
+	insteadOf = @gl:
+
+[url "git@bitbucket.org:"]
+	insteadOf = @bb:
+
+[url "https://github.com/"]
+	insteadOf = gh://
+
+[url "https://gitlab.com/"]
+	insteadOf = gl://
+
+[url "https://bitbucket.org/"]
+	insteadOf = bb://
+
 [team "config"]
 	activation-scope = repo-local
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	process = git-lfs filter-process
+	required = true
+
 [include]
 	path = ~/.gitconfig-include
