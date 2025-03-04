@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+template=$(cat $1)
+
+for i in "$@"; do
+    case $i in
+        -r=*|--replace=*)
+        search=$(echo ${i#*=} | awk -F'=' '{print $1}')
+        replace=$(echo ${i#*=} | awk -F'=' '{print $2}')
+
+        replace=${replace//\\/\\\\}
+
+        template="${template/$search/$replace}"
+        shift
+        ;;
+        *)
+        ;;
+    esac
+done
+
+echo "$template"

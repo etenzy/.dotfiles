@@ -203,32 +203,8 @@ function datetime2date() {
     fi
 }
 
-function render_script() {
-    file=$1
-
-    template=$(cat $file)
-
-    for i in "$@"; do
-        case $i in
-            -r=*|--replace=*)
-            search=$(echo ${i#*=} | awk -F'=' '{print $1}')
-            replace=$(echo ${i#*=} | awk -F'=' '{print $2}')
-
-            replace=${replace//\\/\\\\}
-
-            template="${template/$search/$replace}"
-            shift
-            ;;
-            *)
-            ;;
-        esac
-    done
-
-    echo "$template"
-}
-
 function test-connection-nc() {
-    render_script $HOME/.dotfiles/kubernetes/test-connection-nc.sh \
+    render-script $HOME/.dotfiles/kubernetes/test-connection-nc.sh \
         -r=IPS="$1" \
         -r=PORTS="$2"
 }
@@ -238,7 +214,7 @@ function test-connection-pg() {
     database=${3:-postgres}
     user=${4:-postgres}
 
-    render_script $HOME/.dotfiles/kubernetes/test-connection-pg.sh \
+    render-script $HOME/.dotfiles/kubernetes/test-connection-pg.sh \
         -r=IPS="$1" \
         -r=PORTS="$ports" \
         -r=DATABASE="$database" \
@@ -249,7 +225,7 @@ function test-connection-smb() {
     share=${2//\\/\\\\}
     output=${5:-'false'}
 
-    render_script $HOME/.dotfiles/kubernetes/test-connection-smb.sh \
+    render-script $HOME/.dotfiles/kubernetes/test-connection-smb.sh \
         -r=IP="$1" \
         -r=SHARE="${share//\\/\\\\}" \
         -r=USER="$3" \
