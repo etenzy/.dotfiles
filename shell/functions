@@ -222,12 +222,9 @@ function test-connection-pg() {
 }
 
 function test-connection-smb() {
-    share=${2//\\/\\\\}
-    output=${5:-'false'}
-
     render-script $HOME/.dotfiles/kubernetes/test-connection-smb.sh \
         -r=IP="$1" \
-        -r=SHARE="${share//\\/\\\\}" \
+        -r=SHARE="$2" \
         -r=USER="$3" \
         -r=PASSWORD="$4"
 }
