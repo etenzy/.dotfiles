@@ -146,10 +146,10 @@ log_progress() {
     symbolEmpty="⠀"
     symbolFull="⠿"
     if ! [ -t 0 ]; then
-        i=1
+        i=0
 
         symbol=$symbolEmpty
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} $(echo 0 | progressBar)${TXT_CLEAR}\r";
+        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} $(echo 0 | progressBar)${TXT_CLEAR}\r";
         
         while IFS= read -r line; do
             case $((i % 10)) in
@@ -165,12 +165,12 @@ log_progress() {
                 9) symbol="⠏" ;;
             esac
 
-            printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} ${line}${TXT_CLEAR}\r";
+            printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} ${line}${TXT_CLEAR}\r";
             i=$((i+1))
         done
 
         symbol=$symbolFull
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_BLUE}$(get_log_indents)${symbol} $(echo 100 | progressBar)${TXT_CLEAR}\r\n";
+        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} $(echo 100 | progressBar)${TXT_CLEAR}\r\n";
     fi
 }
 
