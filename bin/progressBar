@@ -4,10 +4,15 @@ set -o pipefail
 
 max=${2:-100}
 
-lsep="▕"
-rsep="▏"
-fill="░"
-bar="█"
+# lsep="▕"
+# rsep="▏"
+# fill="░"
+# bar="█"
+
+lsep="["
+rsep="]"
+fill=" "
+bar="="
 
 function render() {
     value=$1
@@ -31,7 +36,8 @@ function render() {
     # 1.2 Build progressbar strings and print the ProgressBar line
     # 1.2.1 Output example:
     # 1.2.1.1 Progress : ▕████████████████████░░░░░░░░░░░░░░░░░░░░▏ 50%
-    echo "$lsep${_done// /$bar}${_left// /$fill}$rsep ${_progress}%%"
+    # echo "$lsep${_done// /$bar}${_left// /$fill}$rsep ${_progress}%%"
+    echo "$lsep${_done// /$bar}>${_left// /$fill}$rsep ${_progress}%%"
 }
 
 if ! [ -t 0 ]; then
