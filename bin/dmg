@@ -4,6 +4,8 @@ set -eo pipefail
 
 pos=-1
 
+echo 0
+
 hdiutil create \
     -puppetstrings \
     -skipunreadable \
@@ -27,3 +29,8 @@ hdiutil create \
             echo 100
         fi
     done
+
+for i in {1..5}; do
+    echo 100
+    sleep 1
+done

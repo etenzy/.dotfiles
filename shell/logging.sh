@@ -39,6 +39,53 @@ get_current_time() {
   cout "$time"
 }
 
+get_spinner() {
+  local start="⠀"
+  local end="⠿"
+  local spinner=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
+
+  case $1 in
+      start) echo $start                     ;;
+      end)   echo $end                       ;;
+      *)     echo ${spinner[$((($1 % 10)))]} ;;
+  esac
+}
+
+get_progressbar() {
+  # llocal sep="▕"
+  # local rsep="▏"
+  # local fill="░"
+  # local bar="█"
+  local lsep="["
+  local rsep="]"
+  local fill=" "
+  local bar="="
+
+  local value=$1
+  local max=$2
+
+  if [ $value -lt 0 ]; then
+      value=0
+  fi
+
+  if [ $value -gt $max ]; then
+      value=$max
+  fi
+
+  let _progress=(${value}*100/${max}*100)/100
+  let _done=(${_progress}*4)/10
+  let _left=40-$_done
+  # Build progressbar string lengths
+  _done=$(printf "%${_done}s")
+  _left=$(printf "%${_left}s")
+
+  # 1.2 Build progressbar strings and print the ProgressBar line
+  # 1.2.1 Output example:
+  # 1.2.1.1 Progress : ▕████████████████████░░░░░░░░░░░░░░░░░░░░▏ 50%
+  # echo "$lsep${_done// /$bar}${_left// /$fill}$rsep ${_progress}%%"
+  echo "$lsep${_done// /$bar}>${_left// /$fill}$rsep ${_progress}%%"
+}
+
 # $1 Text to log
 log() {
   cout "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} $1\n"
@@ -143,35 +190,30 @@ log_list_newline() {
 }
 
 log_progress() {
-    symbolEmpty="⠀"
-    symbolFull="⠿"
-    if ! [ -t 0 ]; then
-        i=0
+  local i=1
+  local line=0
 
-        symbol=$symbolEmpty
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} $(echo 0 | progressBar)${TXT_CLEAR}\r";
-        
-        while IFS= read -r line; do
-            case $((i % 10)) in
-                0) symbol="⠋" ;;
-                1) symbol="⠙" ;;
-                2) symbol="⠹" ;;
-                3) symbol="⠸" ;;
-                4) symbol="⠼" ;;
-                5) symbol="⠴" ;;
-                6) symbol="⠦" ;;
-                7) symbol="⠧" ;;
-                8) symbol="⠇" ;;
-                9) symbol="⠏" ;;
-            esac
+  printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)$(get_spinner 'start')${TXT_CLEAR} $(get_progressbar 0 100)${TXT_CLEAR}\r"
 
-            printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} ${line}${TXT_CLEAR}\r";
-            i=$((i+1))
-        done
-
-        symbol=$symbolFull
-        printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)${symbol}${TXT_CLEAR} $(echo 100 | progressBar)${TXT_CLEAR}\r\n";
+  while true; do
+    if ! [ -t 0 ] && read -t 0.01 -r new_line; then
+      if ! [[ $new_line =~ ^-?[0-9]+$ ]]; then
+        continue
+      fi
+      line="$new_line"
     fi
+
+    printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)$(get_spinner $i)${TXT_CLEAR} $(get_progressbar $line 100)${TXT_CLEAR}\r"
+
+    if [[ "$line" == "100" ]]; then
+      break
+    fi
+
+    sleep 0.033333
+    i=$((i+1)) 
+  done
+
+  printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)$(get_spinner 'end')${TXT_CLEAR} $(get_progressbar 100 100)${TXT_CLEAR}\r\n";
 }
 
 # $1 The link to log

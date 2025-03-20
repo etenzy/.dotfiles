@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+set -eo pipefail
+
+interval=1
+limit=0
+line=""
+
+(( limit = SECONDS + interval ))
+
+while read -r line; do
+    if (( limit < SECONDS )); then
+        (( limit = SECONDS + interval ))
+        echo "$line"
+    fi
+done

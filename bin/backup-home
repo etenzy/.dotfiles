@@ -13,29 +13,12 @@ log_task "Creating Backup"
 mkdir -p $HOME/Backup/_temp
 
 log_task "Copying files" \
-    && rsync --info=progress2 --no-i-r -avr \
-        --exclude="go" \
-        --exclude="Library" \
-        --exclude="Movies" \
-        --exclude="Music" \
-        --exclude="Pictures/Photos Library.photoslibrary" \
-        --exclude="Backup" \
-        --exclude=".config/colima" \
-        --exclude=".asdf" \
-        --exclude=".cache" \
-        --exclude=".k8slens" \
-        --exclude=".krew" \
-        --exclude=".kube/cache" \
-        --exclude=".vscode/extensions" \
-        --exclude=".Trash" \
-        --exclude="*/.DS_Store" \
-        --exclude="*/*.sock" \
-        $HOME $HOME/Backup/_temp | grep -o "[0-9]*%" | sed 's/%//' | progressBar | log_progress  \
+    && copy-home "$HOME/Backup/_temp" | debounce | log_progress  \
     && log_task_success \
     || anyfail
 
 log_task "Creating DMG" \
-    && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | progressbar | log_progress \
+    && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | debounce | log_progress \
     && log_task_success \
     || anyfail
 

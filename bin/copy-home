@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+destination="$1"
+
+mkdir -p $destination
+
+echo 0
+
+rsync --info=progress2 --no-i-r -avr \
+    --exclude="go" \
+    --exclude="Library" \
+    --exclude="Movies" \
+    --exclude="Music" \
+    --exclude="Pictures/Photos Library.photoslibrary" \
+    --exclude="Backup" \
+    --exclude=".config/colima" \
+    --exclude=".asdf" \
+    --exclude=".cache" \
+    --exclude=".k8slens" \
+    --exclude=".krew" \
+    --exclude=".kube/cache" \
+    --exclude=".vscode/extensions" \
+    --exclude=".Trash" \
+    --exclude="*/.DS_Store" \
+    --exclude="*/*.sock" \
+    $HOME $destination | grep -o "[0-9]*%" | sed 's/%//'
+
+for i in {1..5}; do
+    echo 100
+    sleep 1
+done
