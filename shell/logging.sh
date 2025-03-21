@@ -29,7 +29,7 @@ get_current_time() {
   date_format="$(date +%s)"
 
   # shellcheck disable=SC2039
-  if [ $IS_GNUDATE = true ]; then
+  if [ "$IS_GNUDATE" == "true" ]; then
     # Fix for timezone Europe/Berlin and alpine images
     time=$(date -d @$date_format +%T)
   else
@@ -196,7 +196,7 @@ log_progress() {
   printf "${TXT_GRAY}$(get_current_time)${TXT_CLEAR} ${TXT_YELLOW}$(get_log_indents)$(get_spinner 'start')${TXT_CLEAR} $(get_progressbar 0 100)${TXT_CLEAR}\r"
 
   while true; do
-    if ! [ -t 0 ] && read -t 0.01 -r new_line; then
+    if ! [ -t 0 ] && read -t " 0.01" -r new_line; then
       if ! [[ $new_line =~ ^-?[0-9]+$ ]]; then
         continue
       fi
