@@ -14,50 +14,110 @@ function anyfail() {
     ANYFAIL=true
 }
 
+REPOFAIL=false
+function repofail() {
+    REPOFAIL=true
+}
+
 log_task "Updating git repositories"
 
 directories=$(find $inputDir -path $HOME/Library -prune \
     -o -path $HOME/Pictures -prune \
     -o -name "**.Trash" -prune \
     -o -path $HOME/.asdf -prune \
+    -o -path $HOME/.cache -prune \
     -o -path $HOME/.krew -prune \
     -o -path $HOME/.tmux -prune \
     -o -path $HOME/.vim -prune \
     -o -type d -name ".git" -print)
 
 for directory in $directories; do
+    REPOFAIL=false
+
     if [[ "$directory" =~ .*".git" ]]; then
         repo=$(dirname $directory)
         cd $repo
+        
+        log_task "Updating $repo"
+        echo "Updating $repo" >> $HOME/git-log
 
-        echo $repo >> $HOME/git-log
+        mainBranch=""
+        currentBranch=$(git branch --show)
+        needToSwitch=false
+        needToStash=false
+
+        if [ -z $(git remote | grep "origin") ]; then
+            log_warn "Skipping update - No origin remote configured"
+            echo "Skipping update - No origin remote configured" >> $HOME/git-log
+            echo "" >> $HOME/git-log
+            log_task_success
+            continue
+        fi
 
         while [ -z "$mainBranch" ]; do
             branchlist=$(git branch --list)
 
-            if echo "$branchlist" | grep -q "main"; then
+            if [ -n "$(echo "$branchlist" | grep "main")" ]; then
                 mainBranch="main"
-            elif echo "$branchlist" | grep -q "master"; then
+            elif [ -n "$(echo "$branchlist" | grep "master")" ]; then
                 mainBranch="master"
             fi
         done
 
-        if [ -n "$mainBranch" ]; then
+        if [ "$currentBranch" == "$mainBranch" ]; then
+            if [ -n "$(git status --porcelain)" ]; then
+                git status --short >> $HOME/git-log
+                
+                log_warn "Skipping update - uncommitted changes"
+                echo "Skipping update - uncommitted changes" >> $HOME/git-log
+                echo "" >> $HOME/git-log
+                log_task_success
+                continue
+            fi
+        else
+            needToSwitch=true
+            log_info "Need to switch - $currentBranch -> $mainBranch"
+            echo "Need to switch - $currentBranch -> $mainBranch" >> $HOME/git-log
+
+            if [ -n "$(git status --porcelain)" ]; then
+                needToStash=true
+                git status --short >> $HOME/git-log
+                
+                log_info "Need to stash - uncommitted changes"
+                echo "Need to stash - uncommitted changes" >> $HOME/git-log
+                
+                git stash &>> $HOME/git-log
+            fi
+
             git switch $mainBranch &>> $HOME/git-log
         fi
         
-        log_task "Updating $repo" \
-            && git fetch origin &>> $HOME/git-log \
+        git fetch origin &>> $HOME/git-log \
             && log_info "git fetch origin" \
             && git pull --all &>> $HOME/git-log \
             && log_info "git pull --all" \
-            && log_task_success \
-            || anyfail
+            || repofail
+
+        if [ "$needToSwitch" = true ]; then
+            log_info "Switching back to $currentBranch"
+            echo "Switching back to $currentBranch" >> $HOME/git-log
+            git switch $currentBranch &>> $HOME/git-log
+
+            if [ "$needToStash" = true ]; then
+                log_info "Poping changes"
+                echo "Poping changes" >> $HOME/git-log
+                git stash pop &>> $HOME/git-log
+            fi
+        fi
+
+        if [ "$REPOFAIL" = true ]; then
+            log_task_fail
+        else
+            log_task_success
+        fi
         
         echo "" >> $HOME/git-log
         
-        mainBranch=""
-
         if [ "$ANYFAIL" = true ]; then
             break
         fi
