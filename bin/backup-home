@@ -18,7 +18,7 @@ log_task "Copying files" \
     || anyfail
 
 log_task "Creating DMG" \
-    && dmg $(date "+%Y-%m") "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/" | debounce | log_progress \
+    && dmg "$HOME/Backup/_temp/$(whoami)" "$HOME/Backup/$(hostname)_$(whoami)_$(date "+%Y-%U").dmg" | debounce | log_progress \
     && log_task_success \
     || anyfail
 
@@ -31,5 +31,5 @@ log_task "Cleaning up" \
 if [ "$ANYFAIL" = true ]; then
     log_task_fail "Backup failed"
 else
-    log_task_success "$HOME/Backup/$(date "+%Y-%m").dmg"
+    log_task_success "$HOME/Backup/$(hostname)_$(whoami)_$(date "+%Y-%U").dmg"
 fi
