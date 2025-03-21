@@ -2,15 +2,20 @@
 
 set -eo pipefail
 
-interval=1
+SECONDS=0
 limit=0
+interval=333
 line=""
 
-(( limit = SECONDS + interval ))
+milliseconds() {
+    gdate "+%s%3N"
+}
+
+(( limit = $(milliseconds) + interval ))
 
 while read -r line; do
-    if (( limit < SECONDS )); then
-        (( limit = SECONDS + interval ))
+    if (( $(milliseconds) > limit )); then
+        (( limit = $(milliseconds) + interval ))
         echo "$line"
     fi
 done
