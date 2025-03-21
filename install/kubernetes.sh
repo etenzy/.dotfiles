@@ -167,7 +167,7 @@ if [[ "$ENABLE_INSTALL_LENS" == "true" ]]; then
     echo ''
     echo 'Install lens'
     echo '------------'
-    brew install freelens
+    brew install --cask freelens
 fi
 
 if [[ "$ENABLE_INSTALL_KNINES" == "true" ]]; then
