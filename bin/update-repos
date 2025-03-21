@@ -22,8 +22,6 @@ function repofail() {
 
 log_task "Updating git repositories"
 
-echo "$(git config --list)" >> $HOME/git-log
-
 directories=$(find $inputDir -path $HOME/Library -prune \
     -o -path $HOME/Pictures -prune \
     -o -name "**.Trash" -prune \
