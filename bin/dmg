@@ -2,6 +2,14 @@
 
 set -eo pipefail
 
+srcfolder=${1:-$HOME}
+destination=${2:-$HOME}
+volname=${3:-''}
+
+if [ -z "$volname" ]; then
+    volname=${$(basename $destination)%.*}
+fi
+
 pos=-1
 
 echo 0
@@ -11,9 +19,9 @@ hdiutil create \
     -skipunreadable \
     -fs APFS \
     -format UDRO \
-    -srcfolder "$2" \
-    -volname "$1" \
-    "$3/$1.dmg" | while IFS=: read -r part1 part2; do
+    -srcfolder "$srcfolder" \
+    -volname "$volname" \
+    "$destination" | while IFS=: read -r part1 part2; do
         if [[ $part2 =~ ^-?[0-9]+$ ]]; then
             part2_int=$part2
         elif [[ $part2 =~ ^-?[0-9]*\.[0-9]+$ ]]; then
