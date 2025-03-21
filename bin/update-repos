@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source $HOME/.dotfiles/shell/logging.sh
+source $HOME/.dotfiles-custom/shell/exports
 
 inputDir=${1:-$(pwd)}
 
@@ -20,6 +21,8 @@ function repofail() {
 }
 
 log_task "Updating git repositories"
+
+echo "$(git config --list)" >> $HOME/git-log
 
 directories=$(find $inputDir -path $HOME/Library -prune \
     -o -path $HOME/Pictures -prune \
@@ -111,7 +114,7 @@ for directory in $directories; do
         fi
 
         if [ "$REPOFAIL" = true ]; then
-            log_task_fail
+            anyfail
         else
             log_task_success
         fi
