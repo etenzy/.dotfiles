@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+source $HOME/.dotfiles/jobs/common.sh
+source $HOME/.dotfiles/shell/logging.sh
+
+ANYFAIL=false
+function anyfail() {
+    log_task_fail
+    ANYFAIL=true
+}
+
+log_task "Weekly job"
+
+# echo "brew upgrade" >> $HOME/.dotfiles/jobs/weekly-log
+# log_task "brew upgrade" \
+#     && brew update >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && brew upgrade >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && brew cleanup >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && log_task_success \
+#     || anyfail
+# echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+# echo "brew cask upgrade" >> $HOME/.dotfiles/jobs/weekly-log
+# log_task "brew cask upgrade" \
+#     && brew update >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && brew upgrade --cask --greedy >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && brew cleanup >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && log_task_success \
+#     || anyfail
+# echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+# echo "tmux update" >> $HOME/.dotfiles/jobs/weekly-log
+# log_task "tmux update" \
+#     && bash $HOME/.tmux/plugins/tpm/bin/install_plugins >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && bash $HOME/.tmux/plugins/tpm/bin/update_plugins "all" >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && bash $HOME/.tmux/plugins/tpm/bin/clean_plugins >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && log_task_success \
+#     || anyfail
+# echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+# echo "vim update" >> $HOME/.dotfiles/jobs/weekly-log
+# log_task "vim update" \
+#     && vim +PlugInstall +PlugUpdate +PlugUpgrade +PlugClean! +qa! >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+#     && log_task_success \
+#     || anyfail
+# echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+echo "update-repos" >> $HOME/.dotfiles/jobs/weekly-log
+log_task "update-repos" \
+    && $HOME/.dotfiles/bin/update-repos $HOME >> $HOME/.dotfiles/jobs/weekly-log 2>&1 \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+# echo "backup home" >> $HOME/.dotfiles/jobs/weekly-log
+# log_task "backup home" \
+#     && $HOME/.dotfiles/bin/backup-home >> $HOME/.dotfiles/jobs/weekly-log \
+#     && log_task_success \
+#     || anyfail
+# echo "" >> $HOME/.dotfiles/jobs/weekly-log
+
+if [ "$ANYFAIL" = true ]; then
+    log_task_fail
+    log_warn "Check $HOME/.dotfiles/jobs/weekly-log for more information"
+    exit 1
+else
+    log_task_success
+    mv $HOME/.dotfiles/jobs/weekly-log $HOME/.Trash/
+    exit 0
+fi
