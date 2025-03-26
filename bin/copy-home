@@ -9,19 +9,19 @@ mkdir -p $destination
 echo 0
 
 rsync --info=progress2 --no-i-r -avr \
+    --exclude=".asdf" \
+    --exclude=".cache" \
+    --exclude=".config/colima" \
+    --exclude=".freelens" \
+    --exclude=".krew" \
+    --exclude=".kube/cache" \
+    --exclude=".vscode/extensions" \
+    --exclude="Backup" \
     --exclude="go" \
     --exclude="Library" \
     --exclude="Movies" \
     --exclude="Music" \
     --exclude="Pictures/Photos Library.photoslibrary" \
-    --exclude="Backup" \
-    --exclude=".config/colima" \
-    --exclude=".asdf" \
-    --exclude=".cache" \
-    --exclude=".k8slens" \
-    --exclude=".krew" \
-    --exclude=".kube/cache" \
-    --exclude=".vscode/extensions" \
     --exclude=".Trash" \
     --exclude="*/.DS_Store" \
     --exclude="*/*.sock" \

@@ -24,14 +24,21 @@ function repofail() {
 log_task "Updating git repositories"
 
 directories=$(find $inputDir -depth +$maxdepth -type d \
-    -o -path $HOME/Backup -prune \
-    -o -path $HOME/Library -prune \
-    -o -path $HOME/Pictures -prune \
     -o -path $HOME/.asdf -prune \
     -o -path $HOME/.cache -prune \
     -o -path $HOME/.krew -prune \
     -o -path $HOME/.tmux -prune \
     -o -path $HOME/.vim -prune \
+    -o -path $HOME/Backup -prune \
+    -o -path $HOME/Desktop -prune \
+    -o -path $HOME/Documents -prune \
+    -o -path $HOME/Downloads -prune \
+    -o -path $HOME/go -prune \
+    -o -path $HOME/Library -prune \
+    -o -path $HOME/Movies -prune \
+    -o -path $HOME/Music -prune \
+    -o -path $HOME/Pictures -prune \
+    -o -path $HOME/Public -prune \
     -o -name "**.Trash" -prune \
     -o -name ".git" -print)
 
@@ -43,7 +50,7 @@ for directory in $directories; do
         cd $repo
         
         log_task "Updating $repo"
-        echo "Updating $repo" >> $HOME/git-log
+        echo "Updating $repo" >> $HOME/git.log
 
         mainBranch=""
         currentBranch=$(git branch --show)
@@ -52,8 +59,8 @@ for directory in $directories; do
 
         if [ -z $(git remote | grep "origin") ]; then
             log_warn "Skipping update - No origin remote configured"
-            echo "Skipping update - No origin remote configured" >> $HOME/git-log
-            echo "" >> $HOME/git-log
+            echo "Skipping update - No origin remote configured" >> $HOME/git.log
+            echo "" >> $HOME/git.log
             log_task_success
             continue
         fi
@@ -70,47 +77,47 @@ for directory in $directories; do
 
         if [ "$currentBranch" == "$mainBranch" ]; then
             if [ -n "$(git status --porcelain)" ]; then
-                git status --short >> $HOME/git-log
+                git status --short >> $HOME/git.log
                 
                 log_warn "Skipping update - uncommitted changes"
-                echo "Skipping update - uncommitted changes" >> $HOME/git-log
-                echo "" >> $HOME/git-log
+                echo "Skipping update - uncommitted changes" >> $HOME/git.log
+                echo "" >> $HOME/git.log
                 log_task_success
                 continue
             fi
         else
             needToSwitch=true
             log_info "Need to switch - $currentBranch -> $mainBranch"
-            echo "Need to switch - $currentBranch -> $mainBranch" >> $HOME/git-log
+            echo "Need to switch - $currentBranch -> $mainBranch" >> $HOME/git.log
 
             if [ -n "$(git status --porcelain)" ]; then
                 needToStash=true
-                git status --short >> $HOME/git-log
+                git status --short >> $HOME/git.log
                 
                 log_info "Need to stash - uncommitted changes"
-                echo "Need to stash - uncommitted changes" >> $HOME/git-log
+                echo "Need to stash - uncommitted changes" >> $HOME/git.log
                 
-                git stash &>> $HOME/git-log
+                git stash &>> $HOME/git.log
             fi
 
-            git switch $mainBranch &>> $HOME/git-log
+            git switch $mainBranch &>> $HOME/git.log
         fi
         
-        git fetch origin &>> $HOME/git-log \
+        git fetch origin &>> $HOME/git.log \
             && log_info "git fetch origin" \
-            && git pull --all &>> $HOME/git-log \
+            && git pull --all &>> $HOME/git.log \
             && log_info "git pull --all" \
             || repofail
 
         if [ "$needToSwitch" = true ]; then
             log_info "Switching back to $currentBranch"
-            echo "Switching back to $currentBranch" >> $HOME/git-log
-            git switch $currentBranch &>> $HOME/git-log
+            echo "Switching back to $currentBranch" >> $HOME/git.log
+            git switch $currentBranch &>> $HOME/git.log
 
             if [ "$needToStash" = true ]; then
                 log_info "Poping changes"
-                echo "Poping changes" >> $HOME/git-log
-                git stash pop &>> $HOME/git-log
+                echo "Poping changes" >> $HOME/git.log
+                git stash pop &>> $HOME/git.log
             fi
         fi
 
@@ -120,7 +127,7 @@ for directory in $directories; do
             log_task_success
         fi
         
-        echo "" >> $HOME/git-log
+        echo "" >> $HOME/git.log
         
         if [ "$ANYFAIL" = true ]; then
             break
@@ -132,10 +139,10 @@ done
 
 if [ "$ANYFAIL" = true ]; then
     log_task_fail
-    log_warn "Check $HOME/git-log for more information"
+    log_warn "Check $HOME/git.log for more information"
     exit 1
 else
     log_task_success
-    mv $HOME/git-log $HOME/.Trash/
+    mv $HOME/git.log $HOME/.Trash/
     exit 0
 fi
