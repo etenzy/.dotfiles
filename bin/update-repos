@@ -4,6 +4,7 @@ source $HOME/.dotfiles/shell/logging.sh
 source $HOME/.dotfiles-custom/shell/exports
 
 inputDir=${1:-$(pwd)}
+maxdepth=${2:-99s}
 
 directories=""
 repo=""
@@ -22,15 +23,17 @@ function repofail() {
 
 log_task "Updating git repositories"
 
-directories=$(find $inputDir -path $HOME/Library -prune \
+directories=$(find $inputDir -depth +$maxdepth -type d \
+    -o -path $HOME/Backup -prune \
+    -o -path $HOME/Library -prune \
     -o -path $HOME/Pictures -prune \
-    -o -name "**.Trash" -prune \
     -o -path $HOME/.asdf -prune \
     -o -path $HOME/.cache -prune \
     -o -path $HOME/.krew -prune \
     -o -path $HOME/.tmux -prune \
     -o -path $HOME/.vim -prune \
-    -o -type d -name ".git" -print)
+    -o -name "**.Trash" -prune \
+    -o -name ".git" -print)
 
 for directory in $directories; do
     REPOFAIL=false
