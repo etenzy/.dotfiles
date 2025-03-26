@@ -4,7 +4,7 @@ source $HOME/.dotfiles/shell/logging.sh
 source $HOME/.dotfiles-custom/shell/exports
 
 inputDir=${1:-$(pwd)}
-maxdepth=${2:-99s}
+maxdepth=${2:-99}
 
 directories=""
 repo=""
