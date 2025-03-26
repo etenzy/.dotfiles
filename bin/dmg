@@ -7,7 +7,7 @@ destination=${2:-$HOME}
 volname=${3:-''}
 
 if [ -z "$volname" ]; then
-    volname=${$(basename $destination)%.*}
+    volname=$(basename $destination '.dmg')
 fi
 
 pos=-1
@@ -38,7 +38,7 @@ hdiutil create \
         fi
     done
 
-for i in {1..5}; do
+for i in {1..300}; do
     echo 100
-    sleep 1
+    sleep 0.1
 done
