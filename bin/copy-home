@@ -2,6 +2,12 @@
 
 set -eo pipefail
 
+if { echo "$(rsync --version | grep -E '\d.\d.\d' | awk '{print $3}')"; echo "3.4.0"; } | sort --version-sort --check &> /dev/null; then
+    echo "Please install a newer version of rsync:"
+    echo "brew install rsync"
+    exit
+fi
+
 destination="$1"
 
 mkdir -p $destination
