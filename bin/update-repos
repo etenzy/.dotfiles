@@ -128,10 +128,6 @@ for directory in $directories; do
         fi
         
         echo "" >> $HOME/git.log
-        
-        if [ "$ANYFAIL" = true ]; then
-            break
-        fi
     else
         log_error "$directory is not a git repository"
     fi
