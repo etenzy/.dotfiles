@@ -137,6 +137,10 @@ if [[ "$ENABLE_INSTALL_MACKUP" == "true" ]]; then
     fi
 fi
 
+if [[ "$ENABLE_INSTALL_CRONTAB" == "true" ]]; then
+    source $HOME/.dotfiles/install/crontab.sh
+fi
+
 echo ''
 echo ''
 echo '+++++++++++++++++++++++++++++++'
