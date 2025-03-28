@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+export HOME=/Users/$(whoami)
+export PATH=$HOME/.bin:$PATH
+
+source $HOME/.dotfiles/jobs/common.sh
 source $HOME/.dotfiles/shell/logging.sh
 
 ANYFAIL=false
@@ -10,27 +14,35 @@ function anyfail() {
 
 log_task "Daily job"
 
-echo "brew upgrade" >> $HOME/.dotfiles/jobs/daily-log
+echo "brew upgrade" >> $HOME/.dotfiles/jobs/daily.log
 log_task "brew upgrade" \
-    && brew update &>> $HOME/.dotfiles/jobs/daily-log \
-    && brew upgrade &>> $HOME/.dotfiles/jobs/daily-log \
-    && brew cleanup &>> $HOME/.dotfiles/jobs/daily-log \
+    && brew update >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && brew upgrade >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && brew cleanup >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
     && log_task_success \
     || anyfail
-echo "" >> $HOME/.dotfiles/jobs/daily-log
+echo "" >> $HOME/.dotfiles/jobs/daily.log
 
-echo "update ~/.tooling-devops-cli" >> $HOME/.dotfiles/jobs/weekly-log
-log_task "update ~/.tooling-devops-cli" \
-    && $HOME/.dotfiles/bin/update-repos $HOME/.tooling-devops-cli &>> $HOME/.dotfiles/jobs/weekly-log \
+echo "update-repo dotfiles" >> $HOME/.dotfiles/jobs/daily.log
+log_task "update-repo dotfiles" \
+    && $HOME/.dotfiles/bin/update-repos $HOME/.dotfiles >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
     && log_task_success \
     || anyfail
+echo "" >> $HOME/.dotfiles/jobs/daily.log
+
+echo "update-repos Developer" >> $HOME/.dotfiles/jobs/daily.log
+log_task "update-repos Developer" \
+    && $HOME/.dotfiles/bin/update-repos $HOME/Developer >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/daily.log
 
 if [ "$ANYFAIL" = true ]; then
     log_task_fail
-    log_warn "Check $HOME/.dotfiles/jobs/daily-log for more information"
+    log_warn "Check $HOME/.dotfiles/jobs/daily.log for more information"
     exit 1
 else
     log_task_success
-    mv $HOME/.dotfiles/jobs/daily-log $HOME/.Trash/
+    rm -f $HOME/.dotfiles/jobs/daily.log
     exit 0
 fi

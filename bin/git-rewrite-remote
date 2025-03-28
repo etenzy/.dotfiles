@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+source $HOME/.dotfiles/shell/logging.sh
+source $HOME/.dotfiles-custom/shell/exports
+
+
+old=${1}
+new=${2}
+inputDir=${3:-$(pwd)}
+remote=${4:-"origin"}
+maxdepth=${5:-99}
+
+ANYFAIL=false
+function anyfail() {
+    log_task_fail
+    ANYFAIL=true
+}
+
+REPOFAIL=false
+function repofail() {
+    REPOFAIL=true
+}
+
+log_task "Rewrite git remotes"
+
+directories=$(find $inputDir -depth +$maxdepth -type d \
+    -o -path $HOME/.asdf -prune \
+    -o -path $HOME/.cache -prune \
+    -o -path $HOME/.krew -prune \
+    -o -path $HOME/.tmux -prune \
+    -o -path $HOME/.vim -prune \
+    -o -path $HOME/Backup -prune \
+    -o -path $HOME/Desktop -prune \
+    -o -path $HOME/Documents -prune \
+    -o -path $HOME/Downloads -prune \
+    -o -path $HOME/go -prune \
+    -o -path $HOME/Library -prune \
+    -o -path $HOME/Movies -prune \
+    -o -path $HOME/Music -prune \
+    -o -path $HOME/Pictures -prune \
+    -o -path $HOME/Public -prune \
+    -o -name "**.Trash" -prune \
+    -o -name ".git" -print)
+
+for directory in $directories; do
+    REPOFAIL=false
+
+    if [[ "$directory" =~ .*".git" ]]; then
+        repo=$(dirname $directory)
+        cd $repo
+
+        origin=""
+        originNew=""
+
+        log_task "Rewriting remote for $(basename $repo)"
+        echo "Rewriting remote for $(basename $repo)" >> $HOME/git.log
+
+        if [ -z $(git remote | grep "$remote") ]; then
+            log_warn "Skipping rewrite - No origin remote configured"
+            echo "Skipping rewrite - No origin remote configured" >> $HOME/git.log
+            echo "" >> $HOME/git.log
+            log_task_success
+            continue
+        fi
+
+        log_info "Path: $repo"
+        echo "Path: $repo" >> $HOME/git.log
+
+        origin=$(git remote get-url "$remote" | grep "$old")
+
+        if [ -n "$origin" ]; then
+            log_info "Remote: $origin"
+            echo "Remote: $origin" >> $HOME/git.log
+
+            originNew="${origin/$old/$new}"
+
+            log_warn "Rewriting $origin to $originNew"
+            echo "Rewriting $origin to $originNew" >> $HOME/git.log
+
+            git remote set-url "$remote" "$originNew" &>> $HOME/git.log \
+                && log_info "git remote set-url $remote $originNew" \
+                || repofail
+        else
+            log_warn "Skipping rewrite - No $old remote configured"
+            echo "Skipping rewrite - No $old remote configured" >> $HOME/git.log
+            echo "" >> $HOME/git.log
+            log_task_success
+            continue
+        fi
+
+        if [ "$REPOFAIL" = true ]; then
+            anyfail
+        else
+            log_task_success
+        fi
+
+        echo "" >> $HOME/git.log
+        
+        if [ "$ANYFAIL" = true ]; then
+            break
+        fi
+    else
+        log_error "$directory is not a git repository"
+    fi
+done
+
+if [ "$ANYFAIL" = true ]; then
+    log_task_fail
+    log_warn "Check $HOME/git.log for more information"
+    exit 1
+else
+    log_task_success
+    mv $HOME/git.log $HOME/.Trash/
+    exit 0
+fi

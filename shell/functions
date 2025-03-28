@@ -268,3 +268,7 @@ function kubeconfig-flatten() {
     mv $HOME/.kube/config_tmp $HOME/.kube/config
     mv $HOME/.kube/*.bk $HOME/.kube/.backup/
 }
+
+function dev() {
+    cd $HOME/Developer/$1
+}

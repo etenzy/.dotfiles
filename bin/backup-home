@@ -13,7 +13,7 @@ log_task "Creating Backup"
 mkdir -p $HOME/Backup/_temp
 
 log_task "Copying files" \
-    && copy-home "$HOME/Backup/_temp" | debounce | log_progress  \
+    && copy-home "$HOME/Backup/_temp" | debounce | log_progress \
     && log_task_success \
     || anyfail
 

@@ -103,9 +103,9 @@ for directory in $directories; do
             git switch $mainBranch &>> $HOME/git.log
         fi
         
-        git fetch origin &>> $HOME/git.log \
+        git fetch origin --verbose &>> $HOME/git.log \
             && log_info "git fetch origin" \
-            && git pull --all &>> $HOME/git.log \
+            && git pull --all --verbose &>> $HOME/git.log \
             && log_info "git pull --all" \
             || repofail
 
@@ -143,6 +143,6 @@ if [ "$ANYFAIL" = true ]; then
     exit 1
 else
     log_task_success
-    mv $HOME/git.log $HOME/.Trash/
+    rm -f $HOME/git.log
     exit 0
 fi

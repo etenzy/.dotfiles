@@ -12,6 +12,8 @@ fi
 
 pos=-1
 
+rm -rf "$destination"
+
 echo 0
 
 hdiutil create \
@@ -38,7 +40,7 @@ hdiutil create \
         fi
     done
 
-for i in {1..300}; do
+for i in {1..1000}; do
     echo 100
-    sleep 0.1
+    sleep 0.01
 done

@@ -33,7 +33,7 @@ rsync --info=progress2 --no-i-r -avr \
     --exclude="*/*.sock" \
     $HOME $destination | grep -o "[0-9]*%" | sed 's/%//'
 
-for i in {1..300}; do
+for i in {1..1000}; do
     echo 100
-    sleep 0.1
+    sleep 0.01
 done
