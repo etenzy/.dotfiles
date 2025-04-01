@@ -341,6 +341,13 @@ if [[ "$ENABLE_INSTALL_SPEEDTESTCLI" == "true" ]]; then
     brew install speedtest-cli
 fi
 
+if [[ "$ENABLE_INSTALL_SUBNETCALC" == "true" ]]; then
+    echo ''
+    echo 'Install subnetcalc'
+    echo '------------------'
+    brew install subnetcalc
+fi
+
 if [[ "$ENABLE_INSTALL_TELNET" == "true" ]]; then
     echo ''
     echo 'Install telnet'
