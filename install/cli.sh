@@ -130,6 +130,13 @@ if [[ "$ENABLE_INSTALL_COWSAY" == "true" ]]; then
     brew install cowsay
 fi
 
+if [[ "$ENABLE_INSTALL_CSVQ" == "true" ]]; then
+    echo ''
+    echo 'Install csvq'
+    echo '------------'
+    brew install csvq
+fi
+
 if [[ "$ENABLE_INSTALL_CURL" == "true" ]]; then
     echo ''
     echo 'Install curl'
