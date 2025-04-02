@@ -46,3 +46,5 @@ else
     rm -f $HOME/.dotfiles/jobs/daily.log
     exit 0
 fi
+
+date "+%Y-%m-%d %T" > $HOME/.dotfiles/jobs/.daily

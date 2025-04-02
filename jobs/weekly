@@ -71,3 +71,5 @@ else
     rm -f $HOME/.dotfiles/jobs/weekly.log
     exit 0
 fi
+
+date "+%Y-%m-%d %T" > $HOME/.dotfiles/jobs/.weekly
