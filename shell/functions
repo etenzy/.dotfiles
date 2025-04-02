@@ -269,6 +269,8 @@ function kubeconfig-flatten() {
     mv $HOME/.kube/*.bk $HOME/.kube/.backup/
 }
 
-function dev() {
+function developer() {
     cd $HOME/Developer/$1
 }
+
+compctl -W $HOME/Developer/ -/ developer
