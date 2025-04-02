@@ -67,6 +67,9 @@
 	# hard reset and clean (unrecoverable)
 	nuke = "!git reset --hard HEAD && git clean -fd"
 
+	# unstage files or folders
+	unstage = "!f() { git restore --staged ${1}; }; f"
+
 [trailer]
 	separators = ":#"
 
