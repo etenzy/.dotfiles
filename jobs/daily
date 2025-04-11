@@ -44,7 +44,6 @@ if [ "$ANYFAIL" = true ]; then
 else
     log_task_success
     rm -f $HOME/.dotfiles/jobs/daily.log
+    date "+%s" > $HOME/.dotfiles/jobs/.daily
     exit 0
 fi
-
-date "+%Y-%m-%d %T" > $HOME/.dotfiles/jobs/.daily
