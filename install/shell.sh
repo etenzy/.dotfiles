@@ -83,6 +83,35 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     compaudit | xargs chmod go-w
 fi
 
+if [[ "$ENABLE_INSTALL_FISH" == "true" ]]; then
+    echo ''
+    echo 'Install fish'
+    echo '-----------'
+    brew install fish fisher
+    echo $(which fish) | sudo tee -a /etc/shells
+fi
+
+if [[ "$ENABLE_INSTALL_FISH_DEFAULT" == "true" ]]; then
+    echo ''
+    echo 'Set fish as default shell'
+    echo '-------------------------'
+    chsh -s $(which fish)
+fi
+
+if [[ "$ENABLE_INSTALL_FISH_CONFIG" == "true" ]]; then
+    echo ''
+    echo 'Symlink fish preferences'
+    echo '------------------------'
+    mkdir -p $HOME/.config/fish
+    rm -rf $HOME/.config/fish/config.fish
+    ln -nfs $HOME/.dotfiles/shell/config/fish/config.fish $HOME/.config/fish/config.fish
+    rm -rf $HOME/.config/fish/functions
+    ln -nfs $HOME/.dotfiles/shell/config/fish/functions $HOME/.config/fish/functions
+
+    fisher install catppuccin/fish
+    fish_config theme save "Catppuccin Frappe"
+fi
+
 if [[ "$ENABLE_INSTALL_STARSHIP" == "true" ]]; then
     echo ''
     echo 'Install starship-prompt'
