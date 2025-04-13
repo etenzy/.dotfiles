@@ -253,7 +253,8 @@ function kube-debug-smb() {
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {
-    west build --pristine --source-dir "$ZMK_PATH/app" --build-dir "$1" --board "$2" -- -DZMK_CONFIG="$ZMK_CONFIG_PATH/config" -DSHIELD="$3"
+    west build --pristine --source-dir "$ZMK_PATH/app" --build-dir "build/left" --board "nice_nano_v2" -- -DZMK_CONFIG="$ZMK_CONFIG_PATH/config" -DSHIELD="corne_left nice_view_adapter nice_view"
+    west build --pristine --source-dir "$ZMK_PATH/app" --build-dir "build/right" --board "nice_nano_v2" -- -DZMK_CONFIG="$ZMK_CONFIG_PATH/config" -DSHIELD="corne_right nice_view_adapter nice_view"
 }
 
 # Print the full command before running kubectl
