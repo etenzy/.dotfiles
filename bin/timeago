@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+MINUTE=60
+HOUR=$((MINUTE*60))
+DAY=$((HOUR*24))
+WEEK=$((DAY*7))
+MONTH=$((WEEK*4))
+YEAR=$((MONTH*12))
+
+ignore_seconds=false
+if [ "$1" == "--ignore-seconds" ]; then
+    ignore_seconds=true
+    shift
+fi
+
+
+if [ -t 0 ]; then
+        input="$1"
+else
+    while IFS= read -r line; do
+        input="$line"
+    done
+fi
+
+current=$(date +%s)
+rest=$(($current - $input))
+returnstring=""
+
+while [ "$rest" -gt 0 ]; do
+    if [ "$rest" -lt $MINUTE ]; then
+        unit="sec"
+        value=$rest
+        rest=0
+    fi
+    if [ "$rest" -gt $MINUTE ] && [ "$rest" -lt $HOUR ]; then
+        unit="min"
+        value=$(echo "$rest / $MINUTE" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $MINUTE)" | bc)
+    fi
+    if [ "$rest" -gt $HOUR ] && [ "$rest" -lt $DAY ]; then
+        unit="hour"
+        value=$(echo "$rest / $HOUR" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $HOUR)" | bc)
+    fi
+    if [ "$rest" -gt $DAY ] && [ "$rest" -lt $WEEK ]; then
+        unit="day"
+        value=$(echo "$rest / $DAY" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $DAY)" | bc)
+    fi
+    if [ "$rest" -gt $WEEK ] && [ "$rest" -lt $MONTH ]; then
+        unit="week"
+        value=$(echo "$rest / $WEEK" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $WEEK)" | bc)
+    fi
+    if [ "$rest" -gt $MONTH ] && [ "$rest" -lt $YEAR ]; then
+        unit="month"
+        value=$(echo "$rest / $MONTH" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $MONTH)" | bc)
+    fi
+    if [ "$rest" -gt $YEAR ]; then
+        unit="year"
+        value=$(echo "$rest / $YEAR" | bc -l | cut -d'.' -f1)
+        rest=$(echo "$rest - ($value * $YEAR)" | bc)
+    fi
+
+    if [ "$unit" == "min" ] && [ "$ignore_seconds" = true ]; then
+        rest=0
+    fi
+
+    if [ "$value" -gt 1 ]; then
+        unit="${unit}s"
+    fi
+
+    returnstring+="$value $unit"
+
+    if [[ "$returnstring" == *","*","* ]]; then
+        break
+    fi
+
+    if [ "$rest" -gt 0 ]; then
+        returnstring+=", "
+    fi
+done
+
+echo $returnstring
