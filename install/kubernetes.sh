@@ -4,9 +4,7 @@ if [[ "$ENABLE_INSTALL_TALOSCTL" == "true" ]]; then
     echo ''
     echo 'Install talosctl'
     echo '----------------'
-    curl -sL https://talos.dev/install | sh
-
-    talosctl_completion
+    brew install talosctl
 fi
 
 if [[ "$ENABLE_INSTALL_KIND" == "true" ]]; then
@@ -97,22 +95,7 @@ if [[ "$ENABLE_INSTALL_KUBEONE" == "true" ]]; then
     echo ''
     echo 'Install KubeOne'
     echo '---------------'
-    OS=$(uname | tr '[:upper:]' '[:lower:]')
-    VERSION=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/kubermatic/kubeone/releases | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/' | sort -V | tail -1)
-
-    if [ "$(uname -m)" = "arm64" ]; then
-        curl -LO "https://github.com/kubermatic/kubeone/releases/download/v${VERSION}/kubeone_${VERSION}_${OS}_arm64.zip"
-        unzip kubeone_${VERSION}_${OS}_arm64.zip -d kubeone_${VERSION}_${OS}_arm64
-        sudo mv kubeone_${VERSION}_${OS}_arm64/kubeone /usr/local/bin
-        rm -rf kubeone_${VERSION}_${OS}_arm64*
-    else
-        curl -LO "https://github.com/kubermatic/kubeone/releases/download/v${VERSION}/kubeone_${VERSION}_${OS}_amd64.zip"
-        unzip kubeone_${VERSION}_${OS}_amd64.zip -d kubeone_${VERSION}_${OS}_amd64
-        sudo mv kubeone_${VERSION}_${OS}_amd64/kubeone /usr/local/bin
-        rm -rf kubeone_${VERSION}_${OS}_amd64*
-    fi
-
-    kubeone_completion
+    brew install kubeone
 fi
 
 if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
