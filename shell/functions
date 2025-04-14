@@ -27,23 +27,6 @@ function fixQL() {
     xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
 }
 
-# Update zsh completions for kubeone
-function kubeone_completion() {
-    kubeone completion zsh > $ZSH/completions/_kubeone
-}
-
-# Update zsh completions for talosctl
-function talosctl_completion() {
-    talosctl completion zsh > $ZSH/completions/_talosctl
-}
-
-# Update zsh completions
-function update_completions() {
-    mkdir -p $ZSH/completions
-    kubeone_completion
-    talosctl_completion
-}
-
 # List open media
 function lsom() {
     lsof -p $(ps aux | grep -i "$1" | grep -v grep | awk '{print $2}') | grep "\.$2" | grep -Eo "/.*" | xargs
