@@ -22,6 +22,9 @@ if [[ "$ENABLE_INSTALL_FASTFETCH" == "true" ]]; then
     echo 'Install fastfetch'
     echo '-----------------'
     brew install fastfetch
+    mkdir -p $HOME/.config/fastfetch/
+    rm -rf $HOME/.config/fastfetch/config.jsonc
+    ln -nfs $HOME/.dotfiles/shell/config/fastfetch/config.jsonc $HOME/.config/fastfetch/config.jsonc
 fi
 
 if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
