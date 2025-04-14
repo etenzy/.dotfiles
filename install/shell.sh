@@ -88,6 +88,8 @@ if [[ "$ENABLE_INSTALL_FISH" == "true" ]]; then
     echo 'Install fish'
     echo '-----------'
     brew install fish fisher
+    brew install fisher
+    brew install babelfish
     echo $(which fish) | sudo tee -a /etc/shells
 fi
 
