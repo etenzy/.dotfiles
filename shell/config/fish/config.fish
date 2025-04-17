@@ -19,4 +19,8 @@ set -gx AWS_PROFILE ''
 fish_add_path $HOMEBREW_PREFIX/bin
 fish_add_path $HOME/.bin
 
+if test -e $HOME/.dotfiles-custom/config/fish/config.fish
+    source $HOME/.dotfiles-custom/config/fish/config.fish
+end
+
 starship init fish | source
