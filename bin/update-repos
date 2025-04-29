@@ -68,9 +68,9 @@ for directory in $directories; do
         while [ -z "$mainBranch" ]; do
             branchlist=$(git branch --list)
 
-            if [ -n "$(echo "$branchlist" | grep -E '^(\*\s)?main$')" ]; then
+            if [ -n "$(echo "$branchlist" | grep -E '^\*?\s*main$')" ]; then
                 mainBranch="main"
-            elif [ -n "$(echo "$branchlist" | grep -E '^(\*\s)?master$')" ]; then
+            elif [ -n "$(echo "$branchlist" | grep -E '^\*?\s*master$')" ]; then
                 mainBranch="master"
             fi
         done
