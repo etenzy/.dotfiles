@@ -12,9 +12,6 @@
 [init]
 	defaultBranch = main
 
-[pull]
-	rebase = true
-
 [commit]
 	gpgsign = true
 	template = ~/.git-commit-template
@@ -23,20 +20,41 @@
 	gpgsign = true
 
 [push]
+	autoSetupRemote = true
 	default = current
+	followTags = true
 
-[diff "sopsdiffer"]
-	textconv = sops -d
+[pull]
+	rebase = true
+
+[log]
+    graphColors = blue,yellow,cyan,magenta,green,red
 
 [status]
 	short = true
 	branch = true
 	showStash = true
+	showUntrackedFiles = all
 	submoduleSummary = true
 	renames = copy
 
+[diff]
+	context = 3
+	renames = copies
+	interHunkContext = 10
+
+[diff "sopsdiffer"]
+	textconv = sops -d
+
+[pager]
+	diff = diff-so-fancy | $PAGER
+
+[diff-so-fancy]
+	markEmptyLines = false
+
 [alias]
 	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+	lgt = "log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n' --abbrev-commit"
 	new = !git init && git symbolic-ref HEAD refs/heads/main
 	empty = "commit --allow-empty"
 	st = status
@@ -99,6 +117,13 @@
 	smudge = git-lfs smudge %f
 	process = git-lfs filter-process
 	required = true
+
+[color "diff"]
+	meta       = black bold
+	frag       = magenta
+	context    = white
+	whitespace = yellow reverse
+	old        = red
 
 [include]
 	path = ~/.gitconfig-include

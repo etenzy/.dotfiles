@@ -4,7 +4,7 @@ if [[ "$ENABLE_INSTALL_GIT_LATEST" == "true" ]]; then
     echo ''
     echo 'Install git'
     echo '-----------'
-    brew install git
+    brew install git diff-so-fancy
 
     echo ''
     echo 'Configure Git'
