@@ -72,6 +72,9 @@ for directory in $directories; do
                 mainBranch="main"
             elif [ -n "$(echo "$branchlist" | grep -E '^\*?\s*master$')" ]; then
                 mainBranch="master"
+            else
+                remoteHead=$(git branch -r | grep 'HEAD' | awk -F '->' '{print $2}' | awk -F 'origin/' '{print $2}')
+                mainBranch=$(echo "$branchlist" | grep -o "$remoteHead")
             fi
         done
 
