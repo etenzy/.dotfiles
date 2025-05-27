@@ -17,6 +17,8 @@ set -gx CLOUDSDK_CONFIG ''
 set -gx AWS_PROFILE ''
 
 fish_add_path $HOMEBREW_PREFIX/bin
+fish_add_path $HOMEBREW_PREFIX/sbin
+fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.bin
 
 if test -e $HOME/.dotfiles-custom/shell/config/fish/config.fish
