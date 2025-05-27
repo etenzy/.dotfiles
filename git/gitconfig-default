@@ -76,7 +76,7 @@
 
 	# open GitHub repository in browser
 	#    git open [<remote>]
-	open = "!f() { URL=$(git remote get-url ${1:-origin}); open \"${URL%%.git}\"; }; f"
+	open = "!f() { URL=$(git remote get-url ${1:-origin} | sed -Ee 's#(ssh://)?(git@|git://)#https://#' -Ee 's@(\\.[a-z]+)(:)([0-9]+/)?@\\1/@'); open \"${URL%%.git}\"; }; f"
 
 	# hard reset with commit before (use reflog to recover)
 	#    git wipe [<commit>]
