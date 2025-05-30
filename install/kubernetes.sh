@@ -27,6 +27,9 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     #Download https://github.com/ahmetb/kubectl-aliases/
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o $HOME/.homebrew-env/kubectl
     source $HOME/.homebrew-env/kubectl
+
+    curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases.fish -s -o $HOME/.homebrew-env/kubectl_aliases.fish
+    source $HOME/.homebrew-env/kubectl_aliases.fish
     
     # Install kubectl convert
     VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
@@ -75,6 +78,10 @@ if [[ "$ENABLE_INSTALL_KUBECTX" == "true" ]]; then
     echo 'Install kubectx'
     echo '---------------'
     brew install kubectx
+
+    echo 'alias kctx kubectx' >> $HOME/.homebrew-env/kubectx.fish
+    echo 'alias kns kubens' >> $HOME/.homebrew-env/kubectx.fish
+    source $HOME/.homebrew-env/kubectx.fish
 fi
 
 if [[ "$ENABLE_INSTALL_KUBECM" == "true" ]]; then
