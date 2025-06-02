@@ -18,7 +18,7 @@ set -gx AWS_PROFILE ''
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.bin
 
-for file in $HOME/.homebrew-env/*.fish; do
+for file in $HOME/.homebrew-env/*.fish;
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 end
 
