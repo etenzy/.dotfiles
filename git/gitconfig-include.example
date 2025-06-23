@@ -1,8 +1,8 @@
 [includeIf "gitdir:~/Developer/github.com/"]
-	path = .gitconfig-github
+	path = ~/Developer/github.com/.gitconfig
 
 [includeIf "gitdir:~/Developer/gitlab.com/"]
-	path = .gitconfig-gitlab
+	path = ~/Developer/gitlab.com/.gitconfig
 
 [includeIf "gitdir:~/Developer/bitbucket.org/"]
-	path = .gitconfig-bitbucket
+	path = ~/Developer/bitbucket.org/.gitconfig

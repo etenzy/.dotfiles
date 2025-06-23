@@ -20,4 +20,3 @@ if [[ "$ENABLE_INSTALL_VIMPLUG" == "true" ]]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     vim +PlugInstall +PlugUpdate +PlugUpgrade +PlugClean! +qa!
 fi
-

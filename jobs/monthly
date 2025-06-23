@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+export HOME=/Users/$(whoami)
+export PATH=$HOME/.bin:$PATH
+
+source $HOME/.dotfiles/jobs/common.sh
+source $HOME/.dotfiles/shell/logging.sh
+
+ANYFAIL=false
+function anyfail() {
+    log_task_fail
+    ANYFAIL=true
+}
+
+log_task "Monthly job"
+
+echo "monthly: delete temp data" >> $HOME/.dotfiles/jobs/job.log
+log_task "delete temp data" \
+    && sudo rm -rf ~/Library/Caches/* >> $HOME/.dotfiles/jobs/job.log \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/job.log
+
+echo "monthly: flush dns" >> $HOME/.dotfiles/jobs/job.log
+log_task "flush dns" \
+    && sudo dscacheutil -flushcache >> $HOME/.dotfiles/jobs/job.log \
+    && sudo killall -HUP mDNSResponder >> $HOME/.dotfiles/jobs/job.log \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/job.log
+
+echo "monthly: fix QuickLook" >> $HOME/.dotfiles/jobs/job.log
+log_task "fix QuickLook" \
+    && xattr -r -d com.apple.quarantine ~/Library/QuickLook/* >> $HOME/.dotfiles/jobs/job.log \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/job.log
+
+echo "monthly: empty all trashes" >> $HOME/.dotfiles/jobs/job.log
+log_task "empty trashes" \
+    && sudo rm -rfv /Volumes/*/.Trashes >> $HOME/.dotfiles/jobs/job.log \
+    && sudo rm -rfv ~/.Trash >> $HOME/.dotfiles/jobs/job.log \
+    && sudo rm -rfv /private/var/log/asl/*.asl >> $HOME/.dotfiles/jobs/job.log \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/job.log
+
+echo "monthly: backup home" >> $HOME/.dotfiles/jobs/job.log
+log_task "backup home" \
+    && $HOME/.dotfiles/bin/backup-home >> $HOME/.dotfiles/jobs/job.log \
+    && log_task_success \
+    || anyfail
+echo "" >> $HOME/.dotfiles/jobs/job.log
+
+if [ "$ANYFAIL" = true ]; then
+    log_task_fail
+    log_warn "Check $HOME/.dotfiles/jobs/job.log for more information"
+    exit 1
+else
+    log_task_success
+    rm -f $HOME/.dotfiles/jobs/job.log
+    date "+%s" > $HOME/.dotfiles/jobs/.monthly
+    exit 0
+fi

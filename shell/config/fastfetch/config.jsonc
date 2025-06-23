@@ -124,25 +124,31 @@
         },
         {
             "type": "datetime",
-            "key": "  DateTime   ",
+            "key": "  DateTime    ",
             "keyColor": "magenta"
         },
         {
             "type": "uptime",
-            "key": "  Uptime     ",
+            "key": "  Uptime      ",
             "keyColor": "magenta"
         },
         {
             "type": "command",
-            "key": "  Daily Job  ",
+            "key": "  Daily Job   ",
             "keyColor": "magenta",
             "text": "echo $(cat $HOME/.dotfiles/jobs/.daily | timeago --ignore-seconds)"
         },
         {
             "type": "command",
-            "key": "  Weekly Job ",
+            "key": "  Weekly Job  ",
             "keyColor": "magenta",
-            "text": "echo $(cat $HOME/.dotfiles/jobs/.weekly | timeago --ignore-seconds)"
+            "text": "echo $(cat $HOME/.dotfiles/jobs/.weekly | timeago --ignore-minutes)"
+        },
+        {
+            "type": "command",
+            "key": "  Monthly Job ",
+            "keyColor": "magenta",
+            "text": "echo $(cat $HOME/.dotfiles/jobs/.monthly | timeago --ignore-hours)"
         },
         {
             "type": "custom",

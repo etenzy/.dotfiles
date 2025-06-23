@@ -21,7 +21,8 @@ if [[ "$ENABLE_INSTALL_BREWGEM" == "true" ]]; then
     brew install brew-gem
     echo 'path=("$HOME/.gem/bin" $path)' >> $HOME/.homebrew-env/gem
     echo 'export GEM_HOME="$HOME/.gem"' >> $HOME/.homebrew-env/gem
-    source $HOME/.homebrew-env/gem
+    echo 'fish_add_path $HOME/.gem/bin' >> $HOME/.homebrew-env/gem.fish
+    echo 'set -gx GEM_HOME $HOME/.gem' >> $HOME/.homebrew-env/gem.fish
 fi
 
 if [[ "$ENABLE_INSTALL_ACK" == "true" ]]; then
@@ -88,9 +89,9 @@ if [[ "$ENABLE_INSTALL_ASDF" == "true" ]]; then
     brew install asdf
     echo 'path=(${ASDF_DATA_DIR:-$HOME/.asdf}/shims $path)' >> $HOME/.homebrew-env/asdf
     echo 'fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)' >> $HOME/.homebrew-env/asdf
+    echo 'fish_add_path $HOME/.asdf/shims' >> $HOME/.homebrew-env/asdf.fish
     mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
     asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
-    source $HOME/.homebrew-env/asdf
 fi
 
 if [[ "$ENABLE_INSTALL_BAT" == "true" ]]; then
@@ -194,9 +195,8 @@ if [[ "$ENABLE_INSTALL_FZF" == "true" ]]; then
     echo 'Install fzf'
     echo '-----------'
     brew install fzf
-    echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"' >> $HOME/.homebrew-env/fzf
-    echo 'source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"' >> $HOME/.homebrew-env/fzf
-    source $HOME/.homebrew-env/fzf
+    echo 'source <(fzf --zsh)' >> $HOME/.homebrew-env/fzf
+    echo 'fzf --fish | source' >> $HOME/.homebrew-env/fzf.fish
 fi
 
 if [[ "$ENABLE_INSTALL_GNUPG" == "true" ]]; then

@@ -47,7 +47,6 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     echo '---------------------------'
     brew install zsh-autosuggestions
     echo 'source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"' >> $HOME/.homebrew-env/zsh-autosuggestions
-    source $HOME/.homebrew-env/zsh-autosuggestions
 
     echo ''
     echo 'Install zsh-completions'
@@ -63,7 +62,6 @@ if [[ "$ENABLE_INSTALL_OHMYZSH" == "true" ]]; then
     git clone https://github.com/catppuccin/zsh-syntax-highlighting.git $HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting
     echo 'source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"' >> $HOME/.homebrew-env/zsh-syntax-highlighting
     echo 'source "$HOME/.dotfiles/shell/catppuccin/zsh-syntax-highlighting/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"' >> $HOME/.homebrew-env/zsh-syntax-highlighting
-    source $HOME/.homebrew-env/zsh-syntax-highlighting
 
     echo ''
     echo 'Symlink shell preferences'
@@ -90,7 +88,7 @@ if [[ "$ENABLE_INSTALL_FISH" == "true" ]]; then
     echo ''
     echo 'Install fish'
     echo '-----------'
-    brew install fish fisher
+    brew install fish
     brew install fisher
     brew install babelfish
     echo $(which fish) | sudo tee -a /etc/shells

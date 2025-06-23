@@ -14,36 +14,36 @@ function anyfail() {
 
 log_task "Daily job"
 
-echo "brew upgrade" >> $HOME/.dotfiles/jobs/daily.log
+echo "daily: brew upgrade" >> $HOME/.dotfiles/jobs/job.log
 log_task "brew upgrade" \
-    && brew update >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
-    && brew upgrade >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
-    && brew cleanup >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && brew update >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && brew upgrade >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && brew cleanup >> $HOME/.dotfiles/jobs/job.log 2>&1 \
     && log_task_success \
     || anyfail
-echo "" >> $HOME/.dotfiles/jobs/daily.log
+echo "" >> $HOME/.dotfiles/jobs/job.log
 
-echo "update-repo dotfiles" >> $HOME/.dotfiles/jobs/daily.log
+echo "daily: update-repo (.dotfiles)" >> $HOME/.dotfiles/jobs/job.log
 log_task "update-repo dotfiles" \
-    && $HOME/.dotfiles/bin/update-repos $HOME/.dotfiles >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && $HOME/.dotfiles/bin/update-repos $HOME/.dotfiles >> $HOME/.dotfiles/jobs/job.log 2>&1 \
     && log_task_success \
     || anyfail
-echo "" >> $HOME/.dotfiles/jobs/daily.log
+echo "" >> $HOME/.dotfiles/jobs/job.log
 
-echo "update-repos Developer" >> $HOME/.dotfiles/jobs/daily.log
+echo "daily: update-repos (Developer)" >> $HOME/.dotfiles/jobs/job.log
 log_task "update-repos Developer" \
-    && $HOME/.dotfiles/bin/update-repos $HOME/Developer >> $HOME/.dotfiles/jobs/daily.log 2>&1 \
+    && $HOME/.dotfiles/bin/update-repos $HOME/Developer >> $HOME/.dotfiles/jobs/job.log 2>&1 \
     && log_task_success \
     || anyfail
-echo "" >> $HOME/.dotfiles/jobs/daily.log
+echo "" >> $HOME/.dotfiles/jobs/job.log
 
 if [ "$ANYFAIL" = true ]; then
     log_task_fail
-    log_warn "Check $HOME/.dotfiles/jobs/daily.log for more information"
+    log_warn "Check $HOME/.dotfiles/jobs/job.log for more information"
     exit 1
 else
     log_task_success
-    rm -f $HOME/.dotfiles/jobs/daily.log
+    rm -f $HOME/.dotfiles/jobs/job.log
     date "+%s" > $HOME/.dotfiles/jobs/.daily
     exit 0
 fi

@@ -4,7 +4,8 @@ source $HOME/.dotfiles/shell/logging.sh
 source $HOME/.dotfiles-custom/shell/exports
 
 inputDir=${1:-$(pwd)}
-maxdepth=${2:-99}
+exclude=${2:-"$HOME/.dummy"}
+maxdepth=${3:-99}
 
 directories=""
 repo=""
@@ -23,7 +24,8 @@ function repofail() {
 
 log_task "Updating git repositories"
 
-directories=$(find $inputDir -depth +$maxdepth -type d \
+directories=$(find -E $inputDir -depth +$maxdepth -type d \
+    -o -regex "$exclude" -prune \
     -o -path $HOME/.asdf -prune \
     -o -path $HOME/.cache -prune \
     -o -path $HOME/.krew -prune \

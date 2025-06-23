@@ -26,10 +26,8 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
     
     #Download https://github.com/ahmetb/kubectl-aliases/
     curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases -s -o $HOME/.homebrew-env/kubectl
-    source $HOME/.homebrew-env/kubectl
 
-    curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases.fish -s -o $HOME/.homebrew-env/kubectl_aliases.fish
-    source $HOME/.homebrew-env/kubectl_aliases.fish
+    curl https://raw.githubusercontent.com/ahmetb/kubectl-aliases/refs/heads/master/.kubectl_aliases.fish -s -o $HOME/.homebrew-env/kubectl.fish
     
     # Install kubectl convert
     VERSION=$(curl -L -s https://dl.k8s.io/release/stable.txt)
@@ -52,7 +50,7 @@ if [[ "$ENABLE_INSTALL_KUBECTL" == "true" ]]; then
 
     if ! echo "$PATH" | grep -q "${KREW_ROOT:-$HOME/.krew}/bin"; then
         echo 'path=("$HOME/.krew/bin" $path)' >> $HOME/.homebrew-env/krew
-        source $HOME/.homebrew-env/krew
+        echo 'fish_add_path $HOME/.krew/bin' >> $HOME/.homebrew-env/krew.fish
     fi
 
     kubectl krew index add netshoot https://github.com/nilic/kubectl-netshoot.git
@@ -81,7 +79,6 @@ if [[ "$ENABLE_INSTALL_KUBECTX" == "true" ]]; then
 
     echo 'alias kctx kubectx' >> $HOME/.homebrew-env/kubectx.fish
     echo 'alias kns kubens' >> $HOME/.homebrew-env/kubectx.fish
-    source $HOME/.homebrew-env/kubectx.fish
 fi
 
 if [[ "$ENABLE_INSTALL_KUBECM" == "true" ]]; then

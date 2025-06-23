@@ -6,5 +6,5 @@ if [[ "$ENABLE_INSTALL_GO" == "true" ]]; then
     echo '----------'
     brew install go
     echo 'path=("$HOME/go/bin" $path)' >> $HOME/.homebrew-env/go
-    source $HOME/.homebrew-env/go
+    echo 'fish_add_path $HOME/go/bin' >> $HOME/.homebrew-env/go.fish
 fi

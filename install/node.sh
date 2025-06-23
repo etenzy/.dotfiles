@@ -20,5 +20,5 @@ if [[ "$ENABLE_INSTALL_YARN" == "true" ]]; then
     echo '------------'
     brew install yarn
     echo 'path=("$HOME/.yarn/bin" $path)' >> $HOME/.homebrew-env/yarn
-    source $HOME/.homebrew-env/yarn
+    echo 'fish_add_path $HOME/.yarn/bin' >> $HOME/.homebrew-env/yarn.fish
 fi

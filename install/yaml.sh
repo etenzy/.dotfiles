@@ -22,5 +22,5 @@ if [[ "$ENABLE_INSTALL_YAMLFIX" == "true" ]]; then
     echo '----------------'
     brew install yamlfix
     echo 'export YAMLFIX_SEQUENCE_STYLE="keep_style"' >> $HOME/.homebrew-env/yamlfix
-    source $HOME/.homebrew-env/yamlfix
+    echo 'set -gx YAMLFIX_SEQUENCE_STYLE keep_style' >> $HOME/.homebrew-env/yamlfix.fish
 fi

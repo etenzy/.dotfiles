@@ -12,16 +12,17 @@ set termguicolors
 set noshowmode
 set laststatus=2
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'itchyny/lightline.vim'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'andrewstuart/vim-kubernetes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'sirver/UltiSnips'
