@@ -41,7 +41,7 @@ log_task "vim update" \
 echo "" >> $HOME/.dotfiles/jobs/job.log
 
 echo "weekly: update-repos (not Developer, not .dotfiles)" >> $HOME/.dotfiles/jobs/job.log
-log_task "update-repos Developer" \
+log_task "update-repos" \
     && update-repos $HOME "($HOME/Developer|$HOME/.dotfiles)" >> $HOME/.dotfiles/jobs/job.log 2>&1 \
     && log_task_success \
     || anyfail

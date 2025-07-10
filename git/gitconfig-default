@@ -83,6 +83,8 @@
 	#    git wipe [<commit>]
 	wipe = "!f() { git add --all && git commit --quiet --message='WIPE-SAVEPOINT' && git reset ${1:-HEAD~} --hard && git clean -fd; }; f"
 
+	branch-clean = "!f() { git branch --no-merged | grep -v '\\*' | grep -v main | grep -v master | xargs git branch -D; }; f"
+
 	# hard reset and clean (unrecoverable)
 	nuke = "!git reset --hard HEAD && git clean -fd"
 

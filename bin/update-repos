@@ -126,6 +126,23 @@ for directory in $directories; do
             fi
         fi
 
+        if [ "$(git branch --merged | awk -F ' *' '{print $2}' | wc -w)" -gt 1 ]; then
+            for branch in $(git branch --merged | awk -F ' *' '{print $2}'); do
+                if [ "$branch" != "$mainBranch" ] && [ "$branch" != "$currentBranch" ]; then
+                    log_info "git branch -d $branch"
+                    echo "git branch -d $branch" >> $HOME/git.log
+                    git branch -d $branch &>> $HOME/git.log \
+                        || repofail
+                fi
+            done
+        fi
+
+        if [ -n "$(git status --porcelain)" ]; then
+            log_warn "Uncommitted changes after update"
+            echo "Uncommitted changes after update" >> $HOME/git.log
+            git status --short >> $HOME/git.log
+        fi
+
         if [ "$REPOFAIL" = true ]; then
             anyfail
         else
