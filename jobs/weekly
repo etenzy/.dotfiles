@@ -12,7 +12,7 @@ function anyfail() {
     ANYFAIL=true
 }
 
-log_task "Weekly job"
+log_task "Weekly job $(date '+%Y-%m-%d %T')"
 
 echo "weekly: brew cask upgrade" >> $HOME/.dotfiles/jobs/job.log
 log_task "brew cask upgrade" \

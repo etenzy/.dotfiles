@@ -12,7 +12,7 @@ function anyfail() {
     ANYFAIL=true
 }
 
-log_task "Monthly job"
+log_task "Monthly job $(date '+%Y-%m-%d %T')"
 
 echo "monthly: delete temp data" >> $HOME/.dotfiles/jobs/job.log
 log_task "delete temp data" \
