@@ -14,13 +14,6 @@ function anyfail() {
 
 log_task "Daily job $(date '+%Y-%m-%d %T')"
 
-echo "daily: purge" >> $HOME/.dotfiles/jobs/job.log
-log_task "purge" \
-    && sudo purge >> $HOME/.dotfiles/jobs/job.log 2>&1 \
-    && log_task_success \
-    || anyfail
-echo "" >> $HOME/.dotfiles/jobs/job.log
-
 echo "daily: brew upgrade" >> $HOME/.dotfiles/jobs/job.log
 log_task "brew upgrade" \
     && brew update >> $HOME/.dotfiles/jobs/job.log 2>&1 \
