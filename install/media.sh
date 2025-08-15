@@ -28,6 +28,13 @@ if [[ "$ENABLE_INSTALL_FFMPEG" == "true" ]]; then
     brew install ffmpeg
 fi
 
+if [[ "$ENABLE_INSTALL_MEDIAINFO" == "true" ]]; then
+    echo ''
+    echo 'Install media-info'
+    echo '------------------'
+    brew install media-info
+fi
+
 if [[ "$ENABLE_INSTALL_FLAC" == "true" ]]; then
     echo ''
     echo 'Install flac'
