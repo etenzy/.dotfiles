@@ -16,9 +16,8 @@ log_task "Monthly job $(date '+%Y-%m-%d %T')"
 
 echo "monthly: delete temp data" >> $HOME/.dotfiles/jobs/job.log
 log_task "delete temp data" \
-    && sudo rm -rf ~/Library/Caches/* >> $HOME/.dotfiles/jobs/job.log \
-    && log_task_success \
-    || anyfail
+    && sudo rm -rf ~/Library/Caches/* >> $HOME/.dotfiles/jobs/job.log
+    log_task_success
 echo "" >> $HOME/.dotfiles/jobs/job.log
 
 echo "monthly: flush dns" >> $HOME/.dotfiles/jobs/job.log
