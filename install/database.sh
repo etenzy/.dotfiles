@@ -12,7 +12,7 @@ if [[ "$ENABLE_INSTALL_PGCLI" == "true" ]]; then
     echo 'Install pgcli'
     echo '-------------'
     brew install pgcli
-
+    python -m pip install catppuccin
     ln -nfs $HOME/.dotfiles/shell/config/pgcli/config $HOME/.config/pgcli/config
 fi
 
