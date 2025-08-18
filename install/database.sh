@@ -12,6 +12,8 @@ if [[ "$ENABLE_INSTALL_PGCLI" == "true" ]]; then
     echo 'Install pgcli'
     echo '-------------'
     brew install pgcli
+
+    ln -nfs $HOME/.dotfiles/shell/config/pgcli/config $HOME/.config/pgcli/config
 fi
 
 if [[ "$ENABLE_INSTALL_SEQUELPRO" == "true" ]]; then
