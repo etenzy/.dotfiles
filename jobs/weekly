@@ -34,7 +34,10 @@ echo "" >> $HOME/.dotfiles/jobs/job.log
 
 echo "weekly: vim update" >> $HOME/.dotfiles/jobs/job.log
 log_task "vim update" \
-    && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && git clone https://github.com/junegunn/vim-plug.git ~/.vim/_temp >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && rm -rf ~/.vim/autoload/plug.vim >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && cp ~/.vim/_temp/plug.vim ~/.vim/autoload/plug.vim >> $HOME/.dotfiles/jobs/job.log 2>&1 \
+    && rm -rf ~/.vim/_temp >> $HOME/.dotfiles/jobs/job.log \
     && vim +PlugInstall +PlugUpdate +PlugUpgrade +PlugClean! +qa! >> $HOME/.dotfiles/jobs/job.log 2>&1 \
     && log_task_success \
     || anyfail
