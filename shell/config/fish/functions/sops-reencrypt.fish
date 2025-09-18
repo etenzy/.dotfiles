@@ -1,4 +1,4 @@
-function sops-reencryt
+function sops-reencrypt
     sops --decrypt --ignore-mac --encrypted-regex '^(data|stringData)$' --in-place $argv
     sops --encrypt --ignore-mac --encrypted-regex '^(data|stringData)$' --in-place $argv
 end
