@@ -8,11 +8,6 @@ function digga() {
     dig +nocmd "$1" any +multiline +noall +answer
 }
 
-# Remove host from known_hosts 
-function removehost() {
-    ssh-keygen -R "$1"
-}
-
 function microtime() {
     gdate +"%Y-%m-%d %H:%M:%S,%5N"
 }
@@ -20,11 +15,6 @@ function microtime() {
 # Run artisan
 function artisan() {
     php artisan "$@"
-}
-
-# Fix permissions of QuickLook plugins
-function fixQL() {
-    xattr -r -d com.apple.quarantine ~/Library/QuickLook/QL*
 }
 
 # List open media
@@ -186,53 +176,6 @@ function datetime2date() {
     fi
 }
 
-function test-connection-nc() {
-    render-script $HOME/.dotfiles/kubernetes/test-connection-nc.sh \
-        -r=IPS="$1" \
-        -r=PORTS="$2"
-}
-
-function test-connection-pg() {
-    ports=${2:-5432}
-    database=${3:-postgres}
-    user=${4:-postgres}
-
-    render-script $HOME/.dotfiles/kubernetes/test-connection-pg.sh \
-        -r=IPS="$1" \
-        -r=PORTS="$ports" \
-        -r=DATABASE="$database" \
-        -r=USER="$user"
-}
-
-function test-connection-smb() {
-    render-script $HOME/.dotfiles/kubernetes/test-connection-smb.sh \
-        -r=IP="$1" \
-        -r=SHARE="$2" \
-        -r=USER="$3" \
-        -r=PASSWORD="$4"
-}
-
-function kube-debug-ip() {
-    kubectl apply -f $kube_netshoot
-    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
-        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-nc $1 $2)"
-    kubectl delete -f $kube_netshoot --grace-period=0
-}
-
-function kube-debug-pg() {
-    kubectl apply -f $kube_psql
-    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
-        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-pg $1 ${2:-} ${3:-} ${4:-})"
-    kubectl delete -f $kube_psql --grace-period=0
-}
-
-function kube-debug-smb() {
-    kubectl apply -f $kube_smb_toolbox
-    kubectl wait --for=condition=ready pod/tmp-shell --timeout=30s \
-        && kubectl exec -it tmp-shell -- /bin/sh -c "$(test-connection-smb $1 $2 $3 $4)"
-    kubectl delete -f $kube_smb_toolbox --grace-period=0
-}
-
 # zmk_build <build-dir> <board> <shield>
 # zmk_build "build/left" "nice_nano_v2" "corne_left nice_view_adapter nice_view"
 function zmk_build() {
@@ -244,14 +187,6 @@ function zmk_build() {
 # function kubectl() { 
 #     echo "+ kubectl $@">&2; command kubectl $@;
 # }
-
-function kubeconfig-flatten() {
-    rename s/:/-/g $(find "$HOME/.kube" -maxdepth 1 -type f -name '*.bk')
-    export KUBECONFIG="$(find "$HOME/.kube" -maxdepth 1 -type f -name '*.bk' | tr '\n' ':')$HOME/.kube/config"
-    kubectl config view --raw --flatten > $HOME/.kube/config_tmp
-    mv $HOME/.kube/config_tmp $HOME/.kube/config
-    mv $HOME/.kube/*.bk $HOME/.kube/.backup/
-}
 
 function developer() {
     cd $HOME/Developer/$1
