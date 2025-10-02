@@ -7,13 +7,6 @@ if [[ "$ENABLE_INSTALL_PHP_LATEST" == "true" ]]; then
     brew install php
 fi
 
-if [[ "$ENABLE_INSTALL_PHP_SEVEN" == "true" ]]; then
-    echo ''
-    echo 'Install php 7.4'
-    echo '---------------'
-    brew install php@7.4
-fi
-
 if [[ "$ENABLE_INSTALL_PHP_COMPOSER" == "true" ]]; then
     echo ''
     echo 'Install composer'
