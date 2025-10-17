@@ -41,7 +41,7 @@ alias emptytrash "sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 alias afk "pmset displaysleepnow"
 
-alias assume="source (brew --prefix)/bin/assume.fish"
+alias assume="source $HOMEBREW_PREFIX/bin/assume.fish"
 
 set -gx KUBECONFIG "$HOME/.kube/config"
 set -gx kube_netshoot "/Users/michael.roedel/.dotfiles/kubernetes/netshoot.yaml"
