@@ -383,6 +383,15 @@ if [[ "$ENABLE_INSTALL_ULTIMATEPLUMBER" == "true" ]]; then
     brew install up
 fi
 
+if [[ "$ENABLE_INSTALL_UV" == "true" ]]; then
+    echo ''
+    echo 'Install uv'
+    echo '----------'
+    brew install uv
+    echo 'path=("$HOME/.local/bin" $path)' >> $HOME/.homebrew-env/uv
+    echo 'fish_add_path $HOME/.local/bin' >> $HOME/.homebrew-env/uv.fish
+fi
+
 if [[ "$ENABLE_INSTALL_WATCH" == "true" ]]; then
     echo ''
     echo 'Install watch'
