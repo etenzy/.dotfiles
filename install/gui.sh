@@ -42,6 +42,13 @@ if [[ "$ENABLE_INSTALL_EVERNOTE" == "true" ]]; then
     brew install --cask evernote
 fi
 
+if [[ "$ENABLE_INSTALL_FINETUNE" == "true" ]]; then
+    echo ''
+    echo 'Install finetune'
+    echo '----------------'
+    brew install --cask finetune
+fi
+
 if [[ "$ENABLE_INSTALL_HOT" == "true" ]]; then
     echo ''
     echo 'Install hot'
