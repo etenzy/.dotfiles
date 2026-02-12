@@ -299,6 +299,13 @@ if [[ "$ENABLE_INSTALL_MKLICENSE" == "true" ]]; then
     fi
 fi
 
+if [[ "$ENABLE_INSTALL_MOLE" == "true" ]]; then
+    echo ''
+    echo 'Install mole'
+    echo '------------'
+    brew install mole
+fi
+
 if [[ "$ENABLE_INSTALL_PRETTYPING" == "true" ]]; then
     echo ''
     echo 'Install prettyping'
