@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# export NON_ROOT=true
+
 # export ENABLE_INSTALL_CLI=true
 # export ENABLE_INSTALL_COREUTILS=true
 # export ENABLE_INSTALL_BREWGEM=true

@@ -7,11 +7,6 @@ set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
 
-set -gx HOMEBREW_PREFIX /opt/homebrew
-set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
-set -gx HOMEBREW_REPOSITORY /opt/homebrew
-fish_add_path $HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin
-
 for file in $HOME/.homebrew-env/*.fish;
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 end
@@ -44,10 +39,10 @@ alias afk "pmset displaysleepnow"
 alias assume="source $HOMEBREW_PREFIX/bin/assume.fish"
 
 set -gx KUBECONFIG "$HOME/.kube/config"
-set -gx kube_netshoot "/Users/michael.roedel/.dotfiles/kubernetes/netshoot.yaml"
-set -gx kube_psql "/Users/michael.roedel/.dotfiles/kubernetes/psql.yaml"
-set -gx kube_smb_toolbox "/Users/michael.roedel/.dotfiles/kubernetes/smb-toolbox.yaml"
-set -gx kube_debian "/Users/michael.roedel/.dotfiles/kubernetes/debian.yaml"
+set -gx kube_netshoot "$HOME/.dotfiles/kubernetes/netshoot.yaml"
+set -gx kube_psql "$HOME/.dotfiles/kubernetes/psql.yaml"
+set -gx kube_smb_toolbox "$HOME.dotfiles/kubernetes/smb-toolbox.yaml"
+set -gx kube_debian "$HOME/.dotfiles/kubernetes/debian.yaml"
 
 if test -e $HOME/.dotfiles-custom/shell/config/fish/config.fish
     source $HOME/.dotfiles-custom/shell/config/fish/config.fish

@@ -17,13 +17,24 @@ fi
 echo ''
 echo 'Install homebrew'
 echo '----------------'
-sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+mkdir -p $HOME/.homebrew-env
 
-eval $(/opt/homebrew/bin/brew shellenv)
+if [[ "$NON_ROOT" == "true" ]]; then
+    mkdir -p $HOME/.homebrew
+    curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C $HOME/.homebrew
+
+    eval $($HOME/.homebrew/bin/brew shellenv)
+    echo $($HOME/.homebrew/bin/brew shellenv fish) >> $HOME/.homebrew-env/0_brew.fish
+    echo 'set --global --export HOMEBREW_CASK_OPTS "--appdir=~/Applications"' >> $HOME/.homebrew-env/0_brew.fish
+else
+    sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    eval $(/opt/homebrew/bin/brew shellenv)
+    echo $(/opt/homebrew/bin/brew shellenv fish) >> $HOME/.homebrew-env/0_brew.fish
+fi
 
 mkdir -p $HOME/.ca-certificates
-mkdir -p $HOME/.homebrew-env
 
 # homebrew-cask-upgrade
 # brew cu shows all cask with their status
