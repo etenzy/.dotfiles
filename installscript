@@ -25,6 +25,8 @@ if [[ "$NON_ROOT" == "true" ]]; then
 
     eval $($HOME/.homebrew/bin/brew shellenv)
     echo $($HOME/.homebrew/bin/brew shellenv fish) >> $HOME/.homebrew-env/0_brew.fish
+
+    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
     echo 'set --global --export HOMEBREW_CASK_OPTS "--appdir=~/Applications"' >> $HOME/.homebrew-env/0_brew.fish
 else
     sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
