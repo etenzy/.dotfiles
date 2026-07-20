@@ -25,15 +25,18 @@ if [[ "$NON_ROOT" == "true" ]]; then
 
     eval $($HOME/.homebrew/bin/brew shellenv)
     echo $($HOME/.homebrew/bin/brew shellenv fish) >> $HOME/.homebrew-env/0_brew.fish
+    echo $($HOME/.homebrew/bin/brew shellenv zsh) >> $HOME/.homebrew-env/0_brew
 
     export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
     echo 'set --global --export HOMEBREW_CASK_OPTS "--appdir=~/Applications"' >> $HOME/.homebrew-env/0_brew.fish
+    echo 'export HOMEBREW_CASK_OPTS="--appdir=~/Applications"' >> $HOME/.homebrew-env/0_brew
 else
     sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     eval $(/opt/homebrew/bin/brew shellenv)
     echo $(/opt/homebrew/bin/brew shellenv fish) >> $HOME/.homebrew-env/0_brew.fish
+    echo $(/opt/homebrew/bin/brew shellenv zsh) >> $HOME/.homebrew-env/0_brew
 fi
 
 mkdir -p $HOME/.ca-certificates
