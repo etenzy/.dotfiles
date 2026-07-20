@@ -42,6 +42,7 @@ mkdir -p $HOME/.ca-certificates
 # brew cu shows all cask with their status
 # brew cu --all Force upgrade outdated apps
 brew tap buo/cask-upgrade
+brew trust buo/cask-upgrade
 
 brew update
 
