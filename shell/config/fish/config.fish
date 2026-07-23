@@ -39,6 +39,7 @@ alias afk "pmset displaysleepnow"
 alias assume="source $HOMEBREW_PREFIX/bin/assume.fish"
 
 set -gx KUBECONFIG "$HOME/.kube/config"
+set -gx kube_kubectl "$HOME/.dotfiles/kubernetes/kubectl.yaml"
 set -gx kube_netshoot "$HOME/.dotfiles/kubernetes/netshoot.yaml"
 set -gx kube_psql "$HOME/.dotfiles/kubernetes/psql.yaml"
 set -gx kube_smb_toolbox "$HOME.dotfiles/kubernetes/smb-toolbox.yaml"

@@ -21,4 +21,4 @@ else
     start_agent;
 fi
 
-/opt/homebrew/bin/fastfetch
+fastfetch

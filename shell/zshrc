@@ -12,16 +12,6 @@ source $ZSH/oh-my-zsh.sh
 export LC_ALL=en_US.UTF-8  
 export LANG=en_US.UTF-8
 
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-
-path=("$HOMEBREW_PREFIX/bin" $path)
-path=("$HOMEBREW_PREFIX/sbin" $path)
-
-fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
-fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
-
 for file in $HOME/.homebrew-env/*; do
 	[ -r "$file" ] && [ -f "$file" ] && [[ "$file" != *.fish ]] && source "$file"
 done
@@ -38,6 +28,9 @@ for file in $HOME/.dotfiles-custom/shell/{zshrc,exports,functions,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && [[ "$file" != *.fish ]] && source "$file"
 done
 unset file
+
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 
 [ -r ~/.extra ] && [ -f ~/.extra ] && source $HOME/.extra
 
