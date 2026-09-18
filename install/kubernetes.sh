@@ -92,7 +92,7 @@ if [[ "$ENABLE_INSTALL_KUBELOGIN" == "true" ]]; then
     echo ''
     echo 'Install kubelogin'
     echo '-----------------'
-    brew install int128/kubelogin/kubelogin
+    brew install kubelogin
 fi
 
 if [[ "$ENABLE_INSTALL_KUBEONE" == "true" ]]; then
@@ -106,7 +106,7 @@ if [[ "$ENABLE_INSTALL_FLUX" == "true" ]]; then
     echo ''
     echo 'Install Flux CLI'
     echo '----------------'
-    brew install fluxcd/tap/flux
+    brew install fluxcd
 
     if zsh -c 'command -v asdf' &> /dev/null; then
         asdf plugin add flux2 https://github.com/tablexi/asdf-flux2.git
@@ -172,7 +172,7 @@ if [[ "$ENABLE_INSTALL_POPEYE" == "true" ]]; then
     echo ''
     echo 'Install Popeye'
     echo '--------------'
-    brew install derailed/popeye/popeye
+    brew install popeye
 fi
 
 if [[ "$ENABLE_INSTALL_STERN" == "true" ]]; then

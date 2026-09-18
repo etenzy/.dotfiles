@@ -380,7 +380,7 @@ if [[ "$ENABLE_INSTALL_TRIVY" == "true" ]]; then
     echo ''
     echo 'Install trivy'
     echo '-------------'
-    brew install aquasecurity/trivy/trivy
+    brew install trivy
 fi
 
 if [[ "$ENABLE_INSTALL_ULTIMATEPLUMBER" == "true" ]]; then

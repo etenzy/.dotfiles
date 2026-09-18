@@ -34,7 +34,6 @@ if [[ "$ENABLE_INSTALL_AWS" == "true" ]]; then
     echo 'Install AWS CLI'
     echo '---------------'
     brew install awscli
-    brew tap common-fate/granted
     brew install granted
 fi
 

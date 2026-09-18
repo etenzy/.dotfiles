@@ -48,7 +48,7 @@ if [[ "$ENABLE_INSTALL_MPV" == "true" ]]; then
     echo ''
     echo 'Install mpv'
     echo '-----------'
-    brew install homebrew/cask/mpv
+    brew install mpv
     mkdir -p $HOME/.config/mpv/scripts
     curl https://raw.githubusercontent.com/Ashyni/mpv-scripts/master/dynamic-crop.lua -s -o  $HOME/.config/mpv/scripts/dynamic-crop.lua
 fi

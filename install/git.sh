@@ -28,6 +28,7 @@ if [[ "$ENABLE_INSTALL_GIT_METEOR" == "true" ]]; then
     echo 'Install git-meteor'
     echo '------------------'
     brew tap stefanlogue/tools
+    brew trust stefanlogue/tools
     brew install --cask meteor
     rm -rf mkdir -p $HOME/.config/meteor
     mkdir -p $HOME/.config/meteor

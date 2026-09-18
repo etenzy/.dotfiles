@@ -33,7 +33,6 @@ if [[ "$NON_ROOT" == "true" ]]; then
     echo 'set --global --export HOMEBREW_NO_REQUIRE_TAP_TRUST "1"' >> $HOME/.homebrew-env/0_brew.fish
     echo 'export HOMEBREW_CASK_OPTS="--appdir=~/Applications"' >> $HOME/.homebrew-env/0_brew
     echo 'export HOMEBREW_NO_ENV_HINTS="1"' >> $HOME/.homebrew-env/0_brew
-    echo 'export HOMEBREW_NO_REQUIRE_TAP_TRUST="1"' >> $HOME/.homebrew-env/0_brew
 else
     sudo rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -43,7 +42,6 @@ else
     echo $(/opt/homebrew/bin/brew shellenv zsh) >> $HOME/.homebrew-env/0_brew
 
     echo 'set --global --export HOMEBREW_NO_REQUIRE_TAP_TRUST "1"' >> $HOME/.homebrew-env/0_brew.fish
-    echo 'export HOMEBREW_NO_REQUIRE_TAP_TRUST="1"' >> $HOME/.homebrew-env/0_brew
 fi
 
 mkdir -p $HOME/.ca-certificates
@@ -53,6 +51,7 @@ mkdir -p $HOME/.ca-certificates
 # brew cu --all Force upgrade outdated apps
 brew tap buo/cask-upgrade
 brew trust buo/cask-upgrade
+brew install buo/cask-upgrade
 
 brew update
 
