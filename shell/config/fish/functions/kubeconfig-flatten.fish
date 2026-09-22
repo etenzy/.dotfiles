@@ -5,11 +5,6 @@ function kubeconfig-flatten --description 'Safely flatten kubeconfig files in ~/
         return 1
     end
 
-    if not command -q rename
-        echo "Error: rename command is not available" >&2
-        return 1
-    end
-
     # Set variables
     set kube_dir "$HOME/.kube"
     set backup_dir "$kube_dir/.backup"
@@ -26,41 +21,12 @@ function kubeconfig-flatten --description 'Safely flatten kubeconfig files in ~/
 
     # Create backup of current config
     if test -f $config_file
-        cp $config_file "$backup_dir/config.backup.(date +%Y%m%d_%H%M%S)"
+        cp $config_file "$backup_dir/config.backup.$(date +%Y%m%d_%H%M%S)"
         echo "Created backup of current config"
     end
 
-    # Find and rename .bk files (replace colons with dashes)
-    set bk_files (find $kube_dir -maxdepth 1 -type f -name '*.bk' 2>/dev/null)
-    
-    if test (count $bk_files) -eq 0
-        echo "No .bk files found in $kube_dir"
-        return 0
-    end
-
-    echo "Found "(count $bk_files)" .bk files to process"
-
-    # Rename files to replace colons with dashes
-    for file in $bk_files
-        if string match -q '*:*' (basename $file)
-            if not rename 's/:/-/g' $file 2>/dev/null
-                echo "Warning: Failed to rename $file" >&2
-            end
-        end
-    end
-
-    # Get updated list of .bk files after renaming
-    set bk_files (find $kube_dir -maxdepth 1 -type f -name '*.bk' 2>/dev/null)
-
-    # Build KUBECONFIG environment variable
-    set kubeconfig_list
-    for file in $bk_files
-        set -a kubeconfig_list $file
-    end
-    set -a kubeconfig_list $config_file
-
     # Set KUBECONFIG and flatten
-    set -gx KUBECONFIG (string join ':' $kubeconfig_list)
+    set -gx KUBECONFIG (find "$HOME/.kube" -maxdepth 1 -type f ! -name '.DS_Store' | tr '\n' ':' | sed 's/:$//')
     
     echo "Flattening kubeconfig with "(count $kubeconfig_list)" files..."
     
@@ -83,15 +49,9 @@ function kubeconfig-flatten --description 'Safely flatten kubeconfig files in ~/
         return 1
     end
 
-    # Move .bk files to backup directory
-    for file in $bk_files
-        if not mv $file $backup_dir/
-            echo "Warning: Failed to move $file to backup directory" >&2
-        end
-    end
+    find "$HOME/.kube" -maxdepth 1 -type f ! -name '.DS_Store' ! -name 'config' -delete
 
     echo "Successfully flattened kubeconfig"
-    echo "Original .bk files moved to $backup_dir"
     
     # Reset KUBECONFIG to just the main config
     set -gx KUBECONFIG $config_file

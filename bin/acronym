@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+acronym_word() {
+  local word="${1,,}"
+  local consonants
+
+  case "$word" in
+    internal)      printf 'int' ;;
+    external)      printf 'ext' ;;
+    service)       printf 'svc' ;;
+    services)      printf 'svcs' ;;
+    dev)           printf 'dev' ;;
+    development)   printf 'dev' ;;
+    developer)     printf 'dev' ;;
+    engineer)      printf 'eng' ;;
+    engineering)   printf 'eng' ;;
+    prod)          printf 'prod' ;;
+    production)    printf 'prod' ;;
+    stg)           printf 'stg' ;;
+    staging)       printf 'stg' ;;
+    environment)   printf 'env' ;;
+    application)   printf 'app' ;;
+    database)      printf 'db' ;;
+    configuration) printf 'cfg' ;;
+    management)    printf 'mgmt' ;;
+    namespace)     printf 'ns' ;;
+    repository)    printf 'repo' ;;
+    kubernetes)    printf 'k8s' ;;
+    etl)           printf 'etl' ;;
+    devops)        printf 'devops' ;;
+    *)
+      consonants="${word//[aeiou]/}"
+      if [[ -z "$consonants" ]]; then
+        printf '%s' "${word:0:4}"
+      else
+        printf '%s' "${consonants:0:4}"
+      fi
+      ;;
+  esac
+}
+
+acronym() {
+  if [[ $# -lt 1 || $# -gt 2 ]]; then
+    printf 'Usage: %s INPUT [SEPARATOR]\n' "${0##*/}" >&2
+    return 2
+  fi
+
+  local input="$1"
+  local separator="${2:--}"
+  local word
+  local -a words result=()
+
+  input="${input//_/-}"
+  input="${input// /-}"
+  IFS='-' read -r -a words <<< "$input"
+
+  for word in "${words[@]}"; do
+    [[ -n "$word" ]] && result+=("$(acronym_word "$word")")
+  done
+
+  local IFS="$separator"
+  printf '%s\n' "${result[*]}"
+}
+
+acronym "$@"
