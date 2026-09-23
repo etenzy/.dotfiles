@@ -12,9 +12,8 @@ acronym_word() {
     services)      printf 'svcs' ;;
     dev)           printf 'dev' ;;
     development)   printf 'dev' ;;
-    developer)     printf 'dev' ;;
-    engineer)      printf 'eng' ;;
-    engineering)   printf 'eng' ;;
+    qa)            printf 'qa' ;;
+    test)          printf 'test' ;;
     prod)          printf 'prod' ;;
     production)    printf 'prod' ;;
     stg)           printf 'stg' ;;
@@ -29,6 +28,11 @@ acronym_word() {
     kubernetes)    printf 'k8s' ;;
     etl)           printf 'etl' ;;
     devops)        printf 'devops' ;;
+    developer)     printf 'dev' ;;
+    engineer)      printf 'eng' ;;
+    engineering)   printf 'eng' ;;
+    internet)      printf 'inet' ;;
+    banking)       printf 'bnkng' ;;
     *)
       consonants="${word//[aeiou]/}"
       if [[ -z "$consonants" ]]; then
