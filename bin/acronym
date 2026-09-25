@@ -5,34 +5,59 @@ acronym_word() {
   local word="${1,,}"
   local consonants
 
+  if (( ${#word} <= 4 )); then
+    printf '%s' "$word"
+    return
+  fi
+
   case "$word" in
-    internal)      printf 'int' ;;
-    external)      printf 'ext' ;;
-    service)       printf 'svc' ;;
-    services)      printf 'svcs' ;;
-    dev)           printf 'dev' ;;
-    development)   printf 'dev' ;;
-    qa)            printf 'qa' ;;
-    test)          printf 'test' ;;
-    prod)          printf 'prod' ;;
-    production)    printf 'prod' ;;
-    stg)           printf 'stg' ;;
-    staging)       printf 'stg' ;;
-    environment)   printf 'env' ;;
-    application)   printf 'app' ;;
-    database)      printf 'db' ;;
-    configuration) printf 'cfg' ;;
-    management)    printf 'mgmt' ;;
-    namespace)     printf 'ns' ;;
-    repository)    printf 'repo' ;;
-    kubernetes)    printf 'k8s' ;;
-    etl)           printf 'etl' ;;
-    devops)        printf 'devops' ;;
-    developer)     printf 'dev' ;;
-    engineer)      printf 'eng' ;;
-    engineering)   printf 'eng' ;;
-    internet)      printf 'inet' ;;
-    banking)       printf 'bnkng' ;;
+    application)    printf 'app' ;;
+    archive)        printf 'arch' ;;
+    audit)          printf 'audit' ;;
+    banking)        printf 'bnkng' ;;
+    billing)        printf 'bill' ;;
+    central)        printf 'ctr' ;;
+    connectivity)   printf 'conn' ;;
+    configuration)  printf 'cfg' ;;
+    container)      printf 'ctr' ;;
+    database)       printf 'db' ;;
+    developer)      printf 'dev' ;;
+    development)    printf 'dev' ;;
+    devops)         printf 'devops' ;;
+    disaster)       printf 'dis' ;;
+    encryption)     printf 'enc' ;;
+    engineer)       printf 'eng' ;;
+    engineering)    printf 'eng' ;;
+    environment)    printf 'env' ;;
+    external)       printf 'ext' ;;
+    factory)        printf 'fctry' ;;
+    general)        printf 'gen' ;;
+    gitlab)         printf 'gitlab' ;;
+    infosec)        printf 'infosec' ;;
+    infra)          printf 'infra' ;;
+    infrastructure) printf 'infra' ;;
+    internal)       printf 'int' ;;
+    internet)       printf 'inet' ;;
+    image)          printf 'img' ;;
+    isolated)       printf 'isol' ;;
+    kubernetes)     printf 'k8s' ;;
+    management)     printf 'mgmt' ;;
+    middleware)     printf 'mw' ;;
+    namespace)      printf 'ns' ;;
+    observability)  printf 'obs' ;;
+    packages)       printf 'pkgs' ;;
+    playground)     printf 'pg' ;;
+    production)     printf 'prod' ;;
+    provisioning)   printf 'prov' ;;
+    public)         printf 'pub' ;;
+    recovery)       printf 'rec' ;;
+    repository)     printf 'repo' ;;
+    sandbox)        printf 'sbx' ;;
+    service)        printf 'svc' ;;
+    services)       printf 'svcs' ;;
+    staging)        printf 'stg' ;;
+    toolset)        printf 'toolset' ;;
+    voice)          printf 'voice' ;;
     *)
       consonants="${word//[aeiou]/}"
       if [[ -z "$consonants" ]]; then
