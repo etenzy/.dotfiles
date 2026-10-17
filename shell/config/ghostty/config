@@ -12,6 +12,10 @@ background-blur-radius = 15
 
 cursor-style = bar
 cursor-style-blink = true
-shell-integration-features = no-cursor
+
+shell-integration = fish
+shell-integration-features = ssh-env,ssh-terminfo,no-cursor
+
+scrollback-limit = 50000000
 
 auto-update = off

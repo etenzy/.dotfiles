@@ -107,6 +107,13 @@ if [[ "$ENABLE_INSTALL_UBERSICHT" == "true" ]]; then
     git clone https://github.com/etenzy/uebersicht-widgets.git "$HOME/Library/Application Support/Übersicht/widgets"
 fi
 
+if [[ "$ENABLE_INSTALL_SOL" == "true" ]]; then
+    echo ''
+    echo 'Install sol'
+    echo '-----------'
+    brew install --cask sol
+fi
+
 if [[ "$ENABLE_INSTALL_STREAMDECK" == "true" ]]; then
     echo ''
     echo 'Install streamdeck'

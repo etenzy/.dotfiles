@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if command -v sudo >/dev/null 2>&1 && sudo -n -l >/dev/null 2>&1; then
+	printf 'true\n'
+	exit 0
+fi
+
+printf 'false\n'
+exit 1

@@ -8,6 +8,7 @@ if [[ "$ENABLE_INSTALL_GHOSTTY" == "true" ]]; then
     rm -rf $HOME/.config/ghostty
     mkdir -p $HOME/.config/ghostty
     ln -nfs $HOME/.dotfiles/shell/config/ghostty/config $HOME/.config/ghostty/config
+    echo "alias ssh='ghostty +ssh --'" >> $HOME/.homebrew-env/ghostty.fish
 fi
 
 if [[ "$ENABLE_INSTALL_DIRENV" == "true" ]]; then

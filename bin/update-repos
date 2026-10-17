@@ -28,9 +28,11 @@ directories=$(find -E $inputDir -depth +$maxdepth -type d \
     -o -regex "$exclude" -prune \
     -o -path $HOME/.asdf -prune \
     -o -path $HOME/.cache -prune \
+    -o -path $HOME/.codex -prune \
     -o -path $HOME/.krew -prune \
     -o -path $HOME/.tmux -prune \
     -o -path $HOME/.vim -prune \
+    -o -path $HOME/.vscode -prune \
     -o -path $HOME/Backup -prune \
     -o -path $HOME/Desktop -prune \
     -o -path $HOME/Documents -prune \

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -lt 1 || -z "$1" ]]; then
+	printf 'Usage: %s <path-or-command>\n' "$0" >&2
+	exit 1
+fi
+
+filepath=$1
+if [[ ! -e "$filepath" && "$filepath" != */* ]]; then
+	if ! filepath=$(which "$filepath"); then
+		printf 'Error: could not find %s in PATH.\n' "$1" >&2
+		exit 1
+	fi
+fi
+
+xattr -cr "$filepath"

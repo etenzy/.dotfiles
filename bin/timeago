@@ -36,6 +36,15 @@ else
     done
 fi
 
+if [[ ! "$input" =~ ^-?[0-9]+$ ]]; then
+    printf 'Error: input must be an integer.\n' >&2
+    exit 1
+fi
+
+if [[ ! "$input" == 0 ]]; then
+    echo ""
+fi
+
 current=$(date +%s)
 rest=$(($current - $input))
 returnstring=""

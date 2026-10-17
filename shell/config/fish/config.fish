@@ -24,6 +24,8 @@ alias watch "watch "
 alias ls "gls --color=auto"
 alias ll "lsd -la"
 
+alias uq "unquarantine "
+
 alias finder "open ."
 alias dotfiles "code -n ~/.dotfiles/"
 alias hostfile "sudo vi /etc/hosts"
@@ -58,4 +60,5 @@ set -gx EDITOR vim
 set -gx CLOUDSDK_CONFIG ''
 set -gx AWS_PROFILE ''
 
+direnv hook fish | source
 starship init fish | source
