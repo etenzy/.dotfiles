@@ -24,6 +24,9 @@ alias watch "watch "
 alias ls "gls --color=auto"
 alias ll "lsd -la"
 
+alias less "less -R"
+alias timestamp "date +%s"
+
 alias uq "unquarantine "
 
 alias finder "open ."
