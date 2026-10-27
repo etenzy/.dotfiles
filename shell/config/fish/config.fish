@@ -63,5 +63,7 @@ set -gx EDITOR vim
 set -gx CLOUDSDK_CONFIG ''
 set -gx AWS_PROFILE ''
 
+set -U fish_key_bindings fish_default_key_bindings
+
 direnv hook fish | source
 starship init fish | source
