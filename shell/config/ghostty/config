@@ -7,8 +7,14 @@ font-style-bold-italic = "Bold italic"
 
 theme = Catppuccin Frappe
 
+window-padding-x = 3
+window-padding-y = 12
+window-padding-balance = true
+
 background-opacity = 0.9
-background-blur-radius = 15
+background-blur = 15
+
+macos-titlebar-style = transparent
 
 cursor-style = bar
 cursor-style-blink = true
@@ -16,6 +22,6 @@ cursor-style-blink = true
 shell-integration = fish
 shell-integration-features = ssh-env,ssh-terminfo,no-cursor
 
-scrollback-limit = 50000000
+scrollback-limit = 100000000
 
 auto-update = off

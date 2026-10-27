@@ -17,12 +17,15 @@ echo 0
 rsync --info=progress2 --no-i-r -avr \
     --exclude=".asdf" \
     --exclude=".cache" \
-    --exclude=".config/colima" \
+    --exclude=".codex" \
+    --exclude=".config/colima/_lima" \
     --exclude=".freelens" \
     --exclude=".krew" \
     --exclude=".kube/cache" \
+    --exclude=".local" \
     --exclude=".vscode/extensions" \
     --exclude=".ssh/agent" \
+    --exclude="Applications" \
     --exclude="Backup" \
     --exclude="go" \
     --exclude="Library" \
