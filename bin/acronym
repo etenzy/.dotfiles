@@ -53,6 +53,7 @@ acronym_word() {
     recovery)       printf 'rec' ;;
     repository)     printf 'repo' ;;
     sandbox)        printf 'sbx' ;;
+    security)       printf 'sec' ;;
     service)        printf 'svc' ;;
     services)       printf 'svcs' ;;
     staging)        printf 'stg' ;;
