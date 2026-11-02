@@ -54,6 +54,7 @@ acronym_word() {
     repository)     printf 'repo' ;;
     sandbox)        printf 'sbx' ;;
     security)       printf 'sec' ;;
+    secrets)        printf 'secs' ;;
     service)        printf 'svc' ;;
     services)       printf 'svcs' ;;
     staging)        printf 'stg' ;;
